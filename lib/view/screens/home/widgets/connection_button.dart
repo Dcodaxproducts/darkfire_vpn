@@ -105,7 +105,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
                       ),
                       child: Stack(
                         children: [
-                          if (status == 'connecting')
+                          if (connectingStatus.contains(status))
                             Center(
                               child: SizedBox(
                                 width: 110.sp,

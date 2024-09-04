@@ -79,7 +79,7 @@ class ServerController extends GetxController implements GetxService {
     final response = await serverRepo.getRandomServer();
     VpnConfig? randomServer;
     if (response != null) {
-      final data = jsonDecode(response.body);
+      final data = jsonDecode(response.body)['data'];
       randomServer = VpnConfig.fromJson(data);
     }
     return randomServer!;

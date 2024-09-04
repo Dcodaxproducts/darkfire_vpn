@@ -110,7 +110,9 @@ class ConnectedDetails extends StatelessWidget {
 
           // Connection Time
           Text(
-            vpnController.vpnStatus?.duration ?? "00:00:00",
+            vpnController.vpnStatus?.duration ??
+                vpnController.vpnConfig?.serverIp ??
+                'Loading...',
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   fontSize: 54.sp,
                   fontWeight: FontWeight.bold,
