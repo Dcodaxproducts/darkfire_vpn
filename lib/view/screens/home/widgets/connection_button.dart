@@ -53,7 +53,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
         children: [
           // you are not protected
           Visibility(
-            visible: status == 'disconnected',
+            visible: status != 'connected',
             child: Container(
               margin: EdgeInsets.only(bottom: 32.sp),
               padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
