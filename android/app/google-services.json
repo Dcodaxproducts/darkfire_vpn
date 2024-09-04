@@ -1,0 +1,422 @@
+{
+  "project_info": {
+    "project_number": "587019374349",
+    "project_id": "dcodaxfood",
+    "storage_bucket": "dcodaxfood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:5692a2e3ec972bda92aa44",
+        "android_client_info": {
+          "package_name": "com.dcodax.food.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:83d16b1e1f8289bc92aa44",
+        "android_client_info": {
+          "package_name": "com.drinkdash.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:ed7193eb4c96a58792aa44",
+        "android_client_info": {
+          "package_name": "com.drinkdash.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:76954b0f857c703a92aa44",
+        "android_client_info": {
+          "package_name": "com.driver.pappasnv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:7fe8e4c62045848992aa44",
+        "android_client_info": {
+          "package_name": "com.example.dcodaxfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-adilp5v6g6apv67ikg1chji1jptrs0vi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dcodaxfood",
+            "certificate_hash": "2706bc70632be6c9aa25d60934f5064f07243558"
+          }
+        },
+        {
+          "client_id": "587019374349-nnpiq61n6oan9lttmavbbgn81mhq8itl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dcodaxfood",
+            "certificate_hash": "6701169ee3d77324b36edc8129c3998022861aae"
+          }
+        },
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:40ffd7b58bf9e6ae92aa44",
+        "android_client_info": {
+          "package_name": "com.guerreopedidos.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:94a0bc196dba620792aa44",
+        "android_client_info": {
+          "package_name": "com.guerreopedidos.restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:79bdfdcd16685ade92aa44",
+        "android_client_info": {
+          "package_name": "com.guerreopedidos.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:e72757367aae2c4c92aa44",
+        "android_client_info": {
+          "package_name": "com.nerdvpn.vpn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:e9adbe8c893e5f2192aa44",
+        "android_client_info": {
+          "package_name": "com.restaurant.pappasnv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587019374349:android:eb11959436adf84492aa44",
+        "android_client_info": {
+          "package_name": "com.user.pappasnv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587019374349-2etnlus68poi30ngg60pd5j11nf81n74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587019374349-3nfvfnjm94735ule2ahg1cvj5grssg1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.restaurant.pappasnv"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
