@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/primary_button.dart';
-import '../../connection_report/report.dart';
+import '../../report/report.dart';
 
 showDisconnectSheet() {
   showModalBottomSheet(
