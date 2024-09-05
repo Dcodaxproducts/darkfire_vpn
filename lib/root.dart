@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'dart:async';
-import 'package:darkfire_vpn/controllers/ads_provider.dart';
-import 'package:darkfire_vpn/controllers/iap_provider.dart';
+import 'package:darkfire_vpn/controllers/ads_controller.dart';
+import 'package:darkfire_vpn/controllers/iap_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/view/screens/home/home.dart';
 import 'package:flutter/material.dart';

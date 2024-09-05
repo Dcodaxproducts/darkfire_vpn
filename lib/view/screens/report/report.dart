@@ -134,7 +134,7 @@ class ReportScreen extends StatelessWidget {
                           icon: Iconsax.calendar,
                           title: "connected_on".tr,
                           value: DateFormat("dd MMM yyyy hh:mm a")
-                              .format(vpnStatus.connectedOn!),
+                              .format(vpnStatus.connectedOn ?? DateTime.now()),
                         ),
                         ReportStatItem(
                           icon: Iconsax.clock,

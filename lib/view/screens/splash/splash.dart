@@ -1,3 +1,4 @@
+import 'package:darkfire_vpn/controllers/ads_controller.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:darkfire_vpn/utils/style.dart';
@@ -22,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _splashController.initSharedData();
+    AdsController.find.initialize();
   }
 
   @override

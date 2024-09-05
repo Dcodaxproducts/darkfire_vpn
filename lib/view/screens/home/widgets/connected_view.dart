@@ -1,12 +1,10 @@
 import 'package:darkfire_vpn/common/primary_button.dart';
-import 'package:darkfire_vpn/controllers/servers_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../../../../helper/vpn_helper.dart';
 import '../../../../utils/style.dart';
 import '../../../base/speed_widget.dart';
@@ -22,7 +20,7 @@ class ConnectedView extends StatefulWidget {
 class _ConnectedViewState extends State<ConnectedView> {
   @override
   void initState() {
-    ServerController.find.getPublicIP();
+    // ServerController.find.getPublicIP();
     super.initState();
   }
 
@@ -59,8 +57,6 @@ class ConnectedDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<VpnController>(builder: (vpnController) {
-      String status = vpnController.vpnStage ?? VPNStage.disconnected.name;
-
       //
       double bytein = 0;
       double byteout = 0;
@@ -82,29 +78,26 @@ class ConnectedDetails extends StatelessWidget {
       return Column(
         children: [
           // you are protected
-          Visibility(
-            visible: status == 'connected',
-            child: Container(
-              margin: EdgeInsets.only(bottom: 32.sp),
-              padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12.sp),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Iconsax.shield, size: 20.sp, color: primaryColor),
-                  SizedBox(width: 5.sp),
-                  Text(
-                    'you_are_now_protected'.tr,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: primaryColor),
-                  )
-                ],
-              ),
+          Container(
+            margin: EdgeInsets.only(bottom: 32.sp),
+            padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
+            decoration: BoxDecoration(
+              color: primaryColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12.sp),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Iconsax.shield_tick, size: 20.sp, color: primaryColor),
+                SizedBox(width: 5.sp),
+                Text(
+                  'you_are_now_protected'.tr,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(color: primaryColor),
+                )
+              ],
             ),
           ),
 

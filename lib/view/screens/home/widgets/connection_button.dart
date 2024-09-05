@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:darkfire_vpn/controllers/ads_provider.dart';
+import 'package:darkfire_vpn/controllers/ads_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -48,33 +48,40 @@ class _ConnectionButtonState extends State<ConnectionButton> {
   Widget build(BuildContext context) {
     return GetBuilder<VpnController>(builder: (vpnController) {
       String status = vpnController.vpnStage ?? VPNStage.disconnected.name;
+      final text = status != 'connected'
+          ? 'you_are_not_protected'.tr
+          : 'you_are_now_protected'.tr;
+      final color = status != 'connected' ? Colors.red : Colors.green;
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           // you are not protected
-          Visibility(
-            visible: status != 'connected',
-            child: Container(
-              margin: EdgeInsets.only(bottom: 32.sp),
-              padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12.sp),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Iconsax.shield_cross, size: 20.sp, color: Colors.red),
-                  SizedBox(width: 5.sp),
-                  Text(
-                    'you_are_not_protected'.tr,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: Colors.red),
-                  )
-                ],
-              ),
+          Container(
+            margin: EdgeInsets.only(bottom: 32.sp),
+            padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
+            decoration: BoxDecoration(
+              color: primaryColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12.sp),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  status != 'connected'
+                      ? Iconsax.shield_cross
+                      : Iconsax.shield_tick,
+                  size: 20.sp,
+                  color: color,
+                ),
+                SizedBox(width: 5.sp),
+                Text(
+                  text,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(color: color),
+                )
+              ],
             ),
           ),
           SizedBox(

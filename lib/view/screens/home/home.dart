@@ -6,7 +6,6 @@ import 'package:darkfire_vpn/view/base/appBar.dart';
 import 'package:darkfire_vpn/view/screens/home/widgets/connected_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../../base/map_background.dart';
 import 'widgets/disconnected_view.dart';
 import '../../base/server_widget.dart';
@@ -51,11 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SelectedServerWidget(),
                 Expanded(
                   child: GetBuilder<VpnController>(builder: (vpnController) {
-                    String status =
-                        vpnController.vpnStage ?? VPNStage.disconnected.name;
                     return AnimatedSwitcher(
                       duration: const Duration(milliseconds: 500),
-                      child: status == 'connected'
+                      child: vpnController.showConnectedView
                           ? const ConnectedView()
                           : const DisconnectedView(),
                     );

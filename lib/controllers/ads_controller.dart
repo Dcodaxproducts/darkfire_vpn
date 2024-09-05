@@ -4,7 +4,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'iap_provider.dart';
+import 'iap_controller.dart';
 
 const String interstitialAdUnitID = "ca-app-pub-3940256099942544/1033173712";
 const String bannerAdUnitID = "ca-app-pub-3940256099942544/6300978111";
@@ -18,7 +18,7 @@ class AdsController extends GetxController implements GetxService {
 
   ///Initialize context, so you can access context inside the provider
   ///without passing it manually through params
-  static void initialize(BuildContext context) {
+  void initialize() {
     final params = ConsentRequestParameters();
     ConsentInformation.instance.requestConsentInfoUpdate(params, () {
       ConsentInformation.instance.isConsentFormAvailable().then((value) {
@@ -28,7 +28,7 @@ class AdsController extends GetxController implements GetxService {
   }
 
   ///Load consent form for ads
-  static void loadForm() {
+  void loadForm() {
     ConsentForm.loadConsentForm((consentForm) async {
       if (await ConsentInformation.instance.getConsentStatus() ==
           ConsentStatus.required) {

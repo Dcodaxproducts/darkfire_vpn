@@ -43,18 +43,18 @@ class SignalBar extends StatelessWidget {
   }
 
   int _calculateActiveBars() {
-    /* 1 bar -> >=400
-    2 bar -> 300
-    3 bar -> 200
-    4 bar -> 120 */
-    if (signalStrength >= 400) {
-      return 1;
-    } else if (signalStrength >= 300) {
-      return 2;
-    } else if (signalStrength >= 200) {
-      return 3;
-    } else if (signalStrength >= 120) {
+    RangeValues bar4 = const RangeValues(0, 120);
+    RangeValues bar3 = const RangeValues(121, 300);
+    RangeValues bar2 = const RangeValues(301, 450);
+
+    if (bar4.start <= signalStrength && signalStrength <= bar4.end) {
       return 4;
+    } else if (bar3.start <= signalStrength && signalStrength <= bar3.end) {
+      return 3;
+    } else if (bar2.start <= signalStrength && signalStrength <= bar2.end) {
+      return 2;
+    } else if (signalStrength >= bar2.end) {
+      return 1;
     } else {
       return 0;
     }

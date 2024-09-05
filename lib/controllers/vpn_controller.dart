@@ -17,12 +17,19 @@ class VpnController extends GetxController implements GetxService {
   String? vpnStage;
   VpnStatus? vpnStatus;
   VpnConfig? _vpnConfig;
+  bool _showConnectedView = false;
 
   VpnConfig? get vpnConfig => _vpnConfig;
+  bool get showConnectedView => _showConnectedView;
 
   set vpnConfig(VpnConfig? value) {
     _vpnConfig = value;
     vpnRepo.setServer(value);
+    update();
+  }
+
+  set showConnectedView(bool value) {
+    _showConnectedView = value;
     update();
   }
 
@@ -67,6 +74,11 @@ class VpnController extends GetxController implements GetxService {
       });
     }
     update();
+    if (vpnStage == "connected") {
+      Future.delayed(const Duration(milliseconds: 1500)).then((value) {
+        showConnectedView = true;
+      });
+    }
   }
 
   ///Connect to VPN server
@@ -105,5 +117,8 @@ class VpnController extends GetxController implements GetxService {
     VpnConfig config = vpnConfig!;
     engine.disconnect();
     onDisconnect.call(status, config);
+    Future.delayed(const Duration(milliseconds: 500), () {
+      showConnectedView = false;
+    });
   }
 }

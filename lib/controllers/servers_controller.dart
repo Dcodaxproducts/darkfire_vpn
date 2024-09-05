@@ -85,11 +85,11 @@ class ServerController extends GetxController implements GetxService {
     return randomServer!;
   }
 
-  Future<void> getPublicIP() async {
-    final response = await serverRepo.getPublicIP();
-    if (response != null) {
-      final data = jsonDecode(response.body);
-      publicIP = IpAddressModel.fromJson(data);
-    }
-  }
+  // Future<void> getPublicIP() async {
+  //   final response = await serverRepo.getPublicIP();
+  //   if (response != null) {
+  //     final data = jsonDecode(response.body);
+  //     publicIP = IpAddressModel.fromJson(data);
+  //   }
+  // }
 }

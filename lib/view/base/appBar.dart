@@ -3,15 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import '../../controllers/iap_provider.dart';
+import '../../controllers/iap_controller.dart';
 import '../../utils/app_constants.dart';
 import '../screens/menu/menu.dart';
+import '../screens/subscription/subscription.dart';
 
 class CustomAppBar extends StatelessWidget {
   final bool home;
   final String text;
+  final bool premium;
   const CustomAppBar(
-      {this.home = false, this.text = AppConstants.APP_NAME, super.key});
+      {this.home = false,
+      this.text = AppConstants.APP_NAME,
+      this.premium = false,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,24 +42,20 @@ class CustomAppBar extends StatelessWidget {
                 style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
-            IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => _upgradeProClick(context),
-              icon: GetBuilder<IAPController>(
-                builder: (value) => LottieBuilder.asset(
-                  "assets/animations/crown_${value.isPro ? "pro" : "free"}.json",
-                  width: 42.sp,
+            if (!premium)
+              IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: () => launchScreen(const SubscriptionScreen()),
+                icon: GetBuilder<IAPController>(
+                  builder: (value) => LottieBuilder.asset(
+                    "assets/animations/crown_${value.isPro ? "pro" : "free"}.json",
+                    width: 42.sp,
+                  ),
                 ),
-              ),
-            )
+              )
           ],
         ),
       ),
     );
-  }
-
-  ///Open the subscription screen when user click on the crown icon
-  void _upgradeProClick(BuildContext context) {
-    // startScreen(context, const SubscriptionScreen());
   }
 }

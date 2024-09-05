@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:darkfire_vpn/data/model/body/subscription_model.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../data/model/language.dart';
 
@@ -142,6 +143,30 @@ class AppConstants {
       languageCode: 'te',
     ),
     // language codes from above list,
+  ];
+
+  static List<SubscriptionModel> subscriptionList = [
+    SubscriptionModel(
+      name: "One Week Subscription",
+      duration: const Duration(days: 7),
+      gracePeriod: const Duration(days: 1),
+      featured: false,
+      price: 'PKR 100',
+    ),
+    SubscriptionModel(
+      name: "One Month Subscription",
+      duration: const Duration(days: 30),
+      gracePeriod: const Duration(days: 7),
+      featured: true,
+      price: 'PKR 300',
+    ),
+    SubscriptionModel(
+      name: "One Year Subscription",
+      duration: const Duration(days: 365),
+      gracePeriod: const Duration(days: 7),
+      featured: false,
+      price: 'PKR 1000',
+    ),
   ];
 
   static const Map<String, Map<String, dynamic>> subscriptionIdentifier = {
