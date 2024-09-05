@@ -34,27 +34,27 @@ class SignalBar extends StatelessWidget {
       case 4:
         return Colors.green;
       case 3:
-        return Colors.orange;
+        return Colors.green;
       case 2:
-        return Colors.red;
+        return Colors.orange;
       default:
         return Colors.red;
     }
   }
 
   int _calculateActiveBars() {
-    /* 1 bar -> >=300
-    2 bar -> 150-300
-    3 bar -> 80-150
-    4 bar -> 50-80 */
-    if (signalStrength >= 300) {
-      return 4;
-    } else if (signalStrength >= 150) {
-      return 3;
-    } else if (signalStrength >= 80) {
-      return 2;
-    } else if (signalStrength >= 50) {
+    /* 1 bar -> >=400
+    2 bar -> 300
+    3 bar -> 200
+    4 bar -> 120 */
+    if (signalStrength >= 400) {
       return 1;
+    } else if (signalStrength >= 300) {
+      return 2;
+    } else if (signalStrength >= 200) {
+      return 3;
+    } else if (signalStrength >= 120) {
+      return 4;
     } else {
       return 0;
     }
