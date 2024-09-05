@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        height: 60,
+        height: 60.sp,
         child: Row(
           children: [
             IconButton(
@@ -43,7 +43,7 @@ class CustomAppBar extends StatelessWidget {
               icon: GetBuilder<IAPController>(
                 builder: (value) => LottieBuilder.asset(
                   "assets/animations/crown_${value.isPro ? "pro" : "free"}.json",
-                  width: 50.sp,
+                  width: 42.sp,
                 ),
               ),
             )

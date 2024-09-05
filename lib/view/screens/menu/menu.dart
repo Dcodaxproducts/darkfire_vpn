@@ -1,14 +1,15 @@
 import 'dart:io';
 import 'package:darkfire_vpn/controllers/theme_controller.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
+import 'package:darkfire_vpn/view/screens/language/language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ndialog/ndialog.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../../helper/vpn_helper.dart';
 import '../../../utils/app_constants.dart';
+import '../../base/updateNotAvailableDialog.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -21,37 +22,38 @@ class MenuScreen extends StatelessWidget {
           icon: const Icon(Icons.close),
           onPressed: Get.back,
         ),
-        title: const Text('Menu'),
+        title: Text('menu'.tr),
       ),
       body: Column(
         children: [
-          const MenuTile(
-            text: 'Dark Theme',
+          MenuTile(
+            text: 'dark_theme',
             icon: Iconsax.moon,
             theme: true,
+            onTap: ThemeController.find.toggleTheme,
           ),
           MenuTile(
-            text: 'Languages',
+            text: 'languages',
             icon: Iconsax.language_circle,
-            onTap: () => _aboutClick(),
+            onTap: () => Get.bottomSheet(const LanguageSheet()),
           ),
           MenuTile(
-            text: 'Check Update',
+            text: 'check_update',
             icon: Iconsax.cloud_change,
             onTap: () => _checkUpdate(),
           ),
           MenuTile(
-            text: 'Privacy Policy',
+            text: 'privacy_policy',
             icon: Iconsax.shield_tick,
             onTap: () => _aboutClick(),
           ),
           MenuTile(
-            text: 'Terms of Service',
+            text: 'terms_of_service',
             icon: Iconsax.document,
             onTap: () => _aboutClick(),
           ),
           MenuTile(
-            text: 'About',
+            text: 'about',
             icon: Iconsax.info_circle,
             onTap: () => _aboutClick(),
           ),
@@ -65,17 +67,7 @@ class MenuScreen extends StatelessWidget {
     if (Platform.isAndroid) {
       checkUpdate().then((value) {
         if (!value) {
-          NAlertDialog(
-            title: const Text("update_not_available"),
-            content: const Text("update_not_available_content"),
-            blur: 10,
-            actions: [
-              TextButton(
-                onPressed: Get.back,
-                child: const Text("close"),
-              ),
-            ],
-          ).show(Get.context!);
+          Get.dialog(const Updatenotavailabledialog());
         }
       });
     } else {
@@ -113,7 +105,7 @@ class MenuTile extends StatelessWidget {
       child: ListTile(
         leading: Icon(icon, color: primaryColor, size: 20.sp),
         title: Text(
-          text,
+          text.tr,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         onTap: onTap,

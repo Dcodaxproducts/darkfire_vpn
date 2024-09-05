@@ -41,7 +41,7 @@ class ThemeController extends GetxController implements GetxService {
     update();
   }
 
-  static ThemeController get to => Get.find();
+  static ThemeController get find => Get.find();
 }
 
 bool get isDark => Get.isDarkMode;

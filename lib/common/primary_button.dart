@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../utils/colors.dart';
 
 class PrimaryButton extends StatelessWidget {
@@ -41,7 +42,7 @@ class PrimaryButton extends StatelessWidget {
           children: [
             if (icon != null) ...[icon!, SizedBox(width: 8.sp)],
             Text(
-              text,
+              text.tr,
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium

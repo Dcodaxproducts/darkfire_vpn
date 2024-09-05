@@ -1,9 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-
 import '../data/model/language.dart';
-import 'images.dart';
 
 class AppConstants {
   static const String vpnUsername = "";
@@ -49,15 +47,101 @@ class AppConstants {
   // Language
   static List<LanguageModel> languages = [
     LanguageModel(
-        imageUrl: Images.english,
-        languageName: 'English',
-        countryCode: 'US',
-        languageCode: 'en'),
+      languageName: 'English',
+      countryCode: 'US',
+      languageCode: 'en',
+    ),
     LanguageModel(
-        imageUrl: Images.arabic,
-        languageName: 'Arabic',
-        countryCode: 'SA',
-        languageCode: 'ar'),
+      languageName: 'Arabic',
+      countryCode: 'SA',
+      languageCode: 'ar',
+    ),
+    LanguageModel(
+      languageName: 'French',
+      countryCode: 'FR',
+      languageCode: 'fr',
+    ),
+    LanguageModel(
+      languageName: 'Indonesian',
+      countryCode: 'ID',
+      languageCode: 'id',
+    ),
+    LanguageModel(
+      languageName: 'Portuguese',
+      countryCode: 'PT',
+      languageCode: 'pt',
+    ),
+    LanguageModel(
+      languageName: 'Spanish',
+      countryCode: 'ES',
+      languageCode: 'es',
+    ),
+    LanguageModel(
+      languageName: 'Turkish',
+      countryCode: 'TR',
+      languageCode: 'tr',
+    ),
+    LanguageModel(
+      languageName: 'Hindi',
+      countryCode: 'IN',
+      languageCode: 'hi',
+    ),
+    LanguageModel(
+      languageName: 'Russian',
+      countryCode: 'RU',
+      languageCode: 'ru',
+    ),
+    LanguageModel(
+      languageName: 'German',
+      countryCode: 'DE',
+      languageCode: 'de',
+    ),
+    LanguageModel(
+      languageName: 'Chinese',
+      countryCode: 'CN',
+      languageCode: 'zh',
+    ),
+    LanguageModel(
+      languageName: 'Japanese',
+      countryCode: 'JP',
+      languageCode: 'ja',
+    ),
+    LanguageModel(
+      languageName: 'Korean',
+      countryCode: 'KR',
+      languageCode: 'ko',
+    ),
+    LanguageModel(
+      languageName: 'Italian',
+      countryCode: 'IT',
+      languageCode: 'it',
+    ),
+    LanguageModel(
+      languageName: 'Vietnamese',
+      countryCode: 'VN',
+      languageCode: 'vi',
+    ),
+    LanguageModel(
+      languageName: 'Urdu',
+      countryCode: 'PK',
+      languageCode: 'ur',
+    ),
+    LanguageModel(
+      languageName: 'Dutch',
+      countryCode: 'NL',
+      languageCode: 'nl',
+    ),
+    LanguageModel(
+      languageName: 'Tamil',
+      countryCode: 'IN',
+      languageCode: 'ta',
+    ),
+    LanguageModel(
+      languageName: 'Telugu',
+      countryCode: 'IN',
+      languageCode: 'te',
+    ),
+    // language codes from above list,
   ];
 
   static const Map<String, Map<String, dynamic>> subscriptionIdentifier = {

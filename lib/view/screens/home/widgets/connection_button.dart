@@ -67,7 +67,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
                   Icon(Iconsax.shield_cross, size: 20.sp, color: Colors.red),
                   SizedBox(width: 5.sp),
                   Text(
-                    'You are not protected',
+                    'you_are_not_protected'.tr,
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
@@ -136,9 +136,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
           ),
           SizedBox(height: 16.sp),
           Text(
-            status == 'disconnected'
-                ? 'Tap to connect'
-                : convertVpnStageToString(status),
+            status == 'disconnected' ? 'tap_to_connect'.tr : status.tr,
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium

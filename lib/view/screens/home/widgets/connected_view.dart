@@ -42,7 +42,7 @@ class _ConnectedViewState extends State<ConnectedView> {
             child: Padding(
               padding: pagePadding,
               child: const PrimaryButton(
-                text: 'Disconnect',
+                text: 'disconnect',
                 onPressed: showDisconnectSheet,
               ),
             ),
@@ -97,7 +97,7 @@ class ConnectedDetails extends StatelessWidget {
                   Icon(Iconsax.shield, size: 20.sp, color: primaryColor),
                   SizedBox(width: 5.sp),
                   Text(
-                    'You are now protected',
+                    'you_are_now_protected'.tr,
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
@@ -110,9 +110,7 @@ class ConnectedDetails extends StatelessWidget {
 
           // Connection Time
           Text(
-            vpnController.vpnStatus?.duration ??
-                vpnController.vpnConfig?.serverIp ??
-                'Loading...',
+            vpnController.vpnStatus?.duration ?? 'loading'.tr,
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   fontSize: 54.sp,
                   fontWeight: FontWeight.bold,
@@ -121,13 +119,9 @@ class ConnectedDetails extends StatelessWidget {
           ),
           SizedBox(height: 5.sp),
           // ip address,
-          GetBuilder<ServerController>(
-            builder: (serverController) {
-              return Text(
-                serverController.publicIP?.ipAddress ?? 'Loading...',
-                style: Theme.of(context).textTheme.bodyMedium,
-              );
-            },
+          Text(
+            vpnController.vpnConfig?.serverIp ?? 'loading'.tr,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
 
           SizedBox(height: 16.sp),
@@ -138,7 +132,7 @@ class ConnectedDetails extends StatelessWidget {
             children: [
               Expanded(
                   child: SpeedWidget(
-                title: 'Download',
+                title: 'download'.tr,
                 icon: Iconsax.arrow_down,
                 iconColor: Colors.blue,
                 speed: "${formatBytes(bytein.floor(), 2)}/s",
@@ -151,7 +145,7 @@ class ConnectedDetails extends StatelessWidget {
               ),
               Expanded(
                 child: SpeedWidget(
-                  title: 'Upload',
+                  title: 'upload'.tr,
                   icon: Iconsax.arrow_up_3,
                   iconColor: Colors.purple,
                   speed: "${formatBytes(byteout.floor(), 0)}/s",
@@ -166,7 +160,7 @@ class ConnectedDetails extends StatelessWidget {
               SizedBox(
                 width: 150.sp,
                 child: PrimaryButton(
-                  text: '+1 Hour',
+                  text: '+1 ${'hour'.tr}',
                   onPressed: () {},
                 ),
               ),
@@ -175,7 +169,7 @@ class ConnectedDetails extends StatelessWidget {
                 child: PrimaryButton(
                   color: primaryColor.withOpacity(0.15),
                   textColor: primaryColor,
-                  text: 'Extra Time',
+                  text: 'extra_time'.tr,
                   onPressed: () {},
                 ),
               ),

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'helper/vpn_helper.dart';
-import 'view/screens/splash.dart';
+import 'view/screens/splash/splash.dart';
 
 class Root extends StatefulWidget {
   const Root({super.key});
@@ -39,8 +39,10 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
       await loadAppOpenAd()
           .then((value) => _appOpenAd?.showIfNotPro())
           .catchError((_) {});
-      _ready = true;
-      if (mounted) setState(() {});
+      Future.delayed(const Duration(seconds: 3), () {
+        _ready = true;
+        if (mounted) setState(() {});
+      });
     });
     super.initState();
   }

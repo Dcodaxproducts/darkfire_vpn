@@ -5,9 +5,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../utils/colors.dart';
 import '../screens/servers/servers.dart';
+import '../screens/servers/widgets/servers_view.dart';
 
-class SelectedServerWidget extends StatelessWidget {
+class SelectedServerWidget extends StatefulWidget {
   const SelectedServerWidget({super.key});
+
+  @override
+  State<SelectedServerWidget> createState() => _SelectedServerWidgetState();
+}
+
+class _SelectedServerWidgetState extends State<SelectedServerWidget> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

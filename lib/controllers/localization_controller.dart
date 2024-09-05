@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../data/api/api_client.dart';
 import '../data/model/language.dart';
 import '../utils/app_constants.dart';
@@ -16,6 +15,7 @@ class LocalizationController extends GetxController implements GetxService {
     loadCurrentLanguage();
   }
 
+  final List<String> _rtls = ['ar', 'he', 'ur'];
   Locale _locale = Locale(AppConstants.languages[0].languageCode,
       AppConstants.languages[0].countryCode);
   bool _isLtr = true;
@@ -28,7 +28,7 @@ class LocalizationController extends GetxController implements GetxService {
   void setLanguage(Locale locale) {
     Get.updateLocale(locale);
     _locale = locale;
-    if (_locale.languageCode == 'ar') {
+    if (_rtls.contains(locale.languageCode)) {
       _isLtr = false;
     } else {
       _isLtr = true;
@@ -46,7 +46,11 @@ class LocalizationController extends GetxController implements GetxService {
             AppConstants.languages[0].languageCode,
         sharedPreferences.getString(AppConstants.COUNTRY_CODE) ??
             AppConstants.languages[0].countryCode);
-    _isLtr = _locale.languageCode != 'ar' && _locale.languageCode != 'he';
+    if (_rtls.contains(_locale.languageCode)) {
+      _isLtr = false;
+    } else {
+      _isLtr = true;
+    }
     for (int index = 0; index < AppConstants.languages.length; index++) {
       if (AppConstants.languages[index].languageCode == _locale.languageCode) {
         _selectedIndex = index;

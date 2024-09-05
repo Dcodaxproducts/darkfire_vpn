@@ -43,14 +43,20 @@ class SignalBar extends StatelessWidget {
   }
 
   int _calculateActiveBars() {
-    if (signalStrength <= 80) {
+    /* 1 bar -> >=300
+    2 bar -> 150-300
+    3 bar -> 80-150
+    4 bar -> 50-80 */
+    if (signalStrength >= 300) {
       return 4;
-    } else if (signalStrength <= 150) {
+    } else if (signalStrength >= 150) {
       return 3;
-    } else if (signalStrength <= 300) {
+    } else if (signalStrength >= 80) {
       return 2;
-    } else {
+    } else if (signalStrength >= 50) {
       return 1;
+    } else {
+      return 0;
     }
   }
 }

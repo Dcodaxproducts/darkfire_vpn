@@ -11,8 +11,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../../../helper/vpn_helper.dart';
-import '../../../utils/images.dart';
 import '../../../utils/style.dart';
+import '../../base/map_background.dart';
 
 class ReportScreen extends StatelessWidget {
   final VpnStatus vpnStatus;
@@ -41,16 +41,11 @@ class ReportScreen extends StatelessWidget {
       }
       return Scaffold(
         body: Stack(
-          fit: StackFit.expand,
           children: [
-            Image.asset(
-              Images.map,
-              fit: BoxFit.cover,
-              color: Theme.of(context).hintColor.withOpacity(0.5),
-            ),
+            const MapBackground(),
             Column(
               children: [
-                const CustomAppBar(text: 'Report'),
+                CustomAppBar(text: 'report'.tr),
                 Expanded(
                   child: Padding(
                     padding: pagePadding,
@@ -103,7 +98,7 @@ class ReportScreen extends StatelessWidget {
                           children: [
                             Expanded(
                                 child: SpeedWidget(
-                              title: 'Download',
+                              title: 'download'.tr,
                               icon: Iconsax.arrow_down,
                               iconColor: Colors.blue,
                               speed: "${formatBytes(bytein.floor(), 2)}/s",
@@ -116,7 +111,7 @@ class ReportScreen extends StatelessWidget {
                             ),
                             Expanded(
                               child: SpeedWidget(
-                                title: 'Upload',
+                                title: 'upload'.tr,
                                 icon: Iconsax.arrow_up_3,
                                 iconColor: Colors.purple,
                                 speed: "${formatBytes(byteout.floor(), 0)}/s",
@@ -127,23 +122,23 @@ class ReportScreen extends StatelessWidget {
                         SizedBox(height: 24.sp),
                         ReportStatItem(
                           icon: Iconsax.shield,
-                          title: "Protocol",
+                          title: "protocol".tr,
                           value: vpnConfig.protocol?.toUpperCase() ?? "UDP",
                         ),
                         ReportStatItem(
                           icon: Iconsax.wifi,
-                          title: "Server",
+                          title: "server".tr,
                           value: vpnConfig.country,
                         ),
                         ReportStatItem(
                           icon: Iconsax.calendar,
-                          title: "Connected On",
+                          title: "connected_on".tr,
                           value: DateFormat("dd MMM yyyy hh:mm a")
                               .format(vpnStatus.connectedOn!),
                         ),
                         ReportStatItem(
                           icon: Iconsax.clock,
-                          title: "Connection Duration",
+                          title: "conection_duration".tr,
                           value:
                               formatDuration(vpnStatus.duration ?? "00:00:00"),
                         ),

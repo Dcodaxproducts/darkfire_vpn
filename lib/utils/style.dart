@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 EdgeInsets get pagePadding => EdgeInsets.all(16.sp);
 double get defaultRadius => 10.sp;
-double get defaultSpacing => 10.sp;
+double get defaultSpacing => 16.sp;
 
 List<BoxShadow> get shadow => [
       BoxShadow(

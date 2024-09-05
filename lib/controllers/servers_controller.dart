@@ -58,7 +58,7 @@ class ServerController extends GetxController implements GetxService {
   Future<void> getAllFreeServers() async {
     final response = await serverRepo.getAllFreeServers();
     if (response != null) {
-      final data = jsonDecode(response.body);
+      final data = jsonDecode(response.body)['data'];
       _freeServers =
           List<VpnConfig>.from(data.map((x) => VpnConfig.fromJson(x)));
       update();
@@ -68,7 +68,7 @@ class ServerController extends GetxController implements GetxService {
   Future<void> getAllProServers() async {
     final response = await serverRepo.getAllProServers();
     if (response != null) {
-      final data = jsonDecode(response.body);
+      final data = jsonDecode(response.body)['data'];
       _proServers =
           List<VpnConfig>.from(data.map((x) => VpnConfig.fromJson(x)));
       update();

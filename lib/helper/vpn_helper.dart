@@ -1,6 +1,7 @@
 // ignore_for_file: implementation_imports
 
 import 'dart:math';
+import 'package:darkfire_vpn/common/snackbar.dart';
 import 'package:darkfire_vpn/controllers/iap_provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:google_mobile_ads/src/ad_instance_manager.dart';
@@ -22,8 +23,10 @@ extension CheckProForAd on AdWithoutView {
 }
 
 Future<bool> checkUpdate() async {
+  showLoading();
   try {
     var info = await InAppUpdate.checkForUpdate();
+    dismiss();
     if (info.updateAvailability == UpdateAvailability.updateAvailable) {
       if (info.flexibleUpdateAllowed) {
         InAppUpdate.startFlexibleUpdate().then((value) {
@@ -36,5 +39,6 @@ Future<bool> checkUpdate() async {
       return true;
     }
   } catch (_) {}
+  dismiss();
   return false;
 }
