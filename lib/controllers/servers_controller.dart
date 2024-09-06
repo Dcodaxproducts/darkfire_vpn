@@ -14,15 +14,13 @@ class ServerController extends GetxController implements GetxService {
 
   bool _loading = false;
   List<VpnConfig> _allServers = [];
-  List<VpnConfig> _freeServers = [];
-  List<VpnConfig> _proServers = [];
   IpAddressModel? _publicIP;
+  int _currentIndex = 0;
 
   bool get loading => _loading;
   List<VpnConfig> get allServers => _allServers;
-  List<VpnConfig> get freeServers => _freeServers;
-  List<VpnConfig> get proServers => _proServers;
   IpAddressModel? get publicIP => _publicIP;
+  int get currentIndex => _currentIndex;
 
   set publicIP(IpAddressModel? value) {
     _publicIP = value;
@@ -34,6 +32,11 @@ class ServerController extends GetxController implements GetxService {
     update();
   }
 
+  set currentIndex(int value) {
+    _currentIndex = value;
+    update();
+  }
+
   Future<void> getAllServers() async {
     loading = true;
     final response = await serverRepo.getAllServers();
@@ -41,8 +44,14 @@ class ServerController extends GetxController implements GetxService {
       final data = jsonDecode(response.body)['data'];
       _allServers =
           List<VpnConfig>.from(data.map((x) => VpnConfig.fromJson(x)));
+      serverRepo.saveServers(value: _allServers);
       loading = false;
     }
+  }
+
+  Future<void> getAllServersFromCache() async {
+    _allServers = serverRepo.loadServers();
+    update();
   }
 
   Future<VpnConfig?> getServerDetails(String server) async {
@@ -53,26 +62,6 @@ class ServerController extends GetxController implements GetxService {
       return VpnConfig.fromJson(data);
     }
     return null;
-  }
-
-  Future<void> getAllFreeServers() async {
-    final response = await serverRepo.getAllFreeServers();
-    if (response != null) {
-      final data = jsonDecode(response.body)['data'];
-      _freeServers =
-          List<VpnConfig>.from(data.map((x) => VpnConfig.fromJson(x)));
-      update();
-    }
-  }
-
-  Future<void> getAllProServers() async {
-    final response = await serverRepo.getAllProServers();
-    if (response != null) {
-      final data = jsonDecode(response.body)['data'];
-      _proServers =
-          List<VpnConfig>.from(data.map((x) => VpnConfig.fromJson(x)));
-      update();
-    }
   }
 
   Future<VpnConfig> getRandomServer() async {

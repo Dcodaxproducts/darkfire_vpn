@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'package:darkfire_vpn/controllers/ads_controller.dart';
 import 'package:darkfire_vpn/controllers/iap_controller.dart';
+import 'package:darkfire_vpn/controllers/servers_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/view/screens/home/home.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,9 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
   @override
   void initState() {
     VpnController.find.initialize();
+    ServerController.find.getAllServers();
+    ServerController.find.getAllServersFromCache();
+    //
     WidgetsBinding.instance.addObserver(this);
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
       Future.delayed(const Duration(seconds: 5)).then((value) {

@@ -65,8 +65,10 @@ class VpnController extends GetxController implements GetxService {
   ///VPN status changed
   void onVpnStatusChanged(VpnStatus? status) {
     vpnStatus = status;
-    int time = TimeController.find.updateRemainingTime(status);
-    _remainingTime = getFormatedTime(time);
+    if (status != null && status.duration != "00:00:00") {
+      int time = TimeController.find.updateRemainingTime(status);
+      _remainingTime = getFormatedTime(time);
+    }
     update();
   }
 
@@ -119,6 +121,7 @@ class VpnController extends GetxController implements GetxService {
   ///Disconnect from VPN server if connected
   void disconnect(
       Function(VpnStatus vpnStatus, VpnConfig vpnConfig) onDisconnect) {
+    if (vpnStatus == null || vpnConfig == null) return;
     VpnStatus status = vpnStatus!;
     VpnConfig config = vpnConfig!;
     engine.disconnect();

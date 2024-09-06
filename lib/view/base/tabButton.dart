@@ -18,9 +18,8 @@ class AnimatedTabButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: AnimatedContainer(
+      child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 8.sp),
-        duration: const Duration(milliseconds: 300),
         height: 45.sp,
         decoration: BoxDecoration(
           color: selected ? primaryColor : Theme.of(context).cardColor,

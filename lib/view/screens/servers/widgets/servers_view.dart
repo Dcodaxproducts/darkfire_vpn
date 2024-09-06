@@ -3,6 +3,7 @@ import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/data/model/body/vpn_config.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:darkfire_vpn/utils/style.dart';
+import 'package:darkfire_vpn/view/base/divider.dart';
 import 'package:darkfire_vpn/view/base/signal_widget.dart';
 import 'package:dart_ping/dart_ping.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +20,16 @@ class ServersView extends StatelessWidget {
         ? ListView.separated(
             padding: pagePadding,
             itemCount: servers.length,
-            separatorBuilder: (context, index) =>
-                Divider(color: Theme.of(context).dividerColor),
+            separatorBuilder: (context, index) => CustomDivider(padding: 12.sp),
             itemBuilder: (context, index) {
               var server = servers[index];
               return InkWell(
-                  onTap: () => VpnController.find.selectServer(context, server),
-                  child: ServerItem(server: server));
+                onTap: () => VpnController.find.selectServer(context, server),
+                // dont show any affect of inkwell
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                child: ServerItem(server: server),
+              );
             },
           )
         : Center(

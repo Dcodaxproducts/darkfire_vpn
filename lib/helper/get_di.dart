@@ -34,7 +34,8 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() =>
       SplashRepo(sharedPreferences: sharedPreferences, apiClient: Get.find()));
   Get.lazyPut(() => LanguageRepo());
-  Get.lazyPut(() => ServerRepo(apiClient: Get.find()));
+  Get.lazyPut(
+      () => ServerRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => VpnRepo(sharedPreferences: Get.find()));
   Get.lazyPut(() => TimeRepo(sharedPreferences: Get.find()));
 

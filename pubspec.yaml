@@ -26,6 +26,7 @@ dependencies:
   flutter_html: any
   share_plus: ^7.2.1
   flutter_screenutil: ^5.9.0
+  workmanager: ^0.5.2
 
   # Connectivity
   connectivity_plus: ^4.0.2

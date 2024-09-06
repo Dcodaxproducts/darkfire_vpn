@@ -12,7 +12,7 @@ class AppConstants {
 
   //
   static const int freeUserConnectionLimitInSeconds = 60 * 60;
-  static const int extraTimeInMinutes = 30 * 60;
+  static const int extraTimeInSeconds = 30 * 60;
   static const int extraTimeReloadMinutes = 60;
 
   ///Customize your adRequest here

@@ -1,9 +1,13 @@
+import 'dart:convert';
 import 'package:darkfire_vpn/data/api/api_client.dart';
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../model/body/vpn_config.dart';
 
 class ServerRepo {
   final ApiClient apiClient;
-  ServerRepo({required this.apiClient});
+  final SharedPreferences sharedPreferences;
+  ServerRepo({required this.apiClient, required this.sharedPreferences});
 
   Future<Response?> getAllServers() async {
     return await apiClient.getData("allservers");
@@ -13,12 +17,19 @@ class ServerRepo {
     return await apiClient.getData("detail/$server");
   }
 
-  Future<Response?> getAllFreeServers() async {
-    return await apiClient.getData("allservers/free");
+  void saveServers({required List<VpnConfig> value}) {
+    sharedPreferences.setString(
+        "server_cache", jsonEncode(value.map((e) => e.toJson()).toList()));
   }
 
-  Future<Response?> getAllProServers() async {
-    return await apiClient.getData("allservers/pro");
+  List<VpnConfig> loadServers() {
+    var data = sharedPreferences.getString("server_cache");
+    if (data != null) {
+      return (jsonDecode(data) as List)
+          .map((e) => VpnConfig.fromJson(e))
+          .toList();
+    }
+    return [];
   }
 
   Future<Response?> getRandomServer() async {

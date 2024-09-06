@@ -1,4 +1,5 @@
 import 'package:darkfire_vpn/common/primary_button.dart';
+import 'package:darkfire_vpn/controllers/time_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -155,7 +156,8 @@ class ConnectedDetails extends StatelessWidget {
                 width: 150.sp,
                 child: PrimaryButton(
                   text: '+1 ${'hour'.tr}',
-                  onPressed: () {},
+                  onPressed: () =>
+                      Get.dialog(const AdLoadingDialog(hour: true)),
                 ),
               ),
               SizedBox(
@@ -175,6 +177,10 @@ class ConnectedDetails extends StatelessWidget {
   }
 
   _addAddTime() {
-    Get.dialog(const AdLoadingDialog());
+    if (TimeController.find.canAvailExtraTime()) {
+      Get.dialog(const AdLoadingDialog());
+    } else {
+      Get.dialog(const EnoughTimeDialog());
+    }
   }
 }

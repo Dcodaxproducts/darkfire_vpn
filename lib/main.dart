@@ -13,6 +13,7 @@ import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
 import 'firebase_options.dart';
 import 'helper/get_di.dart' as di;
+import 'helper/vpn_helper.dart';
 import 'theme/dark_theme.dart';
 import 'theme/light_theme.dart';
 import 'utils/app_constants.dart';
@@ -25,6 +26,7 @@ void main() async {
   FirebaseMessaging.instance.requestPermission();
   MobileAds.instance.updateRequestConfiguration(RequestConfiguration(
       testDeviceIds: ['2C763B79EE7A7041EB0127582951F46B']));
+  appCloseDisconnectVPN();
   runApp(MyApp(languages: languages));
 }
 

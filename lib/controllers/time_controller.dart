@@ -1,10 +1,12 @@
-import 'dart:developer';
-
+import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
 import 'package:get/get.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
+import 'package:workmanager/workmanager.dart';
+import '../common/navigation.dart';
 import '../data/model/body/time_model.dart';
 import '../data/repository/time_repo.dart';
+import '../view/screens/report/report.dart';
 
 class TimeController extends GetxController implements GetxService {
   final TimeRepo timeRepo;
@@ -13,39 +15,32 @@ class TimeController extends GetxController implements GetxService {
   static TimeController get find => Get.find<TimeController>();
 
   DateTime? _lastExtraTimeGiven;
-  int _extraTimeGivenInSeconds = 0;
   int _remainingTimeInSeconds = AppConstants.freeUserConnectionLimitInSeconds;
-  int _durationPassedInSeconds = 0;
 
   DateTime? get lastExtraTimeGiven => _lastExtraTimeGiven;
-  int get extraTimeGivenInMinutes => _extraTimeGivenInSeconds;
   int get remainingTimeInSeconds => _remainingTimeInSeconds;
-  int get durationPassedInSeconds => _durationPassedInSeconds;
 
-  Future<void> addExtraTime() async {
-    // get difference of time between now and lastExtraTimeGiven in minutes
-    if (!canAvailExtraTime()) {
-      return;
-    }
+  Future<void> addExtraTime({bool hour = false}) async {
     // add extra time to remaining time
-    _extraTimeGivenInSeconds += AppConstants.extraTimeInMinutes;
+    _remainingTimeInSeconds +=
+        (AppConstants.extraTimeInSeconds * (hour ? 2 : 1));
     _lastExtraTimeGiven = DateTime.now();
 
     TimeModel data = TimeModel(
-        lastExtraTimeGiven: _lastExtraTimeGiven,
-        remainingTimeInSeconds: _remainingTimeInSeconds,
-        durationPassedInSeconds: _durationPassedInSeconds);
+      lastExtraTimeGiven: _lastExtraTimeGiven,
+      remainingTimeInSeconds: _remainingTimeInSeconds,
+    );
 
     await timeRepo.saveExtraTime(data.toJson());
     update();
   }
 
   bool canAvailExtraTime() {
-    // if (_lastExtraTimeGiven == null) return true;
-    // int diff = DateTime.now().difference(_lastExtraTimeGiven!).inMinutes;
-    // if (diff < AppConstants.extraTimeReloadMinutes) {
-    //   return false;
-    // }
+    if (_lastExtraTimeGiven == null) return true;
+    int diff = DateTime.now().difference(_lastExtraTimeGiven!).inMinutes;
+    if (diff < AppConstants.extraTimeReloadMinutes) {
+      return false;
+    }
     return true;
   }
 
@@ -53,61 +48,44 @@ class TimeController extends GetxController implements GetxService {
     TimeModel data = TimeModel.fromJson(timeRepo.getExtraTime());
     _lastExtraTimeGiven = data.lastExtraTimeGiven;
     _remainingTimeInSeconds = data.remainingTimeInSeconds;
-    _durationPassedInSeconds = data.durationPassedInSeconds;
-    update();
-  }
-
-  void resetExtraTime() {
-    _lastExtraTimeGiven = null;
-    _remainingTimeInSeconds = AppConstants.freeUserConnectionLimitInSeconds;
-    TimeModel data = TimeModel(
-      lastExtraTimeGiven: _lastExtraTimeGiven,
-      remainingTimeInSeconds: _remainingTimeInSeconds,
-    );
-    timeRepo.saveExtraTime(data.toJson());
     update();
   }
 
   int updateRemainingTime(VpnStatus? vpnStatus) {
     if (vpnStatus != null) {
-      // // get duration in seconds from (00:00:00) format
-      // String duration = vpnStatus.duration ?? '00:00:00';
-      // List<String> time = duration.split(':');
-      // int hours = int.parse(time[0]);
-      // int minutes = int.parse(time[1]);
-      // int seconds = int.parse(time[2]);
-      // // Calculate total passed time in seconds
-      // int passedTimeInSeconds = (hours * 3600) + (minutes * 60) + seconds;
-      // _durationPassedInSeconds = passedTimeInSeconds;
-
-      // // Calculate remaining time based on original time minus passed time
-      // int originalTimeInSeconds = AppConstants.freeUserConnectionLimitInSeconds;
-      // int updatedRemainingTime = originalTimeInSeconds - passedTimeInSeconds;
-
-      // // Include any extra time that was given
-      // _remainingTimeInSeconds = updatedRemainingTime + calculateExtraTime();
-
-      // // Ensure remaining time cannot go below 0
-      // _remainingTimeInSeconds =
-      //     updatedRemainingTime > 0 ? updatedRemainingTime : 0;
       _remainingTimeInSeconds--;
-
+      if (_remainingTimeInSeconds <= 5) {
+        cancelTask();
+        VpnController.find.disconnect((vpnStatus, vpnConfig) {
+          launchScreen(
+            ReportScreen(vpnStatus: vpnStatus, vpnConfig: vpnConfig),
+          );
+        });
+      }
       update();
       TimeModel data = TimeModel(
         lastExtraTimeGiven: _lastExtraTimeGiven,
         remainingTimeInSeconds: _remainingTimeInSeconds,
-        durationPassedInSeconds: _durationPassedInSeconds,
       );
       timeRepo.saveExtraTime(data.toJson());
+      if (_remainingTimeInSeconds > 5) {
+        scheduleVpnDisconnection();
+      }
     }
     return _remainingTimeInSeconds;
   }
 
-  int calculateExtraTime() {
-    // Calculate how much extra time the user has received
-    int originalTimeInSeconds = AppConstants.freeUserConnectionLimitInSeconds;
-    int extraTime = _remainingTimeInSeconds -
-        (originalTimeInSeconds - _durationPassedInSeconds);
-    return extraTime > 0 ? extraTime : 0;
+  void scheduleVpnDisconnection() async {
+    await cancelTask();
+    // Schedule the VPN disconnection when remaining time reaches zero
+    Workmanager().registerOneOffTask(
+      'vpn_disconnection_task',
+      'vpn_disconnection_task',
+      initialDelay: Duration(seconds: _remainingTimeInSeconds),
+    );
+  }
+
+  Future<void> cancelTask() async {
+    await Workmanager().cancelByUniqueName('vpn_disconnection_task');
   }
 }
