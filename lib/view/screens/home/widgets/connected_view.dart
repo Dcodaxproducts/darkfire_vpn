@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../helper/vpn_helper.dart';
 import '../../../../utils/style.dart';
+import '../../../base/ad_loading_dialog.dart';
 import '../../../base/speed_widget.dart';
 import 'disconnect_sheet.dart';
 
@@ -103,7 +104,7 @@ class ConnectedDetails extends StatelessWidget {
 
           // Connection Time
           Text(
-            vpnController.vpnStatus?.duration ?? 'loading'.tr,
+            vpnController.remainingTime,
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   fontSize: 54.sp,
                   fontWeight: FontWeight.bold,
@@ -163,7 +164,7 @@ class ConnectedDetails extends StatelessWidget {
                   color: primaryColor.withOpacity(0.15),
                   textColor: primaryColor,
                   text: 'extra_time'.tr,
-                  onPressed: () {},
+                  onPressed: _addAddTime,
                 ),
               ),
             ],
@@ -171,5 +172,9 @@ class ConnectedDetails extends StatelessWidget {
         ],
       );
     });
+  }
+
+  _addAddTime() {
+    Get.dialog(const AdLoadingDialog());
   }
 }

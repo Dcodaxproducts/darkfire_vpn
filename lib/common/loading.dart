@@ -4,14 +4,15 @@ import '../utils/colors.dart';
 
 class Loading extends StatelessWidget {
   final Color? color;
-  const Loading({this.color, super.key});
+  final double? size;
+  const Loading({this.color, this.size, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 27.sp,
-        width: 27.sp,
+        height: (size ?? 27).sp,
+        width: (size ?? 27).sp,
         child: CircularProgressIndicator(color: color ?? primaryColor),
       ),
     );

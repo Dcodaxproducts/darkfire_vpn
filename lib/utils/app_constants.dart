@@ -7,12 +7,13 @@ import '../data/model/language.dart';
 class AppConstants {
   static const String vpnUsername = "";
   static const String vpnPassword = "";
-  static const bool certificateVerify =
-      true; //Turn it on if you use certificate
-  static const bool showSignalStrength = true;
+  static const bool certificateVerify = true;
   static const bool cacheServerList = true;
-  static bool unlockProServerWithRewardAds = true;
-  static bool unlockProServerWithRewardAdsFail = false;
+
+  //
+  static const int freeUserConnectionLimitInSeconds = 60 * 60;
+  static const int extraTimeInMinutes = 30 * 60;
+  static const int extraTimeReloadMinutes = 60;
 
   ///Customize your adRequest here
   static AdRequest get adRequest => const AdRequest();
@@ -37,11 +38,7 @@ class AppConstants {
   static const String THEME = 'theme';
   static const String COUNTRY_CODE = 'country_code';
   static const String LANGUAGE_CODE = 'language_code';
-  static const String TOPIC = 'notify';
-  static const String TOKEN = 'token';
-  static const String USER_PASSWORD = 'user_password';
-  static const String USER_EMAIL = 'user_email';
-  static const String USER_NUMBER = 'user_number';
+  static const String EXTRA_TIME = 'extra_time';
   static const String LOCALIZATION_KEY = 'X-localization';
   static const String ON_BOARDING_SKIP = 'on_boarding_skip';
 

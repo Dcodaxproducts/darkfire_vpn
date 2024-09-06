@@ -42,3 +42,15 @@ Future<bool> checkUpdate() async {
   dismiss();
   return false;
 }
+
+String getFormatedTime(int seconds) {
+  // format time from seconds to 00:00:00
+  int hours = (seconds / 3600).floor();
+  int minutes = ((seconds % 3600) / 60).floor();
+  int sec = (seconds % 60).floor();
+
+  String hoursStr = (hours < 10) ? '0$hours' : hours.toString();
+  String minStr = (minutes < 10) ? '0$minutes' : minutes.toString();
+  String secStr = (sec < 10) ? '0$sec' : sec.toString();
+  return '$hoursStr:$minStr:$secStr';
+}

@@ -1,12 +1,13 @@
-import 'dart:developer';
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/servers_controller.dart';
+import 'package:darkfire_vpn/controllers/time_controller.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../data/model/body/vpn_config.dart';
 import '../data/repository/vpn_repo.dart';
+import '../helper/vpn_helper.dart';
 
 class VpnController extends GetxController implements GetxService {
   final VpnRepo vpnRepo;
@@ -18,9 +19,11 @@ class VpnController extends GetxController implements GetxService {
   VpnStatus? vpnStatus;
   VpnConfig? _vpnConfig;
   bool _showConnectedView = false;
+  String _remainingTime = "00:00:00";
 
   VpnConfig? get vpnConfig => _vpnConfig;
   bool get showConnectedView => _showConnectedView;
+  String get remainingTime => _remainingTime;
 
   set vpnConfig(VpnConfig? value) {
     _vpnConfig = value;
@@ -42,11 +45,11 @@ class VpnController extends GetxController implements GetxService {
 
   ///Initialize VPN engine and load last server
   Future<void> initialize() async {
-    log("====> VPN Controller Initialized");
+    TimeController.find.loadExtraTime();
     engine = OpenVPN(
-        onVpnStageChanged: onVpnStageChanged,
-        onVpnStatusChanged: onVpnStatusChanged)
-      ..initialize(
+      onVpnStageChanged: onVpnStageChanged,
+      onVpnStatusChanged: onVpnStatusChanged,
+    )..initialize(
         lastStatus: onVpnStatusChanged,
         lastStage: (stage) => onVpnStageChanged(stage, stage.name),
         groupIdentifier: AppConstants.groupIdentifier,
@@ -62,6 +65,8 @@ class VpnController extends GetxController implements GetxService {
   ///VPN status changed
   void onVpnStatusChanged(VpnStatus? status) {
     vpnStatus = status;
+    int time = TimeController.find.updateRemainingTime(status);
+    _remainingTime = getFormatedTime(time);
     update();
   }
 
@@ -83,6 +88,7 @@ class VpnController extends GetxController implements GetxService {
 
   ///Connect to VPN server
   void connect() async {
+    TimeController.find.loadExtraTime();
     String? config;
     try {
       config = await OpenVPN.filteredConfig(vpnConfig?.config);

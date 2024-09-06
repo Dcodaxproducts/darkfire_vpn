@@ -2,9 +2,11 @@
 import 'dart:convert';
 
 import 'package:darkfire_vpn/controllers/localization_controller.dart';
+import 'package:darkfire_vpn/controllers/time_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 // import 'package:darkfire_vpn/data/model/language.dart';
 import 'package:darkfire_vpn/data/repository/server_repo.dart';
+import 'package:darkfire_vpn/data/repository/time_repo.dart';
 import 'package:darkfire_vpn/data/repository/vpn_repo.dart';
 import 'package:flutter/services.dart';
 // import 'package:flutter/services.dart';
@@ -34,6 +36,7 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => LanguageRepo());
   Get.lazyPut(() => ServerRepo(apiClient: Get.find()));
   Get.lazyPut(() => VpnRepo(sharedPreferences: Get.find()));
+  Get.lazyPut(() => TimeRepo(sharedPreferences: Get.find()));
 
   // Controller
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
@@ -44,6 +47,7 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => VpnController(vpnRepo: Get.find()));
   Get.lazyPut(() => AdsController());
   Get.lazyPut(() => IAPController());
+  Get.lazyPut(() => TimeController(timeRepo: Get.find()));
 
   // Retrieving localized data
   Map<String, Map<String, String>> languages = {};

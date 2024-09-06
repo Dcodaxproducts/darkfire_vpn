@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'common/loading.dart';
 import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
@@ -22,6 +23,8 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Map<String, Map<String, String>> languages = await di.init();
   FirebaseMessaging.instance.requestPermission();
+  MobileAds.instance.updateRequestConfiguration(RequestConfiguration(
+      testDeviceIds: ['2C763B79EE7A7041EB0127582951F46B']));
   runApp(MyApp(languages: languages));
 }
 
