@@ -54,5 +54,8 @@
     "pro_servers": "Server Pro",
     "no_servers_available": "Nessun server disponibile",
     "select_server": "Seleziona Server",
-    "close": "Chiudere"
+    "close": "Chiudere",
+    "no_internet": "Nessuna connessione a Internet",
+    "no_internet_message": "Controlla la tua connessione Internet e riprova.",
+    "retry": "Riprova"
   }

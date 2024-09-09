@@ -54,5 +54,8 @@
     "pro_servers": "Profesyonel Sunucular",
     "no_servers_available": "Kullanılabilir sunucu yok",
     "select_server": "Sunucu Seçin",
-    "close": "Kapat"
+    "close": "Kapat",
+    "no_internet": "İnternet Yok",
+    "no_internet_message": "İnternet bağlantınızı kontrol edin ve tekrar deneyin.",
+    "retry" : "Tekrar Dene"
   }

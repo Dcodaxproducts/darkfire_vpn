@@ -191,7 +191,7 @@ class ReportStatItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20.sp, bottom: 10.sp),
+      padding: EdgeInsets.all(10.sp).copyWith(top: 20.sp),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(color: Theme.of(context).dividerColor, width: 1),

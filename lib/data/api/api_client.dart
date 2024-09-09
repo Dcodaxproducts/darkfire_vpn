@@ -83,10 +83,10 @@ class ApiClient extends GetxService {
 
   socketException(Object e, String url) {
     if (e is SocketException) {
-      showToast('check_internet_connection'.tr);
+      // showToast('check_internet_connection'.tr);
     } else {
       log("Error Url: $url,\n");
-      showToast('something_went_wrong'.tr);
+      // showToast('something_went_wrong'.tr);
     }
   }
 }

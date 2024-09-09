@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,7 +47,10 @@ class CustomAppBar extends StatelessWidget {
             if (!premium)
               IconButton(
                 padding: EdgeInsets.zero,
-                onPressed: () => launchScreen(const SubscriptionScreen()),
+                onPressed: () {
+                  log(Get.currentRoute.toString());
+                  launchScreen(const SubscriptionScreen());
+                },
                 icon: GetBuilder<IAPController>(
                   builder: (value) => LottieBuilder.asset(
                     "assets/animations/crown_${value.isPro ? "pro" : "free"}.json",

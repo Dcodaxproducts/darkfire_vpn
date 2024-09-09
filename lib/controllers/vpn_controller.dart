@@ -8,6 +8,7 @@ import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../data/model/body/vpn_config.dart';
 import '../data/repository/vpn_repo.dart';
 import '../helper/vpn_helper.dart';
+import '../view/screens/report/report.dart';
 
 class VpnController extends GetxController implements GetxService {
   final VpnRepo vpnRepo;
@@ -86,6 +87,13 @@ class VpnController extends GetxController implements GetxService {
         showConnectedView = true;
       });
     }
+    if (vpnStage == "disconnected" && _showConnectedView) {
+      disconnect((vpnStatus, vpnConfig) {
+        launchScreen(
+          ReportScreen(vpnStatus: vpnStatus, vpnConfig: vpnConfig),
+        );
+      });
+    }
   }
 
   ///Connect to VPN server
@@ -121,6 +129,7 @@ class VpnController extends GetxController implements GetxService {
   ///Disconnect from VPN server if connected
   void disconnect(
       Function(VpnStatus vpnStatus, VpnConfig vpnConfig) onDisconnect) {
+    TimeController.find.cancelTask();
     if (vpnStatus == null || vpnConfig == null) return;
     VpnStatus status = vpnStatus!;
     VpnConfig config = vpnConfig!;

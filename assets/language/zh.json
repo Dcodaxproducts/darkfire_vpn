@@ -54,5 +54,8 @@
     "pro_servers": "专业服务器",
     "no_servers_available": "没有可用的服务器",
     "select_server": "选择服务器",
-    "close": "关闭"
+    "close": "关闭",
+    "no_internet": "无网络连接",
+    "no_internet_message": "请检查您的网络连接并重试。",
+    "retry": "重试"
   }

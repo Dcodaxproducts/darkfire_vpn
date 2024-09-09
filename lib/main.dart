@@ -1,9 +1,11 @@
 // ignore_for_file: deprecated_member_use, avoid_print
 
+import 'package:darkfire_vpn/helper/background_task_helper.dart';
 import 'package:darkfire_vpn/root.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -13,7 +15,7 @@ import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
 import 'firebase_options.dart';
 import 'helper/get_di.dart' as di;
-import 'helper/vpn_helper.dart';
+import 'helper/notification_helper.dart';
 import 'theme/dark_theme.dart';
 import 'theme/light_theme.dart';
 import 'utils/app_constants.dart';
@@ -21,12 +23,22 @@ import 'utils/messages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // disable landscape mode
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // initialize firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // initialize localization
   Map<String, Map<String, String>> languages = await di.init();
+  // request permission for firebase messaging
   FirebaseMessaging.instance.requestPermission();
+  // initialize notification
+  NotificationHelper.initialize();
+  // enable test ads
   MobileAds.instance.updateRequestConfiguration(RequestConfiguration(
       testDeviceIds: ['2C763B79EE7A7041EB0127582951F46B']));
+  // work manager initialize
   appCloseDisconnectVPN();
+  // run app
   runApp(MyApp(languages: languages));
 }
 

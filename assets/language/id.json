@@ -54,5 +54,8 @@
     "pro_servers": "Server Pro",
     "no_servers_available": "Tidak ada server yang tersedia",
     "select_server": "Pilih Server",
-    "close": "Tutup"
+    "close": "Tutup",
+    "no_internet": "Tidak Ada Internet",
+    "no_internet_message": "Harap periksa koneksi internet Anda dan coba lagi.",
+    "retry": "Coba Lagi"
   }

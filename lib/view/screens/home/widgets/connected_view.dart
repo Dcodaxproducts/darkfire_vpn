@@ -1,5 +1,4 @@
 import 'package:darkfire_vpn/common/primary_button.dart';
-import 'package:darkfire_vpn/controllers/time_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -166,7 +165,7 @@ class ConnectedDetails extends StatelessWidget {
                   color: primaryColor.withOpacity(0.15),
                   textColor: primaryColor,
                   text: 'extra_time'.tr,
-                  onPressed: _addAddTime,
+                  onPressed: () => Get.dialog(const AdLoadingDialog()),
                 ),
               ),
             ],
@@ -174,13 +173,5 @@ class ConnectedDetails extends StatelessWidget {
         ],
       );
     });
-  }
-
-  _addAddTime() {
-    if (TimeController.find.canAvailExtraTime()) {
-      Get.dialog(const AdLoadingDialog());
-    } else {
-      Get.dialog(const EnoughTimeDialog());
-    }
   }
 }

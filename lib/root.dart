@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:darkfire_vpn/controllers/ads_controller.dart';
 import 'package:darkfire_vpn/controllers/iap_controller.dart';
 import 'package:darkfire_vpn/controllers/servers_controller.dart';
@@ -7,8 +8,10 @@ import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/view/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'helper/vpn_helper.dart';
+import 'view/base/no_internet_dialog.dart';
 import 'view/screens/splash/splash.dart';
 
 class Root extends StatefulWidget {
@@ -24,9 +27,16 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
   Timer? openAdTimeout;
 
   DateTime _lastShownTime = DateTime.now();
+  StreamSubscription<ConnectivityResult>? _onConnectivityChanged;
 
   @override
   void initState() {
+    initData();
+    super.initState();
+  }
+
+  Future<void> initData() async {
+    _checkInternetConnection();
     VpnController.find.initialize();
     ServerController.find.getAllServers();
     ServerController.find.getAllServersFromCache();
@@ -48,13 +58,28 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
         if (mounted) setState(() {});
       });
     });
-    super.initState();
+  }
+
+  _checkInternetConnection() {
+    _onConnectivityChanged = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.none) {
+        SmartDialog.show(
+          builder: (_) => const NoInternetDialog(),
+          backDismiss: false,
+        );
+      } else {
+        SmartDialog.dismiss();
+      }
+    });
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     openAdTimeout?.cancel();
+    _onConnectivityChanged?.cancel();
     super.dispose();
   }
 

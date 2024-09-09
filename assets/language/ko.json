@@ -54,5 +54,8 @@
     "pro_servers": "프로 서버",
     "no_servers_available": "사용 가능한 서버가 없습니다.",
     "select_server": "서버 선택",
-    "close": "닫기"
+    "close": "닫기",
+    "no_internet": "인터넷 없음",
+    "no_internet_message": "인터넷 연결을 확인하고 다시 시도하십시오.",
+    "retry": "다시 시도"
   }

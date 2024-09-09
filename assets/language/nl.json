@@ -54,5 +54,8 @@
     "pro_servers": "Pro-servers",
     "no_servers_available": "Geen servers beschikbaar",
     "select_server": "Selecteer Server",
-    "close": "Sluiten"
+    "close": "Sluiten",
+    "no_internet": "Geen internet",
+    "no_internet_message": "Controleer uw internetverbinding en probeer het opnieuw.",
+    "retry": "Opnieuw proberen"
   }

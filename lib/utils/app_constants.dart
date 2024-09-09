@@ -41,6 +41,7 @@ class AppConstants {
   static const String EXTRA_TIME = 'extra_time';
   static const String LOCALIZATION_KEY = 'X-localization';
   static const String ON_BOARDING_SKIP = 'on_boarding_skip';
+  static const String VPN_DISCONNECT_TASK = 'vpn_disconnection_task';
 
   // Language
   static List<LanguageModel> languages = [

@@ -7,6 +7,7 @@ import 'package:darkfire_vpn/view/screens/subscription/subscription.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../common/primary_button.dart';
 import '../../utils/style.dart';
 
@@ -25,16 +26,29 @@ class _AdLoadingDialogState extends State<AdLoadingDialog> {
     super.initState();
   }
 
-  _showAd() {
-    AdsController.find.loadInterstitial(interstitialAdUnitID).then((ad) async {
-      if (ad != null) {
-        await ad.show();
-        _addTime();
-      } else {
+  _showAd() async {
+    // load ad
+    InterstitialAd? ad =
+        await AdsController.find.loadInterstitial(interstitialAdUnitID);
+
+    // if ad is not null, show it and add time
+    if (ad != null) {
+      await ad.show();
+      _addTime();
+    }
+    // if ad is not available
+    else {
+      // if 1 hour is requested, show dialog
+      if (widget.hour) {
         pop();
         Get.dialog(const NoAdAvailableDialog());
       }
-    });
+      // if 1 hour is not requested, still add time if ad is not available
+      else {
+        _addTime();
+        pop();
+      }
+    }
   }
 
   _addTime() async {

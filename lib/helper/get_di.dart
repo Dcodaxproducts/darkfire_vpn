@@ -12,6 +12,7 @@ import 'package:flutter/services.dart';
 // import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:workmanager/workmanager.dart';
 import '../controllers/ads_controller.dart';
 import '../controllers/iap_controller.dart';
 import '../controllers/servers_controller.dart';
@@ -26,7 +27,9 @@ import '../utils/app_constants.dart';
 Future<Map<String, Map<String, String>>> init() async {
   // Core
   final sharedPreferences = await SharedPreferences.getInstance();
+  final Workmanager workmanager = Workmanager();
   Get.lazyPut(() => sharedPreferences);
+  Get.lazyPut(() => workmanager);
   Get.lazyPut(() => ApiClient(
       appBaseUrl: AppConstants.BASE_URL, sharedPreferences: Get.find()));
 
@@ -37,7 +40,8 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(
       () => ServerRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => VpnRepo(sharedPreferences: Get.find()));
-  Get.lazyPut(() => TimeRepo(sharedPreferences: Get.find()));
+  Get.lazyPut(
+      () => TimeRepo(sharedPreferences: Get.find(), workmanager: Get.find()));
 
   // Controller
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));

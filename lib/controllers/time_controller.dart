@@ -2,10 +2,10 @@ import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
 import 'package:get/get.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
-import 'package:workmanager/workmanager.dart';
 import '../common/navigation.dart';
 import '../data/model/body/time_model.dart';
 import '../data/repository/time_repo.dart';
+import '../helper/background_task_helper.dart';
 import '../view/screens/report/report.dart';
 
 class TimeController extends GetxController implements GetxService {
@@ -48,6 +48,9 @@ class TimeController extends GetxController implements GetxService {
     TimeModel data = TimeModel.fromJson(timeRepo.getExtraTime());
     _lastExtraTimeGiven = data.lastExtraTimeGiven;
     _remainingTimeInSeconds = data.remainingTimeInSeconds;
+    if (_remainingTimeInSeconds <= 0) {
+      _remainingTimeInSeconds = AppConstants.freeUserConnectionLimitInSeconds;
+    }
     update();
   }
 
@@ -56,6 +59,7 @@ class TimeController extends GetxController implements GetxService {
       _remainingTimeInSeconds--;
       if (_remainingTimeInSeconds <= 5) {
         cancelTask();
+        showVPNDisconnectNotification();
         VpnController.find.disconnect((vpnStatus, vpnConfig) {
           launchScreen(
             ReportScreen(vpnStatus: vpnStatus, vpnConfig: vpnConfig),
@@ -68,24 +72,10 @@ class TimeController extends GetxController implements GetxService {
         remainingTimeInSeconds: _remainingTimeInSeconds,
       );
       timeRepo.saveExtraTime(data.toJson());
-      if (_remainingTimeInSeconds > 5) {
-        scheduleVpnDisconnection();
-      }
+      timeRepo.scheduleVpnDisconnection(_remainingTimeInSeconds);
     }
     return _remainingTimeInSeconds;
   }
 
-  void scheduleVpnDisconnection() async {
-    await cancelTask();
-    // Schedule the VPN disconnection when remaining time reaches zero
-    Workmanager().registerOneOffTask(
-      'vpn_disconnection_task',
-      'vpn_disconnection_task',
-      initialDelay: Duration(seconds: _remainingTimeInSeconds),
-    );
-  }
-
-  Future<void> cancelTask() async {
-    await Workmanager().cancelByUniqueName('vpn_disconnection_task');
-  }
+  Future<void> cancelTask() async => await timeRepo.cancelTask();
 }
