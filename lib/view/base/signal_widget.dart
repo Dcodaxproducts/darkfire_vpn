@@ -1,3 +1,4 @@
+import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,9 +33,9 @@ class SignalBar extends StatelessWidget {
     // Customize colors if needed based on the bar index
     switch (activeBars) {
       case 4:
-        return Colors.green;
+        return primaryColor;
       case 3:
-        return Colors.green;
+        return primaryColor;
       case 2:
         return Colors.orange;
       default:
@@ -60,6 +61,6 @@ class SignalBar extends StatelessWidget {
     // }
 
     // if signalStrength is greater than 300 return 2 bar else 4 bar
-    return signalStrength >= 300 ? 2 : 4;
+    return signalStrength >= 300 ? 3 : 4;
   }
 }

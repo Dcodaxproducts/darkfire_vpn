@@ -20,12 +20,16 @@ class AppConstants {
 
 // iOS setup
   static const String providerBundleIdentifier =
-      "app.nerd.vpn.VPNExtension"; //Before it was VpnExtensionIdentifier
-  static const String groupIdentifier = "group.app.nerd.vpn";
+      "app.darkfire.vpn.VPNExtension"; //Before it was VpnExtensionIdentifier
+  static const String groupIdentifier = "group.app.darkfire.vpn";
   static const String iosAppID = "1234567890";
-  static const String localizationDescription = "Nerd VPN - Fast & Secure VPN";
+  static const String localizationDescription =
+      "DarkFire VPN - Fast & Secure VPN";
   //
   static const String APP_NAME = 'DarkFire VPN';
+  static const String APP_VERSION = '1.0';
+
+  /* Non Customizable */
 
   static const String BASE_URL = 'https://dvpn.dcodax.net/api/';
 

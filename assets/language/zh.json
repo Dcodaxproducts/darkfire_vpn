@@ -57,5 +57,20 @@
     "close": "关闭",
     "no_internet": "无网络连接",
     "no_internet_message": "请检查您的网络连接并重试。",
-    "retry": "重试"
+    "retry": "重试",
+    "speed_test": "速度测试",
+    "start_test": "开始测试",
+    "cancel": "取消",
+    "please_wait": "请稍等...",
+    "congrats": "恭喜！",
+    "you_now_have_an_extra": "你现在有一个额外的",
+    "minutes_of_free_time": "分钟的空闲时间",
+    "enough_time": "时间够了！",
+    "you_already_have_enough_time_for_vpn_try_again_later": "您已经有足够的时间使用 VPN。",
+    "no_ad_available": "无可用广告",
+    "videos_are_not_available_please_try_again_later": "视频不可用。请稍后再试。",
+    "version": "版本",
+    "change_server": "更改服务器",
+    "change_server_message": "您确定要更改服务器吗？",
+    "change": "更改"
   }

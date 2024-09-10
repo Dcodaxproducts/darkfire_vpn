@@ -51,7 +51,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
       final text = status != 'connected'
           ? 'you_are_not_protected'.tr
           : 'you_are_now_protected'.tr;
-      final color = status != 'connected' ? Colors.red : Colors.green;
+      final color = status != 'connected' ? Colors.grey : primaryColor;
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -60,7 +60,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
             margin: EdgeInsets.only(bottom: 32.sp),
             padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
             decoration: BoxDecoration(
-              color: primaryColor.withOpacity(0.1),
+              color: color.withOpacity(0.1),
               borderRadius: BorderRadius.circular(12.sp),
             ),
             child: Row(

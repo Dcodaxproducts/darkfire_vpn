@@ -57,5 +57,20 @@
     "close": "மூடு",
     "no_internet": "இணையம் இல்லை",
     "no_internet_message": "உங்கள் இணைய இணைப்பைச் சரிபார்க்கவும் மீண்டும் முயற்சிக்கவும்.",
-    "retry": "மீண்டும் முயற்சி"
+    "retry": "மீண்டும் முயற்சி",
+    "speed_test": "வேக சோதனை",
+    "start_test": "சோதனையைத் தொடங்கவும்",
+    "cancel": "ரத்து செய்",
+    "please_wait": "தயவுசெய்து காத்திருங்கள்...",
+    "congrats": "வாழ்த்துக்கள்!",
+    "you_now_have_an_extra": "இப்போது உங்களிடம் கூடுதல் உள்ளது",
+    "minutes_of_free_time": "இலவச நேரத்தின் நிமிடங்கள்",
+    "enough_time": "போதுமான நேரம்!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "உங்களிடம் ஏற்கனவே VPNக்கு போதுமான நேரம் உள்ளது. ",
+    "no_ad_available": "விளம்பரம் இல்லை",
+    "videos_are_not_available_please_try_again_later": "வீடியோக்கள் கிடைக்கவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "version": "பதிப்பு",
+    "change_server": "சேவையகத்தை மாற்று",
+    "change_server_message": "நீங்கள் தற்காலிகமாக சேவையகத்தை மாற்ற விரும்புகிறீர்களா?",
+    "change": "மாற்று"
   }

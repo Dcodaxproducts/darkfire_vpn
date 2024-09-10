@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/theme_controller.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
+import 'package:darkfire_vpn/view/screens/about/about.dart';
 import 'package:darkfire_vpn/view/screens/language/language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +12,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import '../../../helper/vpn_helper.dart';
 import '../../../utils/app_constants.dart';
 import '../../base/updateNotAvailableDialog.dart';
+import '../speed_test/speed_test.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -31,6 +34,11 @@ class MenuScreen extends StatelessWidget {
             icon: Iconsax.moon,
             theme: true,
             onTap: ThemeController.find.toggleTheme,
+          ),
+          MenuTile(
+            text: 'speed_test',
+            icon: Iconsax.speedometer,
+            onTap: () => launchScreen(const SpeedTestScreen()),
           ),
           MenuTile(
             text: 'languages',
@@ -55,7 +63,15 @@ class MenuScreen extends StatelessWidget {
           MenuTile(
             text: 'about',
             icon: Iconsax.info_circle,
-            onTap: () => _aboutClick(),
+            onTap: () => launchScreen(const AboutScreen()),
+          ),
+          SizedBox(height: 32.sp),
+          Text(
+            '${'version'.tr} ${AppConstants.APP_VERSION}',
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(color: Theme.of(context).hintColor),
           ),
         ],
       ),

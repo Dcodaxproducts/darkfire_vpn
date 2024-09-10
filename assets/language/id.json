@@ -57,5 +57,20 @@
     "close": "Tutup",
     "no_internet": "Tidak Ada Internet",
     "no_internet_message": "Harap periksa koneksi internet Anda dan coba lagi.",
-    "retry": "Coba Lagi"
+    "retry": "Coba Lagi",
+    "speed_test": "Tes Kecepatan",
+    "start_test": "Mulai Tes",
+    "cancel": "Membatalkan",
+    "please_wait": "Harap tunggu...",
+    "congrats": "Selamat!",
+    "you_now_have_an_extra": "Anda sekarang memiliki tambahan",
+    "minutes_of_free_time": "menit waktu luang",
+    "enough_time": "Waktu yang Cukup!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "Anda sudah punya cukup waktu untuk VPN. ",
+    "no_ad_available": "Tidak Ada Iklan Tersedia",
+    "videos_are_not_available_please_try_again_later": "Video tidak tersedia. Silakan coba lagi nanti.",
+    "version": "Versi",
+    "change_server": "Ganti Server",
+    "change_server_message": "Apakah Anda yakin ingin mengganti server? Koneksi Anda akan terputus.",
+    "change": "Mengganti"
   }

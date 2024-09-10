@@ -57,5 +57,20 @@
     "close": "Chiudere",
     "no_internet": "Nessuna connessione a Internet",
     "no_internet_message": "Controlla la tua connessione Internet e riprova.",
-    "retry": "Riprova"
+    "retry": "Riprova",
+    "speed_test": "Prova di velocità",
+    "start_test": "Avvia prova",
+    "cancel": "Cancellare",
+    "please_wait": "Attendere prego...",
+    "congrats": "Congratulazioni!",
+    "you_now_have_an_extra": "Ora hai un extra",
+    "minutes_of_free_time": "minuti di tempo libero",
+    "enough_time": "Basta tempo!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "Hai già abbastanza tempo per la VPN. ",
+    "no_ad_available": "Nessun annuncio disponibile",
+    "videos_are_not_available_please_try_again_later": "I video non sono disponibili. Riprova più tardi.",
+    "version": "Versione",
+    "change_server": "Cambia server",
+    "change_server_message": "Sei sicuro di voler cambiare il server? La tua connessione verrà disconnessa.",
+    "change": "Cambiare"
   }

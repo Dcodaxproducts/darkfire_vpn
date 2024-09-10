@@ -4,7 +4,6 @@ import 'package:darkfire_vpn/view/base/action_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../report/report.dart';
 
 showDisconnectSheet() {
   showModalBottomSheet(
@@ -31,14 +30,6 @@ class DisconnectSheet extends StatelessWidget {
       onYes: () {
         VpnController.find.disconnect((vpnStats, vpnConfig) {
           pop();
-          Future.delayed(const Duration(milliseconds: 300), () {
-            launchScreen(
-              ReportScreen(
-                vpnStatus: vpnStats,
-                vpnConfig: vpnConfig,
-              ),
-            );
-          });
         });
       },
     );

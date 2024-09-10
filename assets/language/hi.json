@@ -57,5 +57,20 @@
     "close": "बंद करें",
     "no_internet": "कोई इंटरनेट नहीं",
     "no_internet_message": "कृपया अपना इंटरनेट कनेक्शन जांचें और पुनः प्रयास करें.",
-    "retry": "पुनः प्रयास करें"
+    "retry": "पुनः प्रयास करें",
+    "speed_test": "स्पीड टेस्ट",
+    "start_test": "टेस्ट शुरू करें",
+    "cancel": "रद्द करें",
+    "please_wait": "कृपया प्रतीक्षा करें...",
+    "congrats": "बधाई हो!",
+    "you_now_have_an_extra": "अब आपके पास एक अतिरिक्त",
+    "minutes_of_free_time": "मिनट का फ्री समय",
+    "enough_time": "पर्याप्त समय!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "आपके पास पहले से ही VPN के लिए पर्याप्त समय है. बाद में पुनः प्रयास करें.",
+    "no_ad_available": "कोई विज्ञापन उपलब्ध नहीं है",
+    "videos_are_not_available_please_try_again_later": "वीडियो उपलब्ध नहीं हैं. कृपया बाद में पुनः प्रयास करें.",
+    "version": "संस्करण",
+    "change_server": "सर्वर बदलें",
+    "change_server_message": "क्या आप वाकई सर्वर बदलना चाहते हैं? आपका कनेक्शन डिस्कनेक्ट हो जाएगा.",
+    "change": "बदलें"
   }

@@ -57,5 +57,20 @@
     "close": "Chiudere",
     "no_internet": "Nessuna connessione a Internet",
     "no_internet_message": "Controlla la tua connessione Internet e riprova.",
-    "retry": "Riprova"
+    "retry": "Riprova",
+    "speed_test": "スピードテスト",
+    "start_test": "テストの開始",
+    "cancel": "キャンセル",
+    "please_wait": "お待ちください...",
+    "congrats": "おめでとうございます！",
+    "you_now_have_an_extra": "追加のものが追加されました",
+    "minutes_of_free_time": "数分間の自由時間",
+    "enough_time": "時間は十分にあります!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "VPN を使用する時間はすでに十分あります。",
+    "no_ad_available": "利用可能な広告はありません",
+    "videos_are_not_available_please_try_again_later": "ビデオは利用できません。後でもう一度お試しください。",
+    "version": "Versione",
+    "change_server": "Cambia server",
+    "change_server_message": "Sei sicuro di voler cambiare il server? La tua connessione verrà disconnessa.",
+    "change": "Cambiare"
   }

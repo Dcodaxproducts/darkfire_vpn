@@ -57,5 +57,20 @@
     "close": "Đóng",
     "no_internet": "Không có kết nối Internet",
     "no_internet_message": "Vui lòng kiểm tra kết nối Internet của bạn và thử lại.",
-    "retry": "Thử lại"
+    "retry": "Thử lại",
+    "speed_test": "Kiểm tra tốc độ",
+    "start_test": "Bắt đầu kiểm tra",
+    "cancel": "Hủy bỏ",
+    "please_wait": "Vui lòng chờ...",
+    "congrats": "Xin chúc mừng!",
+    "you_now_have_an_extra": "Bây giờ bạn có thêm một",
+    "minutes_of_free_time": "phút rảnh rỗi",
+    "enough_time": "Đủ thời gian!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "Bạn đã có đủ thời gian cho VPN. ",
+    "no_ad_available": "Không có quảng cáo",
+    "videos_are_not_available_please_try_again_later": "Video không có sẵn. Vui lòng thử lại sau.",
+    "version": "Phiên bản",
+    "change_server": "Thay đổi máy chủ",
+    "change_server_message": "Bạn có chắc chắn muốn thay đổi máy chủ không?",
+    "change": "Thay đổi"
   }

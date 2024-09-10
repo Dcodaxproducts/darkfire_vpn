@@ -2,7 +2,6 @@ import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/servers_controller.dart';
 import 'package:darkfire_vpn/controllers/time_controller.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../data/model/body/vpn_config.dart';
@@ -89,6 +88,10 @@ class VpnController extends GetxController implements GetxService {
     }
     if (vpnStage == "disconnected" && _showConnectedView) {
       disconnect((vpnStatus, vpnConfig) {
+        if (Get.currentRoute == "/server") {
+          pop();
+          return;
+        }
         launchScreen(
           ReportScreen(vpnStatus: vpnStatus, vpnConfig: vpnConfig),
         );
@@ -116,7 +119,7 @@ class VpnController extends GetxController implements GetxService {
   }
 
   ///Select server from list
-  Future<void> selectServer(BuildContext context, VpnConfig config) async {
+  Future<void> selectServer(VpnConfig config) async {
     return ServerController.find.getServerDetails(config.slug).then((value) {
       if (value != null) {
         pop();

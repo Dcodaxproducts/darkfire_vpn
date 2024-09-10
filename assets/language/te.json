@@ -57,5 +57,20 @@
     "close": "மூடு",
     "no_internet": "இணையம் இல்லை",
     "no_internet_message": "உங்கள் இணைய இணைப்பைச் சரிபார்க்கவும் மீண்டும் முயற்சிக்கவும்.",
-    "retry": "மீண்டும் முயற்சி"
+    "retry": "மீண்டும் முயற்சி",
+    "speed_test": "స్పీడ్ టెస్ట్",
+    "start_test": "పరీక్షను ప్రారంభించండి",
+    "cancel": "రద్దు చేయి",
+    "please_wait": "దయచేసి వేచి ఉండండి...",
+    "congrats": "అభినందనలు!",
+    "you_now_have_an_extra": "మీకు ఇప్పుడు అదనంగా ఉంది",
+    "minutes_of_free_time": "నిమిషాల ఖాళీ సమయం",
+    "enough_time": "తగినంత సమయం!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "మీకు ఇప్పటికే VPN కోసం తగినంత సమయం ఉంది. ",
+    "no_ad_available": "ప్రకటన అందుబాటులో లేదు",
+    "videos_are_not_available_please_try_again_later": "వీడియోలు అందుబాటులో లేవు. దయచేసి తరువాయి ప్రయత్నించండి.",
+    "version": "பதிப்பு",
+    "change_server": "சேவையகத்தை மாற்று",
+    "change_server_message": "நீங்கள் இப்போது இணையவில்லை. சேவையகத்தை மாற்ற விரும்புகிறீர்களா?",
+    "change": "மாற்று"
   }

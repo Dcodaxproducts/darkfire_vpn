@@ -57,5 +57,20 @@
     "close": "Sluiten",
     "no_internet": "Geen internet",
     "no_internet_message": "Controleer uw internetverbinding en probeer het opnieuw.",
-    "retry": "Opnieuw proberen"
+    "retry": "Opnieuw proberen",
+    "speed_test": "Snelheidstest",
+    "start_test": "Test starten",
+    "cancel": "Annuleren",
+    "please_wait": "Even geduld a.u.b....",
+    "congrats": "Gefeliciteerd!",
+    "you_now_have_an_extra": "Je hebt nu een extraatje",
+    "minutes_of_free_time": "minuten vrije tijd",
+    "enough_time": "Genoeg tijd!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "Je hebt al genoeg tijd voor VPN. ",
+    "no_ad_available": "Geen advertentie beschikbaar",
+    "videos_are_not_available_please_try_again_later": "Video's zijn niet beschikbaar. Probeer het later opnieuw.",
+    "version": "Versie",
+    "change_server": "Server wijzigen",
+    "change_server_message": "Weet u zeker dat u de server wilt wijzigen? Uw verbinding wordt verbroken.",
+    "change": "Wijzigen"
   }

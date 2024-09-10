@@ -14,10 +14,12 @@ class CustomAppBar extends StatelessWidget {
   final bool home;
   final String text;
   final bool premium;
+  final List<Widget> actions;
   const CustomAppBar(
       {this.home = false,
       this.text = AppConstants.APP_NAME,
       this.premium = false,
+      this.actions = const [],
       super.key});
 
   @override
@@ -44,6 +46,7 @@ class CustomAppBar extends StatelessWidget {
                 style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
+            ...actions,
             if (!premium)
               IconButton(
                 padding: EdgeInsets.zero,

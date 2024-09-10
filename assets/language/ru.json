@@ -57,5 +57,20 @@
     "close": "Закрыть",
     "no_internet": "Нет интернета",
     "no_internet_message": "Пожалуйста, проверьте ваше интернет-соединение и повторите попытку.",
-    "retry": "Повторить попытку"
+    "retry": "Повторить попытку",
+    "speed_test": "Тест скорости",
+    "start_test": "Начать тест",
+    "cancel": "Отмена",
+    "please_wait": "Пожалуйста, подождите...",
+    "congrats": "Поздравляю!",
+    "you_now_have_an_extra": "Теперь у вас есть дополнительный",
+    "minutes_of_free_time": "минуты свободного времени",
+    "enough_time": "Хватит времени!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "У вас уже достаточно времени для VPN. ",
+    "no_ad_available": "Нет доступных объявлений",
+    "videos_are_not_available_please_try_again_later": "Видео недоступны. Пожалуйста, попробуйте позже.",
+    "version": "Версия",
+    "change_server": "Сменить сервер",
+    "change_server_message": "Вы уверены, что хотите изменить сервер? Ваше соединение будет разорвано.",
+    "change": "Изменить"
   }

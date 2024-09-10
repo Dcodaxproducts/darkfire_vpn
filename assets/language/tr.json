@@ -57,5 +57,20 @@
     "close": "Kapat",
     "no_internet": "İnternet Yok",
     "no_internet_message": "İnternet bağlantınızı kontrol edin ve tekrar deneyin.",
-    "retry" : "Tekrar Dene"
+    "retry" : "Tekrar Dene",
+    "speed_test": "Hız Testi",
+    "start_test": "Testi Başlat",
+    "cancel": "İptal etmek",
+    "please_wait": "Lütfen bekleyin...",
+    "congrats": "Tebrikler!",
+    "you_now_have_an_extra": "Artık bir ekstranız var",
+    "minutes_of_free_time": "dakika boş zaman",
+    "enough_time": "Yeterli Zaman!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "VPN için zaten yeterli zamanınız var. ",
+    "no_ad_available": "İlan Yok",
+    "videos_are_not_available_please_try_again_later": "Videolar mevcut değil. Lütfen daha sonra tekrar deneyin.",
+    "version": "Sürüm",
+    "change_server": "Sunucuyu Değiştir",
+    "change_server_message": "Sunucuyu değiştirmek istediğinizden emin misiniz?",
+    "change": "Değiştirmek"
   }

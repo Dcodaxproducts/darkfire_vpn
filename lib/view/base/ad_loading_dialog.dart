@@ -75,7 +75,7 @@ class _AdLoadingDialogState extends State<AdLoadingDialog> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Please wait...',
+              'please_wait'.tr,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
@@ -114,7 +114,7 @@ class TimeAddedSuccessDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Congrats!',
+              'congrats'.tr,
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
@@ -123,7 +123,7 @@ class TimeAddedSuccessDialog extends StatelessWidget {
             ),
             SizedBox(height: 16.sp),
             Text(
-              'You now have an extra ${hour ? 60 : AppConstants.extraTimeInSeconds ~/ 60} minutes of free time.',
+              '${'you_now_have_an_extra'.tr} ${hour ? 60 : AppConstants.extraTimeInSeconds ~/ 60} ${'minutes_of_free_time'.tr}.',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
@@ -163,7 +163,7 @@ class EnoughTimeDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Enough Time!',
+              'enough_time'.tr,
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
@@ -172,7 +172,7 @@ class EnoughTimeDialog extends StatelessWidget {
             ),
             SizedBox(height: 16.sp),
             Text(
-              'You already have enough time for VPN. Try again later.',
+              'you_already_have_enough_time_for_vpn_try_again_later',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
@@ -212,7 +212,7 @@ class NoAdAvailableDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'No Ad Available!',
+              'no_ad_available'.tr,
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
@@ -221,7 +221,7 @@ class NoAdAvailableDialog extends StatelessWidget {
             ),
             SizedBox(height: 16.sp),
             Text(
-              'Video ads are not available right now. Try again later.',
+              'videos_are_not_available_please_try_again_later'.tr,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
             ),

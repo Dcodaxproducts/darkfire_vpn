@@ -57,5 +57,20 @@
     "close": "اغلاق",
     "no_internet": "لا يوجد اتصال بالإنترنت",
     "no_internet_message": "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.",
-    "retry": "إعادة المحاولة"
+    "retry": "إعادة المحاولة",
+    "speed_test": "اختبار السرعة",
+    "start_test": "بدء الاختبار",
+    "cancel": "إلغاء",
+    "please_wait": "يرجى الانتظار...",
+    "congrats": "تهانينا!",
+    "you_now_have_an_extra": "لديك الآن إضافي",
+    "minutes_of_free_time": "دقائق من الوقت المجاني",
+    "enough_time": "وقت كافٍ!",
+    "you_already_have_enough_time_for_vpn_try_again_later": "لديك بالفعل وقت كافٍ لـ VPN. حاول مرة أخرى في وقت لاحق.",
+    "no_ad_available": "لا توجد إعلانات متاحة",
+    "videos_are_not_available_please_try_again_later": "الفيديوهات غير متوفرة. يرجى المحاولة مرة أخرى في وقت لاحق.",
+    "version": "الإصدار",
+    "change_server": "تغيير الخادم",
+    "change_server_message": "هل أنت متأكد أنك تريد تغيير الخادم؟ سيتم قطع اتصالك.",
+    "change": "تغيير"
   }
