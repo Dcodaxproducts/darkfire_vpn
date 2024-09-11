@@ -72,5 +72,7 @@
     "version": "Versão",
     "change_server": "Mudar servidor",
     "change_server_message": "Tem certeza de que deseja mudar de servidor?",
-    "change": "Mudar"
+    "change": "Mudar",
+    "check_later": "Verificar mais tarde",
+    "go_pro": "Ir Pro"
   }

@@ -72,6 +72,8 @@
     "version": "Version",
     "change_server": "Change Server",
     "change_server_message": "Are you sure you want to change the server? Your connection will be disconnected.",
-    "change": "Change"
+    "change": "Change",
+    "check_later": "Check Later",
+    "go_pro": "Go Pro"
 
 }

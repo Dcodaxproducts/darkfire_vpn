@@ -72,5 +72,7 @@
     "version": "Versie",
     "change_server": "Server wijzigen",
     "change_server_message": "Weet u zeker dat u de server wilt wijzigen? Uw verbinding wordt verbroken.",
-    "change": "Wijzigen"
+    "change": "Wijzigen",
+    "check_later": "Later controleren",
+    "go_pro": "Ga Pro"
   }

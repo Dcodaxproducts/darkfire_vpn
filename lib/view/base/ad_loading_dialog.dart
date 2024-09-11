@@ -2,6 +2,7 @@ import 'package:darkfire_vpn/common/loading.dart';
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/ads_controller.dart';
 import 'package:darkfire_vpn/controllers/time_controller.dart';
+import 'package:darkfire_vpn/helper/vpn_helper.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
 import 'package:darkfire_vpn/view/screens/subscription/subscription.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _AdLoadingDialogState extends State<AdLoadingDialog> {
 
     // if ad is not null, show it and add time
     if (ad != null) {
-      await ad.show();
+      await ad.showIfNotPro();
       _addTime();
     }
     // if ad is not available

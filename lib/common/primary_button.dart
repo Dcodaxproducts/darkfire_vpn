@@ -45,7 +45,7 @@ class PrimaryButton extends StatelessWidget {
               text.tr,
               style: Theme.of(context)
                   .textTheme
-                  .bodyMedium
+                  .bodySmall
                   ?.copyWith(fontWeight: FontWeight.bold, color: textColor),
             ),
           ],
@@ -92,7 +92,7 @@ class PrimaryOutlineButton extends StatelessWidget {
               text!,
               style: Theme.of(context)
                   .textTheme
-                  .bodyMedium
+                  .bodySmall
                   ?.copyWith(fontWeight: FontWeight.bold, color: textColor),
             ),
         ],

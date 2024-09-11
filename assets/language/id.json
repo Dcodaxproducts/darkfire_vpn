@@ -72,5 +72,7 @@
     "version": "Versi",
     "change_server": "Ganti Server",
     "change_server_message": "Apakah Anda yakin ingin mengganti server? Koneksi Anda akan terputus.",
-    "change": "Mengganti"
+    "change": "Mengganti",
+    "check_later": "Periksa Nanti",
+    "go_pro": "Beralih ke Pro"
   }

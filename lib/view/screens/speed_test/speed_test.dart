@@ -1,4 +1,5 @@
 import 'package:darkfire_vpn/common/primary_button.dart';
+import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:darkfire_vpn/utils/style.dart';
 import 'package:darkfire_vpn/view/base/map_background.dart';
 import 'package:flutter/material.dart';
@@ -132,17 +133,22 @@ class _SpeedTestScreenState extends State<SpeedTestScreen> {
 
                       // Start or Cancel Button
 
-                      SizedBox(
-                        width: 200.sp,
-                        child: PrimaryOutlineButton(
-                          text: con.isTesting ? 'cancel'.tr : 'start_test'.tr,
-                          onPressed: () {
-                            if (con.isTesting) {
-                              con.cancelTesting();
-                            } else {
-                              con.startTesting();
-                            }
-                          },
+                      AnimatedSwitcher(
+                        duration: const Duration(seconds: 1),
+                        child: SizedBox(
+                          width: 200.sp,
+                          key: ValueKey(con.isTesting),
+                          child: con.isTesting
+                              ? PrimaryButton(
+                                  text: 'cancel'.tr,
+                                  onPressed: con.cancelTesting,
+                                  color: primaryColor.withOpacity(0.1),
+                                  textColor: primaryColor,
+                                )
+                              : PrimaryOutlineButton(
+                                  text: 'start_test'.tr,
+                                  onPressed: con.startTesting,
+                                ),
                         ),
                       ),
                     ],

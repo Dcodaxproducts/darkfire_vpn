@@ -1,16 +1,16 @@
 import 'dart:async';
+import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'iap_controller.dart';
 
 const String interstitialAdUnitID = "ca-app-pub-3940256099942544/1033173712";
 const String bannerAdUnitID = "ca-app-pub-3940256099942544/6300978111";
 const String interstitialRewardAdUnitID =
     "ca-app-pub-3940256099942544/5354046379";
-const String openAdUnitID = "ca-app-pub-3940256099942544/3419835294";
+const String openAdUnitID = "ca-app-pub-3940256099942544/9257395921";
 
 ///All ad's functions related
 class AdsController extends GetxController implements GetxService {
@@ -42,7 +42,7 @@ class AdsController extends GetxController implements GetxService {
   ///
   ///[null] if it fail to fetch
   Future<InterstitialAd?> loadInterstitial(String unitId) async {
-    if (IAPController.find.isPro) return null;
+    if (SubscriptionController.find.isPro) return null;
     Completer<InterstitialAd?> completer = Completer<InterstitialAd>();
     InterstitialAd.load(
       adUnitId: unitId,
@@ -65,7 +65,7 @@ class AdsController extends GetxController implements GetxService {
   ///
   ///[null] if it fail to fetch
   Future<AppOpenAd?> loadOpenAd(String unitId) async {
-    if (IAPController.find.isPro) return null;
+    if (SubscriptionController.find.isPro) return null;
     Completer<AppOpenAd?> completer = Completer<AppOpenAd>();
     AppOpenAd.load(
       adUnitId: unitId,
@@ -120,7 +120,7 @@ class AdsController extends GetxController implements GetxService {
       ),
       request: AppConstants.adRequest,
     );
-    return GetBuilder<IAPController>(
+    return GetBuilder<SubscriptionController>(
       builder: (con) => con.isPro
           ? const SizedBox.shrink()
           : SizedBox(

@@ -69,7 +69,7 @@ class ActionSheet extends StatelessWidget {
           ),
           SizedBox(height: 10.sp),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50.sp),
+            padding: EdgeInsets.symmetric(horizontal: 40.sp),
             child: Text(
               description.tr,
               style: Theme.of(context).textTheme.bodySmall,

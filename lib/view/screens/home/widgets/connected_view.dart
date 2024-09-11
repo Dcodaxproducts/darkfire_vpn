@@ -11,19 +11,8 @@ import '../../../base/ad_loading_dialog.dart';
 import '../../../base/speed_widget.dart';
 import 'disconnect_sheet.dart';
 
-class ConnectedView extends StatefulWidget {
+class ConnectedView extends StatelessWidget {
   const ConnectedView({super.key});
-
-  @override
-  State<ConnectedView> createState() => _ConnectedViewState();
-}
-
-class _ConnectedViewState extends State<ConnectedView> {
-  @override
-  void initState() {
-    // ServerController.find.getPublicIP();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,29 +41,41 @@ class _ConnectedViewState extends State<ConnectedView> {
   }
 }
 
-class ConnectedDetails extends StatelessWidget {
+class ConnectedDetails extends StatefulWidget {
   const ConnectedDetails({super.key});
 
+  @override
+  State<ConnectedDetails> createState() => _ConnectedDetailsState();
+}
+
+class _ConnectedDetailsState extends State<ConnectedDetails> {
+  double bytein = 0;
+  double byteout = 0;
+  // double packetsIn = 0;
+  // double packetsOut = 0;
   @override
   Widget build(BuildContext context) {
     return GetBuilder<VpnController>(builder: (vpnController) {
       //
-      double bytein = 0;
-      double byteout = 0;
+
       if ((vpnController.vpnStatus?.byteIn?.trim().isEmpty ?? false) ||
           vpnController.vpnStatus?.byteIn == "0") {
         bytein = 0;
       } else {
-        bytein =
+        double value =
             double.tryParse(vpnController.vpnStatus!.byteIn.toString()) ?? 0;
+        // packetsIn = value - bytein;
+        bytein = value;
       }
 
       if ((vpnController.vpnStatus?.byteOut?.trim().isEmpty ?? false) ||
           vpnController.vpnStatus?.byteIn == "0") {
         byteout = 0;
       } else {
-        byteout =
+        double value =
             double.tryParse(vpnController.vpnStatus!.byteOut.toString()) ?? 0;
+        // packetsOut = value - byteout;
+        byteout = value;
       }
       return Column(
         children: [
@@ -129,7 +130,7 @@ class ConnectedDetails extends StatelessWidget {
                 title: 'download'.tr,
                 icon: Iconsax.arrow_down,
                 iconColor: Colors.blue,
-                speed: "${formatBytes(bytein.floor(), 2)}/s",
+                speed: formatBytes(bytein.floor(), 2),
               )),
               // divider,
               Container(
@@ -142,7 +143,7 @@ class ConnectedDetails extends StatelessWidget {
                   title: 'upload'.tr,
                   icon: Iconsax.arrow_up_3,
                   iconColor: Colors.purple,
-                  speed: "${formatBytes(byteout.floor(), 0)}/s",
+                  speed: formatBytes(byteout.floor(), 2),
                 ),
               )
             ],
@@ -154,6 +155,11 @@ class ConnectedDetails extends StatelessWidget {
               SizedBox(
                 width: 150.sp,
                 child: PrimaryButton(
+                  icon: Icon(
+                    Iconsax.video,
+                    size: 18.sp,
+                    color: Colors.white,
+                  ),
                   text: '+1 ${'hour'.tr}',
                   onPressed: () =>
                       Get.dialog(const AdLoadingDialog(hour: true)),

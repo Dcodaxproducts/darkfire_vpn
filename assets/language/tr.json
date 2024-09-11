@@ -72,5 +72,7 @@
     "version": "Sürüm",
     "change_server": "Sunucuyu Değiştir",
     "change_server_message": "Sunucuyu değiştirmek istediğinizden emin misiniz?",
-    "change": "Değiştirmek"
+    "change": "Değiştirmek",
+    "check_later": "Daha sonra kontrol et",
+    "go_pro": "Pro'ya git"
   }

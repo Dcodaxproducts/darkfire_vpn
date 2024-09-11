@@ -94,9 +94,10 @@ class ServerTabBar extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12.sp),
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(32.sp),
         border: Border.all(color: Theme.of(context).dividerColor),
+        boxShadow: boxShadow,
       ),
       child: TabBar(
         controller: _tabController,

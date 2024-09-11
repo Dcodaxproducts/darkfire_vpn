@@ -1,5 +1,5 @@
 import 'package:darkfire_vpn/utils/app_constants.dart';
-import 'package:darkfire_vpn/utils/colors.dart';
+import 'package:darkfire_vpn/utils/images.dart';
 import 'package:darkfire_vpn/utils/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,11 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // VPN Icon (replace with your shield icon if needed)
-                    Icon(
-                      Icons.security,
-                      size: 100.sp,
-                      color: primaryColor,
-                    ),
+                    Image.asset(Images.logo, width: 150.sp),
                     SizedBox(height: 150.sp),
                     // VPN Title
                     Text(

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../utils/colors.dart';
+import '../../../utils/images.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -37,11 +38,7 @@ class AboutScreen extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-                            Icon(
-                              Icons.security,
-                              size: 100.sp,
-                              color: primaryColor,
-                            ),
+                            Image.asset(Images.logo, width: 90.sp),
                             SizedBox(height: 16.sp),
                             Text(
                               AppConstants.APP_NAME,

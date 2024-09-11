@@ -2,7 +2,7 @@
 
 import 'dart:math';
 import 'package:darkfire_vpn/common/snackbar.dart';
-import 'package:darkfire_vpn/controllers/iap_controller.dart';
+import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:google_mobile_ads/src/ad_instance_manager.dart';
 import 'package:in_app_update/in_app_update.dart';
@@ -11,13 +11,13 @@ String formatBytes(int bytes, int decimals) {
   if (bytes <= 0) return "0 B";
   const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
   var i = (log(bytes) / log(1024)).floor();
-  return '${(bytes / pow(1024, i)).toStringAsFixed(decimals)}  ${suffixes[i]}';
+  return '${(bytes / pow(1024, i)).toStringAsFixed(decimals)} ${suffixes[i]}';
 }
 
 extension CheckProForAd on AdWithoutView {
-  void showIfNotPro() {
-    if (IAPController.find.isPro) {
-      instanceManager.showAdWithoutView(this);
+  Future<void> showIfNotPro() async {
+    if (!SubscriptionController.find.isPro) {
+      await instanceManager.showAdWithoutView(this);
     }
   }
 }

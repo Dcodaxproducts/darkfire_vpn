@@ -72,5 +72,7 @@
     "version": "Phiên bản",
     "change_server": "Thay đổi máy chủ",
     "change_server_message": "Bạn có chắc chắn muốn thay đổi máy chủ không?",
-    "change": "Thay đổi"
+    "change": "Thay đổi",
+    "check_later": "Kiểm tra sau",
+    "go_pro": "Chuyển sang phiên bản Pro"
   }

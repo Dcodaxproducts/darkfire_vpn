@@ -2,13 +2,13 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:darkfire_vpn/controllers/ads_controller.dart';
-import 'package:darkfire_vpn/controllers/iap_controller.dart';
 import 'package:darkfire_vpn/controllers/servers_controller.dart';
+import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/view/screens/home/home.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'helper/vpn_helper.dart';
 import 'view/base/no_internet_dialog.dart';
@@ -26,6 +26,13 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
   AppOpenAd? _appOpenAd;
   Timer? openAdTimeout;
 
+  bool _disconnected = false;
+  bool get disconnected => _disconnected;
+  set disconnected(bool value) {
+    _disconnected = value;
+    if (mounted) setState(() {});
+  }
+
   DateTime _lastShownTime = DateTime.now();
   StreamSubscription<ConnectivityResult>? _onConnectivityChanged;
 
@@ -36,23 +43,30 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
   }
 
   Future<void> initData() async {
+    final result = await Connectivity().checkConnectivity();
+    if (result == ConnectivityResult.none) {
+      disconnected = true;
+    }
     _checkInternetConnection();
-    VpnController.find.initialize();
-    ServerController.find.getAllServers();
-    ServerController.find.getAllServersFromCache();
-    //
     WidgetsBinding.instance.addObserver(this);
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+      //
+      VpnController.find.initialize();
+      ServerController.find.getAllServers();
+      ServerController.find.getAllServersFromCache();
+      //
       Future.delayed(const Duration(seconds: 5)).then((value) {
         if (!_ready) {
           _ready = true;
           if (mounted) setState(() {});
         }
       });
-      await IAPController.find.initialize().catchError((_) {});
+      await SubscriptionController.find.initialize().catchError((_) {});
       await loadAppOpenAd()
           .then((value) => _appOpenAd?.showIfNotPro())
-          .catchError((_) {});
+          .catchError((e) {
+        FirebaseCrashlytics.instance.recordError(e, StackTrace.current);
+      });
       Future.delayed(const Duration(seconds: 3), () {
         _ready = true;
         if (mounted) setState(() {});
@@ -65,12 +79,9 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       if (result == ConnectivityResult.none) {
-        SmartDialog.show(
-          builder: (_) => const NoInternetDialog(),
-          backDismiss: false,
-        );
+        disconnected = true;
       } else {
-        SmartDialog.dismiss();
+        disconnected = false;
       }
     });
   }
@@ -87,7 +98,7 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       if (_lastShownTime.difference(DateTime.now()).inMinutes > 5) {
-        _appOpenAd?.showIfNotPro();
+        _appOpenAd?.showIfNotPro().catchError((e) {});
         _lastShownTime = DateTime.now();
       }
     } else if (state == AppLifecycleState.paused) {
@@ -98,26 +109,29 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return _ready ? const HomeScreen() : const SplashScreen();
+    return disconnected
+        ? const NoInternetDialog()
+        : _ready
+            ? const HomeScreen()
+            : const SplashScreen();
   }
 
   Future loadAppOpenAd() async {
     openAdTimeout?.cancel();
-    return AdsController.find
-      ..loadOpenAd(openAdUnitID).then((value) {
-        if (value != null) {
-          _appOpenAd = value;
-          _appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {
-              _appOpenAd!.dispose();
-              _appOpenAd = null;
-              loadAppOpenAd();
-            },
-          );
-        } else {
-          openAdTimeout = Timer(const Duration(minutes: 1), loadAppOpenAd);
-        }
-        return value;
-      });
+    return AdsController.find.loadOpenAd(openAdUnitID).then((value) {
+      if (value != null) {
+        _appOpenAd = value;
+        _appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(
+          onAdDismissedFullScreenContent: (ad) {
+            _appOpenAd!.dispose();
+            _appOpenAd = null;
+            loadAppOpenAd();
+          },
+        );
+      } else {
+        openAdTimeout = Timer(const Duration(minutes: 1), loadAppOpenAd);
+      }
+      return value;
+    });
   }
 }

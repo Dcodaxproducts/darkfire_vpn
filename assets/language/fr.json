@@ -72,5 +72,7 @@
     "version": "Version",
     "change_server": "Changer de serveur",
     "change_server_message": "Êtes-vous sûr de vouloir changer de serveur ? Votre connexion sera déconnectée.",
-    "change": "Changer"
+    "change": "Changer",
+    "check_later": "Vérifier plus tard",
+    "go_pro": "Passer à la version Pro"
   }

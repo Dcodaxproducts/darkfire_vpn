@@ -72,5 +72,7 @@
     "version": "版本",
     "change_server": "更改服务器",
     "change_server_message": "您确定要更改服务器吗？",
-    "change": "更改"
+    "change": "更改",
+    "check_later": "稍后检查",
+    "go_pro": "升级到专业版"
   }

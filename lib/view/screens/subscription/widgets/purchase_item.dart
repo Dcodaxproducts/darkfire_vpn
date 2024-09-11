@@ -1,11 +1,11 @@
-import 'package:darkfire_vpn/data/model/body/subscription_model.dart';
 import 'package:darkfire_vpn/utils/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../utils/colors.dart';
 
 class PurchaseItem extends StatelessWidget {
-  final SubscriptionModel item;
+  final IAPItem item;
   final bool selected;
   final Function()? onTap;
   const PurchaseItem(
@@ -13,6 +13,7 @@ class PurchaseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> data = getText();
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(defaultRadius),
@@ -56,7 +57,7 @@ class PurchaseItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    durationString + (item.featured ? ' (Popular)' : ''),
+                    data['title'],
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
@@ -64,7 +65,7 @@ class PurchaseItem extends StatelessWidget {
                   ),
                   SizedBox(height: 3.sp),
                   Text(
-                    item.name,
+                    data['subtitle'],
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           fontSize: 11.sp,
                           color: Theme.of(context).hintColor,
@@ -75,7 +76,7 @@ class PurchaseItem extends StatelessWidget {
             ),
             SizedBox(width: defaultSpacing),
             Text(
-              item.price,
+              data['price'],
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium
@@ -87,18 +88,25 @@ class PurchaseItem extends StatelessWidget {
     );
   }
 
-  String get durationString {
-    // 7 -> 1 week
-    // 30 or 31 -> 1 month
-    // 365 -> 1 year
-    if (item.duration.inDays == 7) {
-      return '1 week';
-    } else if (item.duration.inDays == 30 || item.duration.inDays == 31) {
-      return '1 month';
-    } else if (item.duration.inDays == 365) {
-      return '1 year';
+  Map<String, dynamic> getText() {
+    if (item.productId == 'monthly_plan') {
+      return {
+        'title': '1 Month',
+        'subtitle': 'One Week Subscription',
+        "price": item.localizedPrice ?? '0.0',
+      };
+    } else if (item.productId == 'weekly_plan') {
+      return {
+        'title': '1 Week',
+        'subtitle': 'One Month Subscription',
+        "price": item.localizedPrice ?? '0.0',
+      };
     } else {
-      return '${item.duration.inDays} days';
+      return {
+        'title': '1 Year',
+        'subtitle': 'One Year Subscription',
+        "price": item.localizedPrice ?? '0.0',
+      };
     }
   }
 }

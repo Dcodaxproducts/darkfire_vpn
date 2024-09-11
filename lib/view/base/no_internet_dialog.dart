@@ -1,6 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:darkfire_vpn/common/primary_button.dart';
-import 'package:darkfire_vpn/common/snackbar.dart';
 import 'package:darkfire_vpn/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,13 +39,7 @@ class NoInternetDialog extends StatelessWidget {
           SizedBox(
             width: 200.sp,
             child: PrimaryOutlineButton(
-              onPressed: () async {
-                if (await isConnected()) {
-                  dismiss();
-                } else {
-                  showToast('no_internet'.tr);
-                }
-              },
+              onPressed: () async {},
               text: 'retry'.tr,
             ),
           ),

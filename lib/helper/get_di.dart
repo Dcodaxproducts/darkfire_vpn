@@ -1,22 +1,18 @@
-// import 'dart:convert';
 import 'dart:convert';
-
 import 'package:darkfire_vpn/controllers/localization_controller.dart';
 import 'package:darkfire_vpn/controllers/speed_test_controller.dart';
+import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:darkfire_vpn/controllers/time_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
-// import 'package:darkfire_vpn/data/model/language.dart';
 import 'package:darkfire_vpn/data/repository/server_repo.dart';
 import 'package:darkfire_vpn/data/repository/time_repo.dart';
 import 'package:darkfire_vpn/data/repository/vpn_repo.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_internet_speed_test/flutter_internet_speed_test.dart';
-// import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 import '../controllers/ads_controller.dart';
-import '../controllers/iap_controller.dart';
 import '../controllers/servers_controller.dart';
 import '../controllers/splash_controller.dart';
 import '../controllers/theme_controller.dart';
@@ -55,7 +51,7 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => ServerController(serverRepo: Get.find()));
   Get.lazyPut(() => VpnController(vpnRepo: Get.find()));
   Get.lazyPut(() => AdsController());
-  Get.lazyPut(() => IAPController());
+  Get.lazyPut(() => SubscriptionController());
   Get.lazyPut(() => TimeController(timeRepo: Get.find()));
   Get.lazyPut(() => SpeedTestController(speedTest: Get.find()));
 
