@@ -8,6 +8,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../helper/vpn_helper.dart';
 import '../../../../utils/style.dart';
 import '../../../base/ad_loading_dialog.dart';
+import '../../../base/confirmation_dialog.dart';
 import '../../../base/speed_widget.dart';
 import 'disconnect_sheet.dart';
 
@@ -161,8 +162,19 @@ class _ConnectedDetailsState extends State<ConnectedDetails> {
                     color: Colors.white,
                   ),
                   text: '+1 ${'hour'.tr}',
-                  onPressed: () =>
-                      Get.dialog(const AdLoadingDialog(hour: true)),
+                  onPressed: () {
+                    showConfirmationDialog(
+                      title: 'extra_time'.tr,
+                      description:
+                          "${'watch_a_quick_ad_to_get_an_extra'.tr} 1 ${'hour'.tr} ${'of_free_vpn'.tr}?",
+                      noText: 'no_thanks'.tr,
+                      yesText: 'watch_now'.tr,
+                      onYes: () {
+                        Get.back();
+                        Get.dialog(const AdLoadingDialog(hour: true));
+                      },
+                    );
+                  },
                 ),
               ),
               SizedBox(

@@ -4,8 +4,6 @@ PODS:
   - connectivity_plus (0.0.1):
     - Flutter
     - ReachabilitySwift
-  - country_codes (0.0.1):
-    - Flutter
   - Firebase/Analytics (10.28.0):
     - Firebase/Core
   - Firebase/Core (10.28.0):
@@ -204,7 +202,6 @@ PODS:
 DEPENDENCIES:
   - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
-  - country_codes (from `.symlinks/plugins/country_codes/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
@@ -251,8 +248,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/app_tracking_transparency/ios"
   connectivity_plus:
     :path: ".symlinks/plugins/connectivity_plus/ios"
-  country_codes:
-    :path: ".symlinks/plugins/country_codes/ios"
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
   firebase_core:
@@ -299,7 +294,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   app_tracking_transparency: e169b653478da7bb15a6c61209015378ca73e375
   connectivity_plus: bf0076dd84a130856aa636df1c71ccaff908fa1d
-  country_codes: b0900f46ad686281d5dab438e354e44ad10f5941
   Firebase: 5121c624121af81cbc81df3bda414b3c28c4f3c3
   firebase_analytics: e51d02e2da883fd058f2a4f151f6a80acdfe67aa
   firebase_core: a9d0180d5285527884d07a41eb4a9ec9ed12cdb6

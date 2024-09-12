@@ -53,12 +53,12 @@ class MenuScreen extends StatelessWidget {
           MenuTile(
             text: 'privacy_policy',
             icon: Iconsax.shield_tick,
-            onTap: () => _aboutClick(),
+            onTap: () {},
           ),
           MenuTile(
             text: 'terms_of_service',
             icon: Iconsax.document,
-            onTap: () => _aboutClick(),
+            onTap: () {},
           ),
           MenuTile(
             text: 'about',
@@ -89,11 +89,6 @@ class MenuScreen extends StatelessWidget {
     } else {
       launchUrlString("https://apps.apple.com/app/id${AppConstants.iosAppID}");
     }
-  }
-
-  ///Open the about dialog when user click on the about button
-  void _aboutClick() {
-    // const DialogBackground(dialog: AboutScreen(), blur: 10).show(context);
   }
 }
 

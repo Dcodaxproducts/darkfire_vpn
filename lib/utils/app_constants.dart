@@ -22,11 +22,10 @@ class AppConstants {
       "app.darkfire.vpn.VPNExtension"; //Before it was VpnExtensionIdentifier
   static const String groupIdentifier = "group.app.darkfire.vpn";
   static const String iosAppID = "1234567890";
-  static const String localizationDescription =
-      "DarkFire VPN - Fast & Secure VPN";
+  static const String localizationDescription = "Speed VPN - Proxy VPN Master";
 
   /* App name and version */
-  static const String APP_NAME = 'DarkFire VPN';
+  static const String APP_NAME = 'Speed VPN';
   static const String APP_VERSION = '1.0';
 
   /* Non Customizable */

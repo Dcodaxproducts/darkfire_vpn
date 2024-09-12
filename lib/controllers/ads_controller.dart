@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -43,21 +44,41 @@ class AdsController extends GetxController implements GetxService {
   ///[null] if it fail to fetch
   Future<InterstitialAd?> loadInterstitial(String unitId) async {
     if (SubscriptionController.find.isPro) return null;
-    Completer<InterstitialAd?> completer = Completer<InterstitialAd>();
+    Completer<InterstitialAd?> completer = Completer();
     InterstitialAd.load(
       adUnitId: unitId,
       request: AppConstants.adRequest,
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
-          completer.complete(ad);
-          FirebaseAnalytics.instance.logAdImpression();
+          if (!completer.isCompleted) {
+            completer.complete(ad);
+            FirebaseAnalytics.instance.logAdImpression();
+          }
         },
         onAdFailedToLoad: (error) {
-          completer.complete();
+          if (!completer.isCompleted) {
+            completer.complete();
+          }
         },
       ),
     );
-    return completer.future;
+
+    // Wait for ad to load or timeout (whichever happens first)
+    try {
+      return await completer.future.timeout(
+        const Duration(seconds: 4),
+        onTimeout: () {
+          log('Interstitial ad load timeout');
+          if (!completer.isCompleted) {
+            completer.complete();
+          }
+          return null;
+        },
+      );
+    } catch (e) {
+      log('Interstitial ad load error: $e');
+      return null;
+    }
   }
 
   ///Initialize and load open app ad,
@@ -66,21 +87,36 @@ class AdsController extends GetxController implements GetxService {
   ///[null] if it fail to fetch
   Future<AppOpenAd?> loadOpenAd(String unitId) async {
     if (SubscriptionController.find.isPro) return null;
-    Completer<AppOpenAd?> completer = Completer<AppOpenAd>();
+    Completer<AppOpenAd?> completer = Completer();
     AppOpenAd.load(
       adUnitId: unitId,
       request: AppConstants.adRequest,
       adLoadCallback: AppOpenAdLoadCallback(
         onAdLoaded: (ad) {
-          completer.complete(ad);
-          FirebaseAnalytics.instance.logAdImpression();
+          if (!completer.isCompleted) {
+            completer.complete(ad);
+            FirebaseAnalytics.instance.logAdImpression();
+          }
         },
         onAdFailedToLoad: (error) {
-          completer.complete();
+          if (!completer.isCompleted) {
+            completer.complete();
+          }
         },
       ),
     );
-    return completer.future;
+    // Use Future.timeout to enforce a 5-second limit
+    try {
+      return await completer.future.timeout(const Duration(seconds: 4),
+          onTimeout: () {
+        if (!completer.isCompleted) {
+          completer.complete(); // Complete with null if timeout occurs
+        }
+        return null; // Return null on timeout
+      });
+    } catch (e) {
+      return null; // Return null in case of any unexpected errors
+    }
   }
 
   ///Initialize and load reward ad,
@@ -94,15 +130,32 @@ class AdsController extends GetxController implements GetxService {
       request: AppConstants.adRequest,
       rewardedInterstitialAdLoadCallback: RewardedInterstitialAdLoadCallback(
         onAdLoaded: (ad) {
-          completer.complete(ad);
-          FirebaseAnalytics.instance.logAdImpression();
+          if (!completer.isCompleted) {
+            completer.complete(ad);
+            FirebaseAnalytics.instance.logAdImpression();
+          }
         },
         onAdFailedToLoad: (error) {
-          completer.complete();
+          if (!completer.isCompleted) {
+            completer.complete();
+          }
         },
       ),
     );
-    return completer.future;
+    // Wait for ad to load or timeout (whichever happens first)
+    try {
+      return await completer.future.timeout(
+        const Duration(seconds: 4),
+        onTimeout: () {
+          if (!completer.isCompleted) {
+            completer.complete(); // Complete with null on timeout
+          }
+          return null; // Return null on timeout
+        },
+      );
+    } catch (e) {
+      return null; // Return null on error
+    }
   }
 
   ///Its banner static's functions

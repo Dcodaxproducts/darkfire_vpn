@@ -8,7 +8,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.app.nerd.vpn</string>
+		<string>group.com.dcodax.vpn.demo</string>
 	</array>
 </dict>
 </plist>

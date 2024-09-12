@@ -23,9 +23,6 @@ class SplashRepo {
       sharedPreferences.setString(
           AppConstants.LANGUAGE_CODE, AppConstants.languages[0].languageCode);
     }
-    if (!sharedPreferences.containsKey(AppConstants.ON_BOARDING_SKIP)) {
-      return sharedPreferences.setBool(AppConstants.ON_BOARDING_SKIP, true);
-    }
     return Future.value(true);
   }
 
@@ -37,5 +34,5 @@ class SplashRepo {
       await sharedPreferences.setBool(AppConstants.ON_BOARDING_SKIP, false);
 
   bool getFirstTime() =>
-      sharedPreferences.getBool(AppConstants.ON_BOARDING_SKIP) ?? false;
+      sharedPreferences.getBool(AppConstants.ON_BOARDING_SKIP) ?? true;
 }

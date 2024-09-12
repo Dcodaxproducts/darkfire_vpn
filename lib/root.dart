@@ -55,22 +55,18 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
       ServerController.find.getAllServers();
       ServerController.find.getAllServersFromCache();
       //
-      Future.delayed(const Duration(seconds: 5)).then((value) {
-        if (!_ready) {
-          _ready = true;
-          if (mounted) setState(() {});
-        }
-      });
-      await SubscriptionController.find.initialize().catchError((_) {});
+      // show add
       await loadAppOpenAd()
-          .then((value) => _appOpenAd?.showIfNotPro())
+          .then((value) async => await _appOpenAd?.showIfNotPro())
           .catchError((e) {
         FirebaseCrashlytics.instance.recordError(e, StackTrace.current);
       });
-      Future.delayed(const Duration(seconds: 3), () {
+      //
+      Future.delayed(const Duration(seconds: 3)).then((value) {
         _ready = true;
         if (mounted) setState(() {});
       });
+      await SubscriptionController.find.initialize().catchError((_) {});
     });
   }
 
@@ -109,11 +105,13 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return disconnected
-        ? const NoInternetDialog()
-        : _ready
-            ? const HomeScreen()
-            : const SplashScreen();
+    if (disconnected) {
+      return const NoInternetDialog();
+    } else if (_ready) {
+      return const HomeScreen();
+    } else {
+      return const SplashScreen();
+    }
   }
 
   Future loadAppOpenAd() async {

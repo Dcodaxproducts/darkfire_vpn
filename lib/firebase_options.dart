@@ -56,13 +56,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCCzPXWaZ-sGqs8dvp3-_kVjm0B7Qh4F6U',
-    appId: '1:587019374349:ios:995b58f51d48a42692aa44',
+    appId: '1:587019374349:ios:52c3c1ac8923024d92aa44',
     messagingSenderId: '587019374349',
     projectId: 'dcodaxfood',
     storageBucket: 'dcodaxfood.appspot.com',
     androidClientId: '587019374349-adilp5v6g6apv67ikg1chji1jptrs0vi.apps.googleusercontent.com',
-    iosClientId: '587019374349-ci4vpnt4lfkplhpu54ee2sevhrja54nt.apps.googleusercontent.com',
-    iosBundleId: 'app.nerd.vpn',
+    iosClientId: '587019374349-2rv4ln2d2h1o5vbeqnfsagc9f7l6ur7u.apps.googleusercontent.com',
+    iosBundleId: 'com.dcodax.vpn.demo',
   );
 
 }

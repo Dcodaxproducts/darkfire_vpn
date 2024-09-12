@@ -74,5 +74,10 @@
     "change_server_message": "서버를 변경하시겠습니까? 연결이 끊어집니다.",
     "change": "변경",
     "check_later": "나중에 확인",
-    "go_pro": "프로로 가기"
+    "go_pro": "프로로 가기",
+    "watch_now": "Watch Now",
+    "no_thanks": "No Thanks",
+    "watch_a_quick_ad_to_get_an_extra": "Watch a quick ad to get an extra",
+    "minutes": "minutes",
+    "of_free_vpn": "of free VPN"
   }

@@ -58,7 +58,7 @@ class AboutScreen extends StatelessWidget {
                             ),
                             SizedBox(height: 16.sp),
                             Text(
-                              '''Our VPN app ensures fast, secure, and private internet access, giving you the freedom to browse and stream safely, anywhere. Our mission is to empower users with seamless digital freedom and protection.''',
+                              '''Unlock and Secure your online privacy with our VPN app. Our VPN ensures fast and secure browsing with a single tap. Stay protected, explore freely.''',
                               textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
@@ -98,7 +98,7 @@ class AboutScreen extends StatelessWidget {
                 ],
               ),
               Text(
-                "Copyright 2014 - 2024 .  All right Reserved",
+                "Copyright 2014 - 2024.  All right Reserved",
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SafeArea(child: SizedBox()),

@@ -44,30 +44,31 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                     child: Column(
                       children: [
                         SizedBox(height: 50.sp),
-                        LottieBuilder.asset(
-                          "assets/animations/crown_pro.json",
-                          width: 150.sp,
+                        Hero(
+                          tag: 'crown',
+                          child: LottieBuilder.asset(
+                            "assets/animations/crown_pro.json",
+                            width: 150.sp,
+                          ),
                         ),
-
                         Text(
-                          'Upgrade to DarkFire Pro',
+                          'Upgrade to ${AppConstants.APP_NAME} Pro',
                           style: Theme.of(context)
                               .textTheme
                               .headlineMedium
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
-
-                        // benefits,
+                        // benefits
                         GridView.builder(
                           padding: EdgeInsets.only(top: 32.sp),
                           shrinkWrap: true,
                           itemCount: benefits.length,
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 8,
-                            childAspectRatio: 10,
+                            crossAxisSpacing: 8.sp,
+                            mainAxisSpacing: 8.sp,
+                            childAspectRatio: 10.sp,
                           ),
                           itemBuilder: (context, index) {
                             return Row(

@@ -29,8 +29,11 @@ class ThemeController extends GetxController implements GetxService {
   void _loadCurrentTheme() async {
     bool? data = sharedPreferences.getBool(AppConstants.THEME);
     if (data == null) {
-      _darkTheme = false;
       _themeMode = ThemeMode.system;
+      // check if system theme is dark
+      if (Get.isDarkMode) {
+        _darkTheme = true;
+      }
     } else if (data) {
       _darkTheme = true;
       _themeMode = ThemeMode.dark;

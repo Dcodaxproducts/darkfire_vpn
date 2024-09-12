@@ -28,27 +28,32 @@ class _AdLoadingDialogState extends State<AdLoadingDialog> {
   }
 
   _showAd() async {
-    // load ad
-    InterstitialAd? ad =
-        await AdsController.find.loadInterstitial(interstitialAdUnitID);
-
-    // if ad is not null, show it and add time
-    if (ad != null) {
-      await ad.showIfNotPro();
-      _addTime();
+    if (widget.hour) {
+      await _showRewardAd();
+    } else {
+      await _showInterstitialAd();
     }
-    // if ad is not available
-    else {
-      // if 1 hour is requested, show dialog
-      if (widget.hour) {
-        pop();
-        Get.dialog(const NoAdAvailableDialog());
-      }
-      // if 1 hour is not requested, still add time if ad is not available
-      else {
-        _addTime();
-        pop();
-      }
+  }
+
+  _showInterstitialAd() async {
+    InterstitialAd? interstitialAd =
+        await AdsController.find.loadInterstitial(interstitialAdUnitID);
+    if (interstitialAd != null) {
+      await interstitialAd.showIfNotPro();
+    }
+    _addTime();
+    pop();
+  }
+
+  _showRewardAd() async {
+    RewardedInterstitialAd? rewardedAd =
+        await AdsController.find.loadRewardAd(interstitialRewardAdUnitID);
+    if (rewardedAd != null) {
+      await rewardedAd.showIfNotPro();
+      _addTime();
+    } else {
+      pop();
+      Get.dialog(const NoAdAvailableDialog());
     }
   }
 

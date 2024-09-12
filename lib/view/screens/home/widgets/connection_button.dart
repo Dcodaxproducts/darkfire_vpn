@@ -1,8 +1,8 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:darkfire_vpn/controllers/ads_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -20,23 +20,6 @@ class ConnectionButton extends StatefulWidget {
 }
 
 class _ConnectionButtonState extends State<ConnectionButton> {
-  InterstitialAd? interstitialAd;
-  Timer? interstitialTimeout;
-
-  @override
-  void initState() {
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      loadInterstitial();
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    interstitialTimeout?.cancel();
-    super.dispose();
-  }
-
   String convertVpnStageToString(String stage) {
     return stage
         .split('_')
@@ -160,31 +143,21 @@ class _ConnectionButtonState extends State<ConnectionButton> {
         VPNStage.disconnected.name.toLowerCase()) {
       vpnProvider.disconnect((vpnStatus, vpnConfig) {});
       if (vpnProvider.isConnected) {
-        interstitialAd?.showIfNotPro();
+        _showInterstitialAd();
       }
     } else {
       vpnProvider.connect();
-      interstitialAd?.showIfNotPro();
+      _showInterstitialAd();
     }
   }
 
-  void loadInterstitial() {
-    interstitialTimeout?.cancel();
-    AdsController.find.loadInterstitial(interstitialAdUnitID).then((value) {
-      if (value != null) {
-        interstitialAd = value;
-        interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-          onAdDismissedFullScreenContent: (ad) {
-            interstitialAd!.dispose();
-            interstitialAd = null;
-            loadInterstitial();
-          },
-        );
-      } else {
-        interstitialTimeout =
-            Timer(const Duration(minutes: 1), loadInterstitial);
-      }
-    });
+  Future<void> _showInterstitialAd() async {
+    InterstitialAd? interstitialAd =
+        await AdsController.find.loadInterstitial(interstitialAdUnitID);
+    log((interstitialAd == null).toString());
+    if (interstitialAd != null) {
+      await interstitialAd.showIfNotPro();
+    }
   }
 }
 

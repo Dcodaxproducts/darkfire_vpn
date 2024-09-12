@@ -55,9 +55,12 @@ class CustomAppBar extends StatelessWidget {
                   launchScreen(const SubscriptionScreen());
                 },
                 icon: GetBuilder<SubscriptionController>(
-                  builder: (value) => LottieBuilder.asset(
-                    "assets/animations/crown_${value.isPro ? "pro" : "free"}.json",
-                    width: 42.sp,
+                  builder: (value) => Hero(
+                    tag: 'crown',
+                    child: LottieBuilder.asset(
+                      "assets/animations/crown_pro.json",
+                      width: 42.sp,
+                    ),
                   ),
                 ),
               )

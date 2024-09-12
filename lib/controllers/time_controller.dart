@@ -48,7 +48,7 @@ class TimeController extends GetxController implements GetxService {
     TimeModel data = TimeModel.fromJson(timeRepo.getExtraTime());
     _lastExtraTimeGiven = data.lastExtraTimeGiven;
     _remainingTimeInSeconds = data.remainingTimeInSeconds;
-    if (_remainingTimeInSeconds <= 0) {
+    if (_remainingTimeInSeconds <= 30) {
       _remainingTimeInSeconds = AppConstants.freeUserConnectionLimitInSeconds;
     }
     update();
@@ -65,6 +65,7 @@ class TimeController extends GetxController implements GetxService {
             ReportScreen(vpnStatus: vpnStatus, vpnConfig: vpnConfig),
           );
         });
+        _remainingTimeInSeconds = AppConstants.freeUserConnectionLimitInSeconds;
       }
       update();
       TimeModel data = TimeModel(
