@@ -35,6 +35,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
           ? 'you_are_not_protected'.tr
           : 'you_are_now_protected'.tr;
       final color = status != 'connected' ? Colors.grey : primaryColor;
+      bool clickEnabled = status == "connected" || status == "disconnected";
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -76,7 +77,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
                 Center(child: ButtonOutlineWidget(status: status)),
                 Center(
                   child: GestureDetector(
-                    onTap: _connectButtonClick,
+                    onTap: clickEnabled ? _connectButtonClick : null,
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       width: 150.sp,
@@ -152,8 +153,14 @@ class _ConnectionButtonState extends State<ConnectionButton> {
   }
 
   Future<void> _showInterstitialAd() async {
+    final AdsController adsController = AdsController.find;
+    final String interstitialAdId = adsController.interstitialAdId;
+    bool isAdAvailable = adsController.isAdIdActive(interstitialAdId);
+    if (!isAdAvailable) {
+      return;
+    }
     InterstitialAd? interstitialAd =
-        await AdsController.find.loadInterstitial(interstitialAdUnitID);
+        await adsController.loadInterstitial(interstitialAdId);
     log((interstitialAd == null).toString());
     if (interstitialAd != null) {
       await interstitialAd.showIfNotPro();

@@ -75,9 +75,12 @@
     "change": "Cambiare",
     "check_later": "Controlla più tardi",
     "go_pro": "Vai a Pro",
-    "watch_now": "Watch Now",
-    "no_thanks": "No Thanks",
-    "watch_a_quick_ad_to_get_an_extra": "Watch a quick ad to get an extra",
-    "minutes": "minutes",
-    "of_free_vpn": "of free VPN"
+    "watch_now": "今すぐ見る",
+  "no_thanks": "結構です",
+  "watch_a_quick_ad_to_get_an_extra": "簡単な広告を見て追加料金を獲得",
+  "minutes": "分",
+  "of_free_vpn": "無料VPNの",
+  "unlock_and_secure_your_online_privacy_with_our_vpn_app_our_vpn_ensures_fast_and_secure_browsing_with_a_single_tap_stay_protected_explore_freely": "当社の VPN アプリを使用して、オンライン プライバシーのロックを解除して保護します。当社の VPN は、ワンタップで高速かつ安全なブラウジングを保証します。安全に保護され、自由に探索します。",
+  "copyright_2014_2024_all_right_reserved": "著作権 © 2014-2024。すべての権利が保護されています。",
+  "write_your_review": "レビューを書く"
   }

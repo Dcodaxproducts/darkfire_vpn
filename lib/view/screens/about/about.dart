@@ -5,8 +5,10 @@ import 'package:darkfire_vpn/view/base/map_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/images.dart';
+import '../../base/appVersion_widget.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -48,17 +50,11 @@ class AboutScreen extends StatelessWidget {
                                   ?.copyWith(fontWeight: FontWeight.bold),
                             ),
                             SizedBox(height: 16.sp),
-                            Text(
-                              '${'version'.tr} ${AppConstants.APP_VERSION}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(
-                                      color: Theme.of(context).hintColor),
-                            ),
+                            const AppVersionWidget(),
                             SizedBox(height: 16.sp),
                             Text(
-                              '''Unlock and Secure your online privacy with our VPN app. Our VPN ensures fast and secure browsing with a single tap. Stay protected, explore freely.''',
+                              "unlock_and_secure_your_online_privacy_with_our_vpn_app_our_vpn_ensures_fast_and_secure_browsing_with_a_single_tap_stay_protected_explore_freely"
+                                  .tr,
                               textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
@@ -81,7 +77,8 @@ class AboutScreen extends StatelessWidget {
                             color: primaryColor,
                           ),
                     ),
-                    onPressed: () {},
+                    onPressed: () =>
+                        launchUrlString(AppConstants.appPrivacyPolicyUrl),
                   ),
                   SizedBox(width: 16.sp),
                   TextButton(
@@ -93,12 +90,13 @@ class AboutScreen extends StatelessWidget {
                             color: primaryColor,
                           ),
                     ),
-                    onPressed: () {},
+                    onPressed: () =>
+                        launchUrlString(AppConstants.appTermsAndConditionsUrl),
                   ),
                 ],
               ),
               Text(
-                "Copyright 2014 - 2024.  All right Reserved",
+                'copyright_2014_2024_all_right_reserved'.tr,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SafeArea(child: SizedBox()),

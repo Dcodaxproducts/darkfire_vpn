@@ -13,12 +13,20 @@ import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../../../helper/vpn_helper.dart';
 import '../../../utils/style.dart';
 import '../../base/map_background.dart';
+import '../../base/rating_widget.dart';
 
-class ReportScreen extends StatelessWidget {
+class ReportScreen extends StatefulWidget {
   final VpnStatus vpnStatus;
   final VpnConfig vpnConfig;
   const ReportScreen(
       {required this.vpnStatus, required this.vpnConfig, super.key});
+
+  @override
+  State<ReportScreen> createState() => _ReportScreenState();
+}
+
+class _ReportScreenState extends State<ReportScreen> {
+  int _rating = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +34,18 @@ class ReportScreen extends StatelessWidget {
       //
       double bytein = 0;
       double byteout = 0;
-      if ((vpnStatus.byteIn?.trim().isEmpty ?? false) ||
-          vpnStatus.byteIn == "0") {
+      if ((widget.vpnStatus.byteIn?.trim().isEmpty ?? false) ||
+          widget.vpnStatus.byteIn == "0") {
         bytein = 0;
       } else {
-        bytein = double.tryParse(vpnStatus.byteIn.toString()) ?? 0;
+        bytein = double.tryParse(widget.vpnStatus.byteIn.toString()) ?? 0;
       }
 
-      if ((vpnStatus.byteOut?.trim().isEmpty ?? false) ||
-          vpnStatus.byteIn == "0") {
+      if ((widget.vpnStatus.byteOut?.trim().isEmpty ?? false) ||
+          widget.vpnStatus.byteIn == "0") {
         byteout = 0;
       } else {
-        byteout = double.tryParse(vpnStatus.byteOut.toString()) ?? 0;
+        byteout = double.tryParse(widget.vpnStatus.byteOut.toString()) ?? 0;
       }
       return Scaffold(
         body: Stack(
@@ -47,33 +55,37 @@ class ReportScreen extends StatelessWidget {
               children: [
                 CustomAppBar(text: 'report'.tr),
                 Expanded(
-                  child: Padding(
+                  child: ListView(
                     padding: pagePadding,
-                    child: Column(
-                      children: [
-                        SizedBox(height: 32.sp),
-                        CircleAvatar(
+                    children: [
+                      SizedBox(height: 32.sp),
+                      Center(
+                        child: CircleAvatar(
                           radius: 30.sp,
                           backgroundColor: primaryColor,
-                          backgroundImage: vpnConfig.flag.contains("http")
-                              ? CachedNetworkImageProvider(vpnConfig.flag)
-                              : null,
-                          child: vpnConfig.flag.contains("http")
+                          backgroundImage:
+                              widget.vpnConfig.flag.contains("http")
+                                  ? CachedNetworkImageProvider(
+                                      widget.vpnConfig.flag)
+                                  : null,
+                          child: widget.vpnConfig.flag.contains("http")
                               ? null
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(32.sp),
                                   child: Image.asset(
-                                    "icons/flags/png/${vpnConfig.flag}.png",
+                                    "icons/flags/png/${widget.vpnConfig.flag}.png",
                                     package: "country_icons",
                                     width: 18.sp,
                                     height: 18.sp,
                                   ),
                                 ),
                         ),
-                        SizedBox(height: 50.sp),
-                        // Connection Time
-                        Text(
-                          vpnStatus.duration ?? "00:00:00",
+                      ),
+                      SizedBox(height: 50.sp),
+                      // Connection Time
+                      Center(
+                        child: Text(
+                          widget.vpnStatus.duration ?? "00:00:00",
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge
@@ -83,67 +95,80 @@ class ReportScreen extends StatelessWidget {
                                 color: primaryColor,
                               ),
                         ),
-                        SizedBox(height: 5.sp),
-                        // ip address,
-                        Text(
-                          vpnConfig.serverIp,
+                      ),
+                      SizedBox(height: 5.sp),
+                      // ip address,
+                      Center(
+                        child: Text(
+                          widget.vpnConfig.serverIp,
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
+                      ),
 
-                        SizedBox(height: 16.sp),
+                      SizedBox(height: 16.sp),
 
-                        // Speed,
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: SpeedWidget(
-                              title: 'download'.tr,
-                              icon: Iconsax.arrow_down,
-                              iconColor: Colors.blue,
-                              speed: "${formatBytes(bytein.floor(), 2)}/s",
-                            )),
-                            // divider,
-                            Container(
-                              width: 2,
-                              height: 30.sp,
-                              color: Theme.of(context).dividerColor,
-                            ),
-                            Expanded(
+                      // Speed,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
                               child: SpeedWidget(
-                                title: 'upload'.tr,
-                                icon: Iconsax.arrow_up_3,
-                                iconColor: Colors.purple,
-                                speed: "${formatBytes(byteout.floor(), 0)}/s",
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(height: 24.sp),
-                        ReportStatItem(
-                          icon: Iconsax.shield,
-                          title: "protocol".tr,
-                          value: vpnConfig.protocol?.toUpperCase() ?? "UDP",
-                        ),
-                        ReportStatItem(
-                          icon: Iconsax.wifi,
-                          title: "server".tr,
-                          value: vpnConfig.country,
-                        ),
-                        ReportStatItem(
-                          icon: Iconsax.calendar,
-                          title: "connected_on".tr,
-                          value: DateFormat("dd MMM yyyy hh:mm a")
-                              .format(vpnStatus.connectedOn ?? DateTime.now()),
-                        ),
-                        ReportStatItem(
-                          icon: Iconsax.clock,
-                          title: "conection_duration".tr,
-                          value:
-                              formatDuration(vpnStatus.duration ?? "00:00:00"),
-                        ),
-                      ],
-                    ),
+                            title: 'download'.tr,
+                            icon: Iconsax.arrow_down,
+                            iconColor: Colors.blue,
+                            speed: "${formatBytes(bytein.floor(), 2)}/s",
+                          )),
+                          // divider,
+                          Container(
+                            width: 2,
+                            height: 30.sp,
+                            color: Theme.of(context).dividerColor,
+                          ),
+                          Expanded(
+                            child: SpeedWidget(
+                              title: 'upload'.tr,
+                              icon: Iconsax.arrow_up_3,
+                              iconColor: Colors.purple,
+                              speed: "${formatBytes(byteout.floor(), 0)}/s",
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 24.sp),
+                      ReportStatItem(
+                        icon: Iconsax.shield,
+                        title: "protocol".tr,
+                        value:
+                            widget.vpnConfig.protocol?.toUpperCase() ?? "UDP",
+                      ),
+                      ReportStatItem(
+                        icon: Iconsax.wifi,
+                        title: "server".tr,
+                        value: widget.vpnConfig.country,
+                      ),
+                      ReportStatItem(
+                        icon: Iconsax.calendar,
+                        title: "connected_on".tr,
+                        value: DateFormat("dd MMM yyyy hh:mm a").format(
+                            widget.vpnStatus.connectedOn ?? DateTime.now()),
+                      ),
+                      ReportStatItem(
+                        icon: Iconsax.clock,
+                        title: "conection_duration".tr,
+                        value: formatDuration(
+                            widget.vpnStatus.duration ?? "00:00:00"),
+                      ),
+                      SizedBox(height: 32.sp),
+                      RatingWidget(
+                        rating: _rating,
+                        onRatingChanged: (rating) {
+                          setState(() {
+                            _rating = rating;
+                          });
+                        },
+                        onSubmitted: () {},
+                      ),
+                    ],
                   ),
                 ),
               ],

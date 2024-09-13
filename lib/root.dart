@@ -47,6 +47,7 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
     if (result == ConnectivityResult.none) {
       disconnected = true;
     }
+    await AdsController.find.getAdIds();
     _checkInternetConnection();
     WidgetsBinding.instance.addObserver(this);
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -116,7 +117,17 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
 
   Future loadAppOpenAd() async {
     openAdTimeout?.cancel();
-    return AdsController.find.loadOpenAd(openAdUnitID).then((value) {
+    final AdsController adsController = AdsController.find;
+    final String appOpenAdId = adsController.appOpenAdId;
+    bool isAdAvailable = adsController.isAdIdActive(appOpenAdId);
+    if (!isAdAvailable) {
+      _appOpenAd!.dispose();
+      _appOpenAd = null;
+      return null;
+    }
+    return AdsController.find
+        .loadOpenAd(AdsController.find.appOpenAdId)
+        .then((value) {
       if (value != null) {
         _appOpenAd = value;
         _appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(

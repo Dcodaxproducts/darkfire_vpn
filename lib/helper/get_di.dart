@@ -4,6 +4,7 @@ import 'package:darkfire_vpn/controllers/speed_test_controller.dart';
 import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:darkfire_vpn/controllers/time_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
+import 'package:darkfire_vpn/data/repository/ad_repo.dart';
 import 'package:darkfire_vpn/data/repository/server_repo.dart';
 import 'package:darkfire_vpn/data/repository/time_repo.dart';
 import 'package:darkfire_vpn/data/repository/vpn_repo.dart';
@@ -40,6 +41,7 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(
       () => ServerRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => VpnRepo(sharedPreferences: Get.find()));
+  Get.lazyPut(() => AdRepo(apiClient: Get.find()));
   Get.lazyPut(
       () => TimeRepo(sharedPreferences: Get.find(), workmanager: Get.find()));
 
@@ -50,7 +52,7 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => SplashController(splashRepo: Get.find()));
   Get.lazyPut(() => ServerController(serverRepo: Get.find()));
   Get.lazyPut(() => VpnController(vpnRepo: Get.find()));
-  Get.lazyPut(() => AdsController());
+  Get.lazyPut(() => AdsController(adRepo: Get.find()));
   Get.lazyPut(() => SubscriptionController());
   Get.lazyPut(() => TimeController(timeRepo: Get.find()));
   Get.lazyPut(() => SpeedTestController(speedTest: Get.find()));

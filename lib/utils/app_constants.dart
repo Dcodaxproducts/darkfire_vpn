@@ -33,7 +33,7 @@ class AppConstants {
   static const String BASE_URL = 'https://dvpn.dcodax.net/api/';
 
   // endpoints
-  static const String APP_SETTING = '/appsetting';
+  static const String GET_ADS = 'ad';
 
   // Shared Key
   static const String THEME = 'theme';
@@ -151,4 +151,17 @@ class AppConstants {
       'https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldo=0&ldt=privacynotice&ldl=en_GB';
   static const String termsAndConditionsUrl =
       'https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldl=en_GB&ldo=0&ldt=buyertos';
+
+  /* Privacy and terms Url's */
+  static const String appPrivacyPolicyUrl =
+      'https://dvpn.dcodax.net/privacy-policy';
+  static const String appTermsAndConditionsUrl =
+      'https://dvpn.dcodax.net/terms-condition';
+
+  /* Admob Ads */
+  static const String interstitialAdID =
+      "ca-app-pub-3940256099942544/1033173712";
+  static const String bannerAdID = "ca-app-pub-3940256099942544/6300978111";
+  static const String rewardAdId = "ca-app-pub-3940256099942544/5354046379";
+  static const String appOpenAdID = "ca-app-pub-3940256099942544/9257395921";
 }

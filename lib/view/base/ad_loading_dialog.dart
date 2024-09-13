@@ -21,6 +21,7 @@ class AdLoadingDialog extends StatefulWidget {
 }
 
 class _AdLoadingDialogState extends State<AdLoadingDialog> {
+  final AdsController _adsController = AdsController.find;
   @override
   void initState() {
     _showAd();
@@ -36,18 +37,31 @@ class _AdLoadingDialogState extends State<AdLoadingDialog> {
   }
 
   _showInterstitialAd() async {
+    final String interstitialAdId = _adsController.interstitialAdId;
+    bool isAdAvailable = _adsController.isAdIdActive(interstitialAdId);
+    // if ad is not available, then directly add time
+    if (!isAdAvailable) {
+      _addTime();
+      return;
+    }
     InterstitialAd? interstitialAd =
-        await AdsController.find.loadInterstitial(interstitialAdUnitID);
+        await _adsController.loadInterstitial(interstitialAdId);
     if (interstitialAd != null) {
       await interstitialAd.showIfNotPro();
     }
     _addTime();
-    pop();
   }
 
   _showRewardAd() async {
+    final String rewardVideAdId = _adsController.rewardVideAdId;
+    bool isAdAvailable = _adsController.isAdIdActive(rewardVideAdId);
+    // if ad is not available, then directly add time
+    if (!isAdAvailable) {
+      _addTime();
+      return;
+    }
     RewardedInterstitialAd? rewardedAd =
-        await AdsController.find.loadRewardAd(interstitialRewardAdUnitID);
+        await _adsController.loadRewardAd(rewardVideAdId);
     if (rewardedAd != null) {
       await rewardedAd.showIfNotPro();
       _addTime();

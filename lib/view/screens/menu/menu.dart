@@ -11,6 +11,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../../helper/vpn_helper.dart';
 import '../../../utils/app_constants.dart';
+import '../../base/appVersion_widget.dart';
 import '../../base/updateNotAvailableDialog.dart';
 import '../speed_test/speed_test.dart';
 
@@ -66,13 +67,7 @@ class MenuScreen extends StatelessWidget {
             onTap: () => launchScreen(const AboutScreen()),
           ),
           SizedBox(height: 32.sp),
-          Text(
-            '${'version'.tr} ${AppConstants.APP_VERSION}',
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall
-                ?.copyWith(color: Theme.of(context).hintColor),
-          ),
+          const AppVersionWidget(),
         ],
       ),
     );

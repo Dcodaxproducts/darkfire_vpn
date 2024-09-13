@@ -7,8 +7,10 @@ import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:darkfire_vpn/utils/images.dart';
 import 'package:darkfire_vpn/utils/style.dart';
 import 'package:darkfire_vpn/view/base/map_background.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
@@ -66,23 +68,29 @@ class IntroScreen extends StatelessWidget {
                   TextSpan(
                     text: 'By continuing, you agree to our ',
                     style: Theme.of(context).textTheme.bodySmall,
-                    children: const [
+                    children: [
                       TextSpan(
                         text: 'privacy policy',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: primaryColor,
                           decoration: TextDecoration.underline,
                           decorationColor: primaryColor,
                         ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () =>
+                              launchUrlString(AppConstants.appPrivacyPolicyUrl),
                       ),
-                      TextSpan(text: ' and '),
+                      const TextSpan(text: ' and '),
                       TextSpan(
                         text: 'Terms & Conditions',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: primaryColor,
                           decoration: TextDecoration.underline,
                           decorationColor: primaryColor,
                         ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => launchUrlString(
+                              AppConstants.appTermsAndConditionsUrl),
                       ),
                     ],
                   ),

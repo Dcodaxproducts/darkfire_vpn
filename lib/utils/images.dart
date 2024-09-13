@@ -6,4 +6,7 @@ class Images {
   static const String map = 'assets/images/background_world.png';
   static const String flag = 'assets/flags/';
   static const String noInternet = 'assets/images/no_connection.png';
+
+  /* emojis */
+  static const String emojiPath = 'assets/animations';
 }

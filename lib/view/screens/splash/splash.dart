@@ -22,6 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _splashController.initSharedData();
+    _splashController.getPackageInfo();
   }
 
   @override
