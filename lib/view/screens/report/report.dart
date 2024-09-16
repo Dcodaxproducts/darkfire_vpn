@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:darkfire_vpn/controllers/review_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/data/model/body/vpn_config.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:darkfire_vpn/view/base/appBar.dart';
 import 'package:darkfire_vpn/view/base/speed_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -26,7 +28,13 @@ class ReportScreen extends StatefulWidget {
 }
 
 class _ReportScreenState extends State<ReportScreen> {
-  int _rating = 0;
+  @override
+  void initState() {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      ReviewController.find.checkReviewed();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,15 +167,12 @@ class _ReportScreenState extends State<ReportScreen> {
                             widget.vpnStatus.duration ?? "00:00:00"),
                       ),
                       SizedBox(height: 32.sp),
-                      RatingWidget(
-                        rating: _rating,
-                        onRatingChanged: (rating) {
-                          setState(() {
-                            _rating = rating;
-                          });
-                        },
-                        onSubmitted: () {},
-                      ),
+                      GetBuilder<ReviewController>(builder: (con) {
+                        return Visibility(
+                          visible: con.isReviewed == false,
+                          child: const RatingWidget(),
+                        );
+                      }),
                     ],
                   ),
                 ),

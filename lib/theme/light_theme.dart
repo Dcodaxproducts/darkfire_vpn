@@ -22,52 +22,19 @@ ThemeData light({Color color = primaryColor}) => ThemeData(
               error: const Color(0xFFdd3135), outline: const Color(0xFFF4F4F4)),
       textTheme: GoogleFonts.poppinsTextTheme(
         TextTheme(
-          displayLarge: TextStyle(
-            fontSize: 30.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
-          displayMedium: TextStyle(
-            fontSize: 24.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
-          displaySmall: TextStyle(
-            fontSize: 20.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
-          headlineMedium: TextStyle(
-            fontSize: 18.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
-          bodyLarge: TextStyle(
-            fontSize: 16.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 14.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
-          bodySmall: TextStyle(
-            fontSize: 12.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
-          titleMedium: TextStyle(
-            fontSize: 10.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
-          titleSmall: TextStyle(
-            fontSize: 8.sp,
-            color: Colors.black,
-            fontFamily: 'Poppins',
-          ),
+          displayLarge: TextStyle(fontSize: 30.sp),
+          displayMedium: TextStyle(fontSize: 24.sp),
+          displaySmall: TextStyle(fontSize: 20.sp),
+          headlineMedium: TextStyle(fontSize: 18.sp),
+          bodyLarge: TextStyle(fontSize: 16.sp),
+          bodyMedium: TextStyle(fontSize: 14.sp),
+          bodySmall: TextStyle(fontSize: 12.sp),
+          titleMedium: TextStyle(fontSize: 10.sp),
+          titleSmall: TextStyle(fontSize: 8.sp),
         ),
+      ).apply(
+        displayColor: Colors.black,
+        bodyColor: Colors.black,
       ),
 
       appBarTheme: AppBarTheme(

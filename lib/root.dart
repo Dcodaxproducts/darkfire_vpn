@@ -47,6 +47,7 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
     if (result == ConnectivityResult.none) {
       disconnected = true;
     }
+    AdsController.find.initialize();
     await AdsController.find.getAdIds();
     _checkInternetConnection();
     WidgetsBinding.instance.addObserver(this);

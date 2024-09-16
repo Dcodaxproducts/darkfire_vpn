@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:darkfire_vpn/controllers/ads_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:flutter/material.dart';
@@ -161,7 +160,6 @@ class _ConnectionButtonState extends State<ConnectionButton> {
     }
     InterstitialAd? interstitialAd =
         await adsController.loadInterstitial(interstitialAdId);
-    log((interstitialAd == null).toString());
     if (interstitialAd != null) {
       await interstitialAd.showIfNotPro();
     }

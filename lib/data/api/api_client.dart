@@ -68,6 +68,34 @@ class ApiClient extends GetxService {
     }
   }
 
+  Future<http.Response?> postData(String uri, Map<String, dynamic> body,
+      {Map<String, String>? headers, bool dismis = true}) async {
+    try {
+      final String url = AppConstants.BASE_URL + uri;
+      debugPrint('====> API Call: $url\nHeader: $_mainHeaders\nBody: $body');
+      http.Response response = await http
+          .post(Uri.parse(url),
+              headers: headers ?? _mainHeaders, body: jsonEncode(body))
+          .timeout(Duration(seconds: timeoutInSeconds));
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        if (dismis) {
+          dismiss();
+        }
+        return response;
+      } else {
+        if (kDebugMode) {
+          log('Response: ${response.body}');
+        }
+        return handleError(response.body, response.statusCode);
+      }
+    } catch (e) {
+      dismiss();
+      socketException(e, AppConstants.BASE_URL + uri);
+      return null;
+    }
+  }
+
   handleError(String body, int statusCode) {
     String message = '';
     try {

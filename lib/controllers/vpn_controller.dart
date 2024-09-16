@@ -119,12 +119,13 @@ class VpnController extends GetxController implements GetxService {
   }
 
   ///Select server from list
-  Future<void> selectServer(VpnConfig config) async {
+  Future<void> selectServer(VpnConfig config, {Function()? callback}) async {
     return ServerController.find.getServerDetails(config.slug).then((value) {
       if (value != null) {
         pop();
         vpnConfig = value;
         update();
+        callback?.call();
       }
     });
   }

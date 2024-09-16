@@ -17,10 +17,14 @@ class AppConstants {
   ///Customize your adRequest here
   static AdRequest get adRequest => const AdRequest(httpTimeoutMillis: 6000);
 
+  // package name
+  static const String androidPackageName = "speed.vpn.unblock.proxy.master.pro";
+  static const String iOSPackageName = "speed.vpn.unblock.proxy.master.pro";
+
 // iOS setup
   static const String providerBundleIdentifier =
-      "app.darkfire.vpn.VPNExtension"; //Before it was VpnExtensionIdentifier
-  static const String groupIdentifier = "group.app.darkfire.vpn";
+      "$iOSPackageName.VPNExtension"; //Before it was VpnExtensionIdentifier
+  static const String groupIdentifier = "group.$iOSPackageName";
   static const String iosAppID = "1234567890";
   static const String localizationDescription = "Speed VPN - Proxy VPN Master";
 
@@ -34,6 +38,7 @@ class AppConstants {
 
   // endpoints
   static const String GET_ADS = 'ad';
+  static const String REVIEW = 'review/store';
 
   // Shared Key
   static const String THEME = 'theme';
@@ -43,6 +48,7 @@ class AppConstants {
   static const String LOCALIZATION_KEY = 'X-localization';
   static const String ON_BOARDING_SKIP = 'on_boarding_skip';
   static const String VPN_DISCONNECT_TASK = 'vpn_disconnection_task';
+  static const String REVIEWED = 'reviewed';
 
   // Language
   static List<LanguageModel> languages = [
@@ -159,9 +165,9 @@ class AppConstants {
       'https://dvpn.dcodax.net/terms-condition';
 
   /* Admob Ads */
+  static const String appOpenAdID = "ca-app-pub-7125457258157666/8482870188";
   static const String interstitialAdID =
-      "ca-app-pub-3940256099942544/1033173712";
+      "ca-app-pub-7125457258157666/8543975164";
+  static const String rewardAdId = "ca-app-pub-7125457258157666/5059464648";
   static const String bannerAdID = "ca-app-pub-3940256099942544/6300978111";
-  static const String rewardAdId = "ca-app-pub-3940256099942544/5354046379";
-  static const String appOpenAdID = "ca-app-pub-3940256099942544/9257395921";
 }

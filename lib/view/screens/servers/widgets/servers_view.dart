@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/data/model/body/vpn_config.dart';
+import 'package:darkfire_vpn/helper/vpn_helper.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:darkfire_vpn/utils/style.dart';
 import 'package:darkfire_vpn/view/base/action_sheet.dart';
@@ -11,7 +12,11 @@ import 'package:dart_ping/dart_ping.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:openvpn_flutter/openvpn_flutter.dart';
+
+import '../../../../controllers/ads_controller.dart';
 
 class ServersView extends StatelessWidget {
   final List<VpnConfig> servers;
@@ -39,7 +44,10 @@ class ServersView extends StatelessWidget {
                         pop();
                         VpnController.find.disconnect((status, config) {
                           Future.delayed(const Duration(milliseconds: 500), () {
-                            VpnController.find.selectServer(server);
+                            VpnController.find.selectServer(
+                              server,
+                              callback: _connectButtonClick,
+                            );
                           });
                         });
                       },
@@ -58,6 +66,34 @@ class ServersView extends StatelessWidget {
         : Center(
             child: Text('no_servers_available'.tr),
           );
+  }
+
+  void _connectButtonClick() {
+    var vpnProvider = VpnController.find;
+    if (vpnProvider.vpnStage?.toLowerCase() !=
+        VPNStage.disconnected.name.toLowerCase()) {
+      vpnProvider.disconnect((vpnStatus, vpnConfig) {});
+      if (vpnProvider.isConnected) {
+        _showInterstitialAd();
+      }
+    } else {
+      vpnProvider.connect();
+      _showInterstitialAd();
+    }
+  }
+
+  Future<void> _showInterstitialAd() async {
+    final AdsController adsController = AdsController.find;
+    final String interstitialAdId = adsController.interstitialAdId;
+    bool isAdAvailable = adsController.isAdIdActive(interstitialAdId);
+    if (!isAdAvailable) {
+      return;
+    }
+    InterstitialAd? interstitialAd =
+        await adsController.loadInterstitial(interstitialAdId);
+    if (interstitialAd != null) {
+      await interstitialAd.showIfNotPro();
+    }
   }
 }
 

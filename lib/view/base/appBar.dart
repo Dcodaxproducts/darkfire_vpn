@@ -1,14 +1,13 @@
-import 'dart:developer';
-
 import 'package:darkfire_vpn/common/navigation.dart';
-import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import '../../utils/app_constants.dart';
 import '../screens/menu/menu.dart';
-import '../screens/subscription/subscription.dart';
+// import '../screens/subscription/subscription.dart';
+// import 'package:get/get.dart';
+// import 'package:lottie/lottie.dart';
+// import 'package:darkfire_vpn/controllers/subscription_controller.dart';
+// import 'dart:developer';
 
 class CustomAppBar extends StatelessWidget {
   final bool home;
@@ -47,23 +46,23 @@ class CustomAppBar extends StatelessWidget {
               ),
             ),
             ...actions,
-            if (!premium)
-              IconButton(
-                padding: EdgeInsets.zero,
-                onPressed: () {
-                  log(Get.currentRoute.toString());
-                  launchScreen(const SubscriptionScreen());
-                },
-                icon: GetBuilder<SubscriptionController>(
-                  builder: (value) => Hero(
-                    tag: 'crown',
-                    child: LottieBuilder.asset(
-                      "assets/animations/crown_pro.json",
-                      width: 42.sp,
-                    ),
-                  ),
-                ),
-              )
+            // if (!premium)
+            //   IconButton(
+            //     padding: EdgeInsets.zero,
+            //     onPressed: () {
+            //       log(Get.currentRoute.toString());
+            //       launchScreen(const SubscriptionScreen());
+            //     },
+            //     icon: GetBuilder<SubscriptionController>(
+            //       builder: (value) => Hero(
+            //         tag: 'crown',
+            //         child: LottieBuilder.asset(
+            //           "assets/animations/crown_pro.json",
+            //           width: 42.sp,
+            //         ),
+            //       ),
+            //     ),
+            //   )
           ],
         ),
       ),

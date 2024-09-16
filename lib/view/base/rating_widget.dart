@@ -1,3 +1,5 @@
+import 'package:darkfire_vpn/common/snackbar.dart';
+import 'package:darkfire_vpn/controllers/review_controller.dart';
 import 'package:darkfire_vpn/utils/images.dart';
 import 'package:darkfire_vpn/utils/style.dart';
 import 'package:flutter/material.dart';
@@ -7,29 +9,31 @@ import 'package:lottie/lottie.dart';
 import '../../common/primary_button.dart';
 
 class RatingWidget extends StatefulWidget {
-  final int rating;
-  final Function(int) onRatingChanged;
-  final Function() onSubmitted;
-  const RatingWidget(
-      {required this.rating,
-      required this.onRatingChanged,
-      required this.onSubmitted,
-      super.key});
+  const RatingWidget({super.key});
 
   @override
   State<RatingWidget> createState() => _RatingWidgetState();
 }
 
 class _RatingWidgetState extends State<RatingWidget> {
+  int rating = 0;
   final _review = TextEditingController();
+
+  void onRatingChanged(int value) {
+    setState(() {
+      rating = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Wrap(
           children: [
             LottieBuilder.asset(
-              "${Images.emojiPath}/${widget.rating}.json",
+              "${Images.emojiPath}/$rating.json",
               width: 50.sp,
               height: 50.sp,
               fit: BoxFit.cover,
@@ -38,7 +42,7 @@ class _RatingWidgetState extends State<RatingWidget> {
         ),
         SizedBox(height: 16.sp),
         Text(
-          titles[widget.rating],
+          titles[rating].tr,
           style: Theme.of(context)
               .textTheme
               .bodyMedium
@@ -52,16 +56,16 @@ class _RatingWidgetState extends State<RatingWidget> {
           children: [
             for (int i = 1; i <= 5; i++)
               GestureDetector(
-                onTap: () => widget.onRatingChanged(i),
+                onTap: () => onRatingChanged(i),
                 child: Icon(
                   Icons.star_rounded,
-                  color: i <= widget.rating ? Colors.orange : Colors.grey,
+                  color: i <= rating ? Colors.orange : Colors.grey,
                   size: 34.sp,
                 ),
               ),
           ],
         ),
-        if (widget.rating <= 3 && widget.rating > 0)
+        if (rating <= 3 && rating > 0)
           Column(
             children: [
               SizedBox(height: 16.sp),
@@ -91,20 +95,34 @@ class _RatingWidgetState extends State<RatingWidget> {
           width: 300.sp,
           child: PrimaryButton(
             text: 'submit'.tr,
-            onPressed: widget.onSubmitted,
+            onPressed: _submitReview,
           ),
         ),
       ],
     );
   }
 
+  _submitReview() {
+    if (rating > 3) {
+      ReviewController.find.launchStore();
+      return;
+    }
+    if (_review.text.isNotEmpty) {
+      ReviewController.find
+          .saveReview(rating, _review.text.trim())
+          .then((value) => Get.back());
+    } else {
+      showToast('please_write_your_review'.tr);
+    }
+  }
+
   // titles for selected rating (0-5)
   List<String> get titles => [
-        "Please rate our application",
-        "Thank you , I will Continue to work hard",
-        "Thank you , I will Continue to work hard",
-        "Thank you , I will Continue to work hard",
-        "Thank you , I will Continue to work hard",
-        "Wow , Thank you so much",
+        "please_rate_our_application",
+        "thank_you_i_will_continue_to_work_hard",
+        "thank_you_i_will_continue_to_work_hard",
+        "thank_you_i_will_continue_to_work_hard",
+        "thank_you_i_will_continue_to_work_hard",
+        "wow_thank_you_so_much",
       ];
 }

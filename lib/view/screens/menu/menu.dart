@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/theme_controller.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
+import 'package:darkfire_vpn/view/base/rating_widget.dart';
 import 'package:darkfire_vpn/view/screens/about/about.dart';
 import 'package:darkfire_vpn/view/screens/language/language.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +12,19 @@ import 'package:iconsax/iconsax.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../../helper/vpn_helper.dart';
 import '../../../utils/app_constants.dart';
+import '../../../utils/style.dart';
 import '../../base/appVersion_widget.dart';
 import '../../base/updateNotAvailableDialog.dart';
 import '../speed_test/speed_test.dart';
 
-class MenuScreen extends StatelessWidget {
+class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
+  @override
+  State<MenuScreen> createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,17 +61,37 @@ class MenuScreen extends StatelessWidget {
           MenuTile(
             text: 'privacy_policy',
             icon: Iconsax.shield_tick,
-            onTap: () {},
+            onTap: () => launchUrlString(AppConstants.appPrivacyPolicyUrl),
           ),
           MenuTile(
             text: 'terms_of_service',
             icon: Iconsax.document,
-            onTap: () {},
+            onTap: () => launchUrlString(AppConstants.appTermsAndConditionsUrl),
           ),
           MenuTile(
             text: 'about',
             icon: Iconsax.info_circle,
             onTap: () => launchScreen(const AboutScreen()),
+          ),
+          MenuTile(
+            text: 'rate_us',
+            icon: Iconsax.star,
+            onTap: () => Get.dialog(
+              Dialog(
+                insetPadding: EdgeInsets.symmetric(horizontal: 30.sp),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(defaultRadius),
+                ),
+                child: Container(
+                  padding: pagePadding,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    borderRadius: BorderRadius.circular(defaultRadius),
+                  ),
+                  child: const RatingWidget(),
+                ),
+              ),
+            ),
           ),
           SizedBox(height: 32.sp),
           const AppVersionWidget(),
