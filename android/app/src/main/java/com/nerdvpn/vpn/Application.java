@@ -1,4 +1,4 @@
-package com.nerdvpn.vpn;
+package speed.vpn.unblock.proxy.master.pro;
 
 import android.content.Context;
 

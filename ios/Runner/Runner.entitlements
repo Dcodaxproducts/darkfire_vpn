@@ -8,7 +8,8 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.dcodax.vpn.demo</string>
+		<string>group.speed.vpn.unblock.proxy.master.pro</string>
+		<string>group.speed.vpn.unblock.proxy.master.pro.VPNExension</string>
 	</array>
 </dict>
 </plist>

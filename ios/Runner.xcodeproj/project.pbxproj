@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04408954B4E47A4A86FBA578 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8013D7E1C950CDCAC7476424 /* Pods_Runner.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		41195515294B60E6003422D8 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41195514294B60E6003422D8 /* NetworkExtension.framework */; };
 		41195518294B60E6003422D8 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41195517294B60E6003422D8 /* PacketTunnelProvider.swift */; };
 		4119551D294B60E6003422D8 /* VPNExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 41195512294B60E6003422D8 /* VPNExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		414B7A38294B750F00C5E2A0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414B7A37294B750F00C5E2A0 /* StoreKit.framework */; };
-		6293E990FD9939B9169B3285 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 687952C5E61DEE9B6E89C440 /* GoogleService-Info.plist */; };
-		65CD552B96105C6FB764116E /* Pods_VPNExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCF638BB640DEED26F25BC1 /* Pods_VPNExtension.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		9EAA16FE09ADBA5FB78BD2D8 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67158C1D44A6D9D15B1DA39E /* Pods_Runner.framework */; };
+		DC182D5C2D70CA9FE031BF69 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 3803137DCC9A01C5EEEE67A5 /* GoogleService-Info.plist */; };
+		FEEED8F3C7DB123156F5D12C /* Pods_VPNExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E63A07CFAF7136BA14316DA /* Pods_VPNExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,10 @@
 /* Begin PBXFileReference section */
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		368AEA76B92D381D71169476 /* Pods-VPNExtension.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNExtension.profile.xcconfig"; path = "Target Support Files/Pods-VPNExtension/Pods-VPNExtension.profile.xcconfig"; sourceTree = "<group>"; };
+		15F85068198B1265F9AF587D /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		28BF15CA3CB5E0AF881BB5F0 /* Pods-VPNExtension.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNExtension.profile.xcconfig"; path = "Target Support Files/Pods-VPNExtension/Pods-VPNExtension.profile.xcconfig"; sourceTree = "<group>"; };
+		3803137DCC9A01C5EEEE67A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39818248AC90F0DB85FDB35C /* Pods-VPNExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNExtension.release.xcconfig"; path = "Target Support Files/Pods-VPNExtension/Pods-VPNExtension.release.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		41195512294B60E6003422D8 /* VPNExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VPNExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		41195514294B60E6003422D8 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -68,13 +71,13 @@
 		4119551A294B60E6003422D8 /* VPNExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNExtension.entitlements; sourceTree = "<group>"; };
 		41195523294B62F2003422D8 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		414B7A37294B750F00C5E2A0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		687952C5E61DEE9B6E89C440 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5E63A07CFAF7136BA14316DA /* Pods_VPNExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67158C1D44A6D9D15B1DA39E /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		717C8FBEE8EE626A71BC1A5F /* Pods-VPNExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNExtension.debug.xcconfig"; path = "Target Support Files/Pods-VPNExtension/Pods-VPNExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76F2663A6C81DC87AF58DDFA /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		78CEEDDECDE42B5D2470B046 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
-		8013D7E1C950CDCAC7476424 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DB2417153C10CE3ACFD435F /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,10 +85,7 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC8D0120A318B45BBD312DD0 /* Pods-VPNExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNExtension.release.xcconfig"; path = "Target Support Files/Pods-VPNExtension/Pods-VPNExtension.release.xcconfig"; sourceTree = "<group>"; };
-		D9A158D5D090AD14CC7613B1 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
-		ED5FA189B2AB40FFD1C15AE5 /* Pods-VPNExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNExtension.debug.xcconfig"; path = "Target Support Files/Pods-VPNExtension/Pods-VPNExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		EFCF638BB640DEED26F25BC1 /* Pods_VPNExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0E508807B53DF26D998C12F /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41195515294B60E6003422D8 /* NetworkExtension.framework in Frameworks */,
-				65CD552B96105C6FB764116E /* Pods_VPNExtension.framework in Frameworks */,
+				FEEED8F3C7DB123156F5D12C /* Pods_VPNExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				414B7A38294B750F00C5E2A0 /* StoreKit.framework in Frameworks */,
-				04408954B4E47A4A86FBA578 /* Pods_Runner.framework in Frameworks */,
+				9EAA16FE09ADBA5FB78BD2D8 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,8 +115,8 @@
 			children = (
 				414B7A37294B750F00C5E2A0 /* StoreKit.framework */,
 				41195514294B60E6003422D8 /* NetworkExtension.framework */,
-				8013D7E1C950CDCAC7476424 /* Pods_Runner.framework */,
-				EFCF638BB640DEED26F25BC1 /* Pods_VPNExtension.framework */,
+				67158C1D44A6D9D15B1DA39E /* Pods_Runner.framework */,
+				5E63A07CFAF7136BA14316DA /* Pods_VPNExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,12 +134,12 @@
 		78781CE52A30C494E78E089A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D9A158D5D090AD14CC7613B1 /* Pods-Runner.debug.xcconfig */,
-				8DB2417153C10CE3ACFD435F /* Pods-Runner.release.xcconfig */,
-				76F2663A6C81DC87AF58DDFA /* Pods-Runner.profile.xcconfig */,
-				ED5FA189B2AB40FFD1C15AE5 /* Pods-VPNExtension.debug.xcconfig */,
-				CC8D0120A318B45BBD312DD0 /* Pods-VPNExtension.release.xcconfig */,
-				368AEA76B92D381D71169476 /* Pods-VPNExtension.profile.xcconfig */,
+				15F85068198B1265F9AF587D /* Pods-Runner.debug.xcconfig */,
+				F0E508807B53DF26D998C12F /* Pods-Runner.release.xcconfig */,
+				78CEEDDECDE42B5D2470B046 /* Pods-Runner.profile.xcconfig */,
+				717C8FBEE8EE626A71BC1A5F /* Pods-VPNExtension.debug.xcconfig */,
+				39818248AC90F0DB85FDB35C /* Pods-VPNExtension.release.xcconfig */,
+				28BF15CA3CB5E0AF881BB5F0 /* Pods-VPNExtension.profile.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -164,7 +164,7 @@
 				41195513294B60E6003422D8 /* Frameworks */,
 				97C146EF1CF9000F007C117D /* Products */,
 				78781CE52A30C494E78E089A /* Pods */,
-				687952C5E61DEE9B6E89C440 /* GoogleService-Info.plist */,
+				3803137DCC9A01C5EEEE67A5 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,7 +200,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4119551E294B60E6003422D8 /* Build configuration list for PBXNativeTarget "VPNExtension" */;
 			buildPhases = (
-				203C3967BAF0FB976CC0B3DA /* [CP] Check Pods Manifest.lock */,
+				940660D7240E8CA378B4869D /* [CP] Check Pods Manifest.lock */,
 				4119550E294B60E6003422D8 /* Sources */,
 				4119550F294B60E6003422D8 /* Frameworks */,
 				41195510294B60E6003422D8 /* Resources */,
@@ -218,17 +218,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
-				2020A80D00652C8E780AC63A /* [CP] Check Pods Manifest.lock */,
+				5D097F1CE094F834888E7A30 /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
-				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				41195522294B60E6003422D8 /* Embed Foundation Extensions */,
+				9705A1C41CF9048500538489 /* Embed Frameworks */,
+				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				9E616661CD751F3237472DF3 /* [firebase_crashlytics] Crashlytics Upload Symbols */,
-				A686F49372B19508745E2495 /* FlutterFire: "flutterfire upload-crashlytics-symbols" */,
-				0F751CD4ADE0F4524B7DD301 /* [CP] Embed Pods Frameworks */,
-				97E134857D179800ACE6EF57 /* [CP] Copy Pods Resources */,
+				20C3E81570C40A0BB0E04386 /* [CP] Embed Pods Frameworks */,
+				4CE69BBE3F9F6F4B857A0427 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,7 +247,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					41195511294B60E6003422D8 = {
@@ -294,14 +294,13 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
-				6293E990FD9939B9169B3285 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F751CD4ADE0F4524B7DD301 /* [CP] Embed Pods Frameworks */ = {
+		20C3E81570C40A0BB0E04386 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,7 +317,40 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2020A80D00652C8E780AC63A /* [CP] Check Pods Manifest.lock */ = {
+		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}",
+			);
+			name = "Thin Binary";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin\n";
+		};
+		4CE69BBE3F9F6F4B857A0427 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D097F1CE094F834888E7A30 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,7 +372,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		203C3967BAF0FB976CC0B3DA /* [CP] Check Pods Manifest.lock */ = {
+		940660D7240E8CA378B4869D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -377,23 +409,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
-		97E134857D179800ACE6EF57 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9E616661CD751F3237472DF3 /* [firebase_crashlytics] Crashlytics Upload Symbols */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,24 +429,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/FirebaseCrashlytics/upload-symbols\" --flutter-project \"$PROJECT_DIR/firebase_app_id_file.json\" ";
 		};
-		A686F49372B19508745E2495 /* FlutterFire: "flutterfire upload-crashlytics-symbols" */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "FlutterFire: \"flutterfire upload-crashlytics-symbols\"";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\n#!/bin/bash\nPATH=${PATH}:$FLUTTER_ROOT/bin:$HOME/.pub-cache/bin\nflutterfire upload-crashlytics-symbols --upload-symbols-script-path=$PODS_ROOT/FirebaseCrashlytics/upload-symbols --platform=ios --apple-project-path=${SRCROOT} --env-platform-name=${PLATFORM_NAME} --env-configuration=${CONFIGURATION} --env-project-dir=${PROJECT_DIR} --env-built-products-dir=${BUILT_PRODUCTS_DIR} --env-dwarf-dsym-folder-path=${DWARF_DSYM_FOLDER_PATH} --env-dwarf-dsym-file-name=${DWARF_DSYM_FILE_NAME} --env-infoplist-path=${INFOPLIST_PATH} --default-config=default\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -449,6 +446,7 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				DC182D5C2D70CA9FE031BF69 /* GoogleService-Info.plist in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +545,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DarkFire VPN";
+				INFOPLIST_KEY_CFBundleDisplayName = "Speed VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -555,7 +553,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dcodax.vpn.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = speed.vpn.unblock.proxy.master.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -566,7 +564,7 @@
 		};
 		4119551F294B60E6003422D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED5FA189B2AB40FFD1C15AE5 /* Pods-VPNExtension.debug.xcconfig */;
+			baseConfigurationReference = 717C8FBEE8EE626A71BC1A5F /* Pods-VPNExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -592,7 +590,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dcodax.vpn.demo.VPNExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = speed.vpn.unblock.proxy.master.pro.VPNExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -605,7 +603,7 @@
 		};
 		41195520294B60E6003422D8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC8D0120A318B45BBD312DD0 /* Pods-VPNExtension.release.xcconfig */;
+			baseConfigurationReference = 39818248AC90F0DB85FDB35C /* Pods-VPNExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -630,7 +628,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dcodax.vpn.demo.VPNExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = speed.vpn.unblock.proxy.master.pro.VPNExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -641,7 +639,7 @@
 		};
 		41195521294B60E6003422D8 /* Profile */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 368AEA76B92D381D71169476 /* Pods-VPNExtension.profile.xcconfig */;
+			baseConfigurationReference = 28BF15CA3CB5E0AF881BB5F0 /* Pods-VPNExtension.profile.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -666,7 +664,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dcodax.vpn.demo.VPNExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = speed.vpn.unblock.proxy.master.pro.VPNExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -797,7 +795,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DarkFire VPN";
+				INFOPLIST_KEY_CFBundleDisplayName = "Speed VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -805,7 +803,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dcodax.vpn.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = speed.vpn.unblock.proxy.master.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -830,7 +828,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DarkFire VPN";
+				INFOPLIST_KEY_CFBundleDisplayName = "Speed VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -838,7 +836,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dcodax.vpn.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = speed.vpn.unblock.proxy.master.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";

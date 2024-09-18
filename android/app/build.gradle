@@ -47,7 +47,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.nerdvpn.vpn"  
+        applicationId "speed.vpn.unblock.proxy.master.pro"  
         minSdkVersion 24
         targetSdkVersion 34
         multiDexEnabled true

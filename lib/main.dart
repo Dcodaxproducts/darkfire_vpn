@@ -15,7 +15,6 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'common/loading.dart';
 import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
-import 'firebase_options.dart';
 import 'helper/get_di.dart' as di;
 import 'helper/notification_helper.dart';
 import 'theme/dark_theme.dart';
@@ -28,7 +27,7 @@ void main() async {
   // disable landscape mode
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   // initialize firebase
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp();
   // initialize localization
   Map<String, Map<String, String>> languages = await di.init();
   // request permission for firebase messaging

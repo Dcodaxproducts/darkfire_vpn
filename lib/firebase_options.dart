@@ -60,9 +60,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '587019374349',
     projectId: 'dcodaxfood',
     storageBucket: 'dcodaxfood.appspot.com',
-    androidClientId: '587019374349-adilp5v6g6apv67ikg1chji1jptrs0vi.apps.googleusercontent.com',
-    iosClientId: '587019374349-2rv4ln2d2h1o5vbeqnfsagc9f7l6ur7u.apps.googleusercontent.com',
+    androidClientId:
+        '587019374349-adilp5v6g6apv67ikg1chji1jptrs0vi.apps.googleusercontent.com',
+    iosClientId:
+        '587019374349-2rv4ln2d2h1o5vbeqnfsagc9f7l6ur7u.apps.googleusercontent.com',
     iosBundleId: 'com.dcodax.vpn.demo',
   );
-
 }

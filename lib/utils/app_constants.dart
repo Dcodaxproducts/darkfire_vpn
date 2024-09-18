@@ -34,7 +34,8 @@ class AppConstants {
 
   /* Non Customizable */
 
-  static const String BASE_URL = 'https://dvpn.dcodax.net/api/';
+  static const String BASE_URL = 'https://vpn.feastflow.co/api/';
+  static const String API_URL = 'https://vpn.feastflow.co';
 
   // endpoints
   static const String GET_ADS = 'ad';
@@ -159,10 +160,8 @@ class AppConstants {
       'https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldl=en_GB&ldo=0&ldt=buyertos';
 
   /* Privacy and terms Url's */
-  static const String appPrivacyPolicyUrl =
-      'https://dvpn.dcodax.net/privacy-policy';
-  static const String appTermsAndConditionsUrl =
-      'https://dvpn.dcodax.net/terms-condition';
+  static const String appPrivacyPolicyUrl = '$API_URL/privacy-policy';
+  static const String appTermsAndConditionsUrl = '$API_URL/terms-condition';
 
   /* Admob Ads */
   static const String appOpenAdID = "ca-app-pub-7125457258157666/8482870188";
