@@ -4,6 +4,7 @@ import 'package:darkfire_vpn/controllers/splash_controller.dart';
 import 'package:darkfire_vpn/helper/background_task_helper.dart';
 import 'package:darkfire_vpn/root.dart';
 import 'package:darkfire_vpn/view/screens/intro/intro.dart';
+import 'package:dart_ping_ios/dart_ping_ios.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,8 @@ void main() async {
       testDeviceIds: ['2C763B79EE7A7041EB0127582951F46B']));
   // work manager initialize
   appCloseDisconnectVPN();
+  // register ping
+  DartPingIOS.register();
   // run app
   runApp(MyApp(languages: languages));
 }

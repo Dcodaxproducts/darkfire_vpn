@@ -2,24 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
-		<key>CLIENT_ID</key>
-		<string>713213142324-gppa38grfq5p2e7egrgqes8jg9ogr2cp.apps.googleusercontent.com</string>
-		<key>REVERSED_CLIENT_ID</key>
-		<string>com.googleusercontent.apps.713213142324-gppa38grfq5p2e7egrgqes8jg9ogr2cp</string>
-		<key>ANDROID_CLIENT_ID</key>
-		<string>713213142324-lk4ck18rtb6g2gpemhopnhthp4sumc5a.apps.googleusercontent.com</string>
 		<key>API_KEY</key>
-		<string>AIzaSyAKUfv0Y54nWYbj1SF6bOD5Rde9W-EA8pI</string>
+		<string>AIzaSyCB1P3ykdAhRMo2fRUFRUgbTLg7MEkKshY</string>
 		<key>GCM_SENDER_ID</key>
-		<string>713213142324</string>
+		<string>976643076587</string>
 		<key>PLIST_VERSION</key>
 		<string>1</string>
 		<key>BUNDLE_ID</key>
-		<string>speed.vpn.unblock.proxy.master.pro.app</string>
+		<string>speed.vpn.unblock.proxy.master.pro</string>
 		<key>PROJECT_ID</key>
-		<string>robo-vpn</string>
+		<string>speed-vpn-b478a</string>
 		<key>STORAGE_BUCKET</key>
-		<string>robo-vpn.appspot.com</string>
+		<string>speed-vpn-b478a.appspot.com</string>
 		<key>IS_ADS_ENABLED</key>
 		<false></false>
 		<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +25,6 @@
 		<key>IS_SIGNIN_ENABLED</key>
 		<true></true>
 		<key>GOOGLE_APP_ID</key>
-		<string>1:713213142324:ios:bf81fdb7243cd319607161</string>
-		<key>DATABASE_URL</key>
-		<string>https://robo-vpn.firebaseio.com</string>
+		<string>1:976643076587:ios:69d4b7acd32214a3ac69ae</string>
 	</dict>
 </plist>

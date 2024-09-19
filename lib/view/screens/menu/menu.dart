@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import '../../../controllers/localization_controller.dart';
 import '../../../helper/vpn_helper.dart';
 import '../../../utils/app_constants.dart';
 import '../../../utils/style.dart';
@@ -43,11 +44,12 @@ class _MenuScreenState extends State<MenuScreen> {
             theme: true,
             onTap: ThemeController.find.toggleTheme,
           ),
-          MenuTile(
-            text: 'speed_test',
-            icon: Iconsax.speedometer,
-            onTap: () => launchScreen(const SpeedTestScreen()),
-          ),
+          if (Platform.isAndroid)
+            MenuTile(
+              text: 'speed_test',
+              icon: Iconsax.speedometer,
+              onTap: () => launchScreen(const SpeedTestScreen()),
+            ),
           MenuTile(
             text: 'languages',
             icon: Iconsax.language_circle,
@@ -153,7 +155,11 @@ class MenuTile extends StatelessWidget {
                   );
                 },
               )
-            : Icon(Iconsax.arrow_right_3, size: 20.sp),
+            : GetBuilder<LocalizationController>(builder: (con) {
+                IconData ltrIcon = Iconsax.arrow_right_3;
+                IconData rtlIcon = Iconsax.arrow_left_2;
+                return Icon(con.isLtr ? ltrIcon : rtlIcon, size: 18.sp);
+              }),
         visualDensity: const VisualDensity(horizontal: -4, vertical: -3),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:darkfire_vpn/common/primary_button.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
+import 'package:darkfire_vpn/utils/extension.dart';
 import 'package:darkfire_vpn/utils/style.dart';
 import 'package:darkfire_vpn/view/base/map_background.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,7 @@ class _SpeedTestScreenState extends State<SpeedTestScreen> {
                           Expanded(
                             child: SpeedTypeWidget(
                               label: "download".tr,
-                              speed: con.downloadSpeed,
+                              speed: con.downloadSpeed.divideByTwo,
                             ),
                           ),
                           SizedBox(width: defaultSpacing),
@@ -56,7 +57,7 @@ class _SpeedTestScreenState extends State<SpeedTestScreen> {
                           Expanded(
                             child: SpeedTypeWidget(
                               label: "upload".tr,
-                              speed: con.uploadSpeed,
+                              speed: con.uploadSpeed.divideByTwo,
                               upload: true,
                             ),
                           ),
@@ -67,8 +68,8 @@ class _SpeedTestScreenState extends State<SpeedTestScreen> {
                       PrimaryLinearProgressIndicator(value: con.testProgress),
                       SizedBox(height: 32.sp),
                       TweenAnimationBuilder<double>(
-                        tween:
-                            Tween<double>(begin: 0, end: con.calculatingSpeed),
+                        tween: Tween<double>(
+                            begin: 0, end: con.calculatingSpeed.divideByTwo),
                         duration: const Duration(seconds: 1),
                         builder: (context, value, child) {
                           return SizedBox(

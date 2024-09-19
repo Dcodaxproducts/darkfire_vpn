@@ -68,6 +68,7 @@ MaterialColor getConnetionColor(String status) {
 }
 
 List<String> connectingStatus = [
+  "connecting",
   "vpn_generate_config",
   "wait_connection",
   "authenticating",

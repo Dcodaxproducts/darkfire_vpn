@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/servers_controller.dart';
 import 'package:darkfire_vpn/controllers/time_controller.dart';
@@ -74,6 +76,7 @@ class VpnController extends GetxController implements GetxService {
 
   ///VPN stage changed
   void onVpnStageChanged(VPNStage stage, String rawStage) {
+    log("VPN Stage: $stage");
     vpnStage = rawStage;
     if (stage == VPNStage.error) {
       Future.delayed(const Duration(seconds: 3)).then((value) {

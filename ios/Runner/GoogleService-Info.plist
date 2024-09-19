@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>CLIENT_ID</key>
-	<string>587019374349-2rv4ln2d2h1o5vbeqnfsagc9f7l6ur7u.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.587019374349-2rv4ln2d2h1o5vbeqnfsagc9f7l6ur7u</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>587019374349-adilp5v6g6apv67ikg1chji1jptrs0vi.apps.googleusercontent.com</string>
-	<key>API_KEY</key>
-	<string>AIzaSyCCzPXWaZ-sGqs8dvp3-_kVjm0B7Qh4F6U</string>
-	<key>GCM_SENDER_ID</key>
-	<string>587019374349</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>com.dcodax.vpn.demo</string>
-	<key>PROJECT_ID</key>
-	<string>dcodaxfood</string>
-	<key>STORAGE_BUCKET</key>
-	<string>dcodaxfood.appspot.com</string>
-	<key>IS_ADS_ENABLED</key>
-	<false></false>
-	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
-	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
-	<key>IS_GCM_ENABLED</key>
-	<true></true>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:587019374349:ios:52c3c1ac8923024d92aa44</string>
-</dict>
+	<dict>
+		<key>API_KEY</key>
+		<string>AIzaSyCB1P3ykdAhRMo2fRUFRUgbTLg7MEkKshY</string>
+		<key>GCM_SENDER_ID</key>
+		<string>976643076587</string>
+		<key>PLIST_VERSION</key>
+		<string>1</string>
+		<key>BUNDLE_ID</key>
+		<string>speed.vpn.unblock.proxy.master.pro</string>
+		<key>PROJECT_ID</key>
+		<string>speed-vpn-b478a</string>
+		<key>STORAGE_BUCKET</key>
+		<string>speed-vpn-b478a.appspot.com</string>
+		<key>IS_ADS_ENABLED</key>
+		<false></false>
+		<key>IS_ANALYTICS_ENABLED</key>
+		<false></false>
+		<key>IS_APPINVITE_ENABLED</key>
+		<true></true>
+		<key>IS_GCM_ENABLED</key>
+		<true></true>
+		<key>IS_SIGNIN_ENABLED</key>
+		<true></true>
+		<key>GOOGLE_APP_ID</key>
+		<string>1:976643076587:ios:69d4b7acd32214a3ac69ae</string>
+	</dict>
 </plist>

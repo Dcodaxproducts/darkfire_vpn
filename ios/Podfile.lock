@@ -92,6 +92,8 @@ PODS:
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
   - Flutter (1.0.0)
+  - flutter_icmp_ping (0.0.1):
+    - Flutter
   - flutter_inapp_purchase (0.0.1):
     - Flutter
   - flutter_internet_speed_test (1.0.0):
@@ -207,6 +209,7 @@ DEPENDENCIES:
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
+  - flutter_icmp_ping (from `.symlinks/plugins/flutter_icmp_ping/ios`)
   - flutter_inapp_purchase (from `.symlinks/plugins/flutter_inapp_purchase/ios`)
   - flutter_internet_speed_test (from `.symlinks/plugins/flutter_internet_speed_test/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
@@ -259,6 +262,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
     :path: Flutter
+  flutter_icmp_ping:
+    :path: ".symlinks/plugins/flutter_icmp_ping/ios"
   flutter_inapp_purchase:
     :path: ".symlinks/plugins/flutter_inapp_purchase/ios"
   flutter_internet_speed_test:
@@ -312,6 +317,7 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfigInterop: 477b26fdeb8fb5fbaf22fa9db5343b42289dc7db
   FirebaseSessions: adcec8b72d0066a385e3affcd1bcb1ebb3908ce6
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_icmp_ping: 2b159955eee0c487c766ad83fec224ae35e7c935
   flutter_inapp_purchase: 5c6a1ac3f11b11d0c8c0321c0c41c1f05805e4c8
   flutter_internet_speed_test: 0fa50cf67c71323b8c61227e88b3a0f2478fbdef
   flutter_local_notifications: 4cde75091f6327eb8517fa068a0a5950212d2086

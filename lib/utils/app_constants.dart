@@ -1,4 +1,6 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
+import 'dart:io';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../data/model/language.dart';
@@ -48,7 +50,9 @@ class AppConstants {
   static const String EXTRA_TIME = 'extra_time';
   static const String LOCALIZATION_KEY = 'X-localization';
   static const String ON_BOARDING_SKIP = 'on_boarding_skip';
-  static const String VPN_DISCONNECT_TASK = 'vpn_disconnection_task';
+  static String VPN_DISCONNECT_TASK = Platform.isIOS
+      ? "speed.vpn.unblock.proxy.master.pro.vpn_disconnection_task"
+      : 'vpn_disconnection_task';
   static const String REVIEWED = 'reviewed';
 
   // Language

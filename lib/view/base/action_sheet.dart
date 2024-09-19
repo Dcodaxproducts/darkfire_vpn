@@ -94,7 +94,8 @@ class ActionSheet extends StatelessWidget {
                 ),
               )
             ],
-          )
+          ),
+          const SafeArea(child: SizedBox()),
         ],
       ),
     );

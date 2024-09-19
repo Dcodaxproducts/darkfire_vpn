@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:darkfire_vpn/common/navigation.dart';
+import 'package:darkfire_vpn/controllers/localization_controller.dart';
+import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/data/model/body/vpn_config.dart';
 import 'package:darkfire_vpn/helper/vpn_helper.dart';
@@ -8,6 +10,7 @@ import 'package:darkfire_vpn/utils/style.dart';
 import 'package:darkfire_vpn/view/base/action_sheet.dart';
 import 'package:darkfire_vpn/view/base/divider.dart';
 import 'package:darkfire_vpn/view/base/signal_widget.dart';
+import 'package:darkfire_vpn/view/screens/subscription/subscription.dart';
 import 'package:dart_ping/dart_ping.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,12 +18,12 @@ import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
-
 import '../../../../controllers/ads_controller.dart';
 
 class ServersView extends StatelessWidget {
   final List<VpnConfig> servers;
-  const ServersView({required this.servers, super.key});
+  final bool pro;
+  const ServersView({required this.servers, this.pro = false, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,11 @@ class ServersView extends StatelessWidget {
               var server = servers[index];
               return InkWell(
                 onTap: () {
+                  bool isProSever = server.status == 1;
+                  if (isProSever && !isPro) {
+                    launchScreen(const SubscriptionScreen());
+                    return;
+                  }
                   if (VpnController.find.isConnected) {
                     Get.bottomSheet(ActionSheet(
                       title: 'change_server',
@@ -63,9 +71,7 @@ class ServersView extends StatelessWidget {
               );
             },
           )
-        : Center(
-            child: Text('no_servers_available'.tr),
-          );
+        : Center(child: Text('no_servers_available'.tr));
   }
 
   void _connectButtonClick() {
@@ -175,7 +181,11 @@ class _ServerItemState extends State<ServerItem>
         ),
         const Spacer(),
 
-        Icon(Iconsax.arrow_right_3, size: 18.sp),
+        GetBuilder<LocalizationController>(builder: (con) {
+          IconData ltrIcon = Iconsax.arrow_right_3;
+          IconData rtlIcon = Iconsax.arrow_left_2;
+          return Icon(con.isLtr ? ltrIcon : rtlIcon, size: 18.sp);
+        }),
       ],
     );
   }

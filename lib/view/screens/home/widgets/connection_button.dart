@@ -34,7 +34,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
           ? 'you_are_not_protected'.tr
           : 'you_are_now_protected'.tr;
       final color = status != 'connected' ? Colors.grey : primaryColor;
-      bool clickEnabled = status == "connected" || status == "disconnected";
+      // bool clickEnabled = status == "connected" || status == "disconnected";
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -76,7 +76,7 @@ class _ConnectionButtonState extends State<ConnectionButton> {
                 Center(child: ButtonOutlineWidget(status: status)),
                 Center(
                   child: GestureDetector(
-                    onTap: clickEnabled ? _connectButtonClick : null,
+                    onTap: _connectButtonClick,
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       width: 150.sp,

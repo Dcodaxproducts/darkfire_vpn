@@ -56,7 +56,6 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
       VpnController.find.initialize();
       ServerController.find.getAllServers();
       ServerController.find.getAllServersFromCache();
-      //
       // show add
       await loadAppOpenAd()
           .then((value) async => await _appOpenAd?.showIfNotPro())
@@ -122,7 +121,7 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
     final String appOpenAdId = adsController.appOpenAdId;
     bool isAdAvailable = adsController.isAdIdActive(appOpenAdId);
     if (!isAdAvailable) {
-      _appOpenAd!.dispose();
+      _appOpenAd?.dispose();
       _appOpenAd = null;
       return null;
     }
@@ -131,9 +130,9 @@ class _RootState extends State<Root> with WidgetsBindingObserver {
         .then((value) {
       if (value != null) {
         _appOpenAd = value;
-        _appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(
+        _appOpenAd?.fullScreenContentCallback = FullScreenContentCallback(
           onAdDismissedFullScreenContent: (ad) {
-            _appOpenAd!.dispose();
+            _appOpenAd?.dispose();
             _appOpenAd = null;
             loadAppOpenAd();
           },

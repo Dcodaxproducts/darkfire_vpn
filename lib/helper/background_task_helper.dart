@@ -53,7 +53,7 @@ showVPNDisconnectNotification() async {
 }
 
 void showNotification(FlutterLocalNotificationsPlugin flp) async {
-  var android = const AndroidNotificationDetails(
+  var android = AndroidNotificationDetails(
     AppConstants.VPN_DISCONNECT_TASK,
     AppConstants.VPN_DISCONNECT_TASK,
     priority: Priority.high,
