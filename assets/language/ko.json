@@ -88,5 +88,8 @@
     "please_rate_our_application": "앱을 평가해주세요",
     "thank_you_i_will_continue_to_work_hard": "감사합니다! 계속 열심히 일하겠습니다.",
     "wow_thank_you_so_much": "와우! 정말 감사합니다!",
-    "submit": "제출"
+    "submit": "제출",
+    "split_tunnel": "분할 터널",
+    "note": "참고",
+    "split_tunneling_allows_you_to_choose_which_apps_use_the_vpn_and_which_apps_do_not_you_need_to_reconnect_vpn_to_see_changes": "Split tunneling allows you to choose which apps use the VPN and which apps do not. You need to reconnect VPN to see changes."
   }

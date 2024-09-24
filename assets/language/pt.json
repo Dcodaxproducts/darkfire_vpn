@@ -88,6 +88,9 @@
     "please_rate_our_application": "Por favor, avalie nosso aplicativo",
     "thank_you_i_will_continue_to_work_hard": "Obrigado! Vou continuar trabalhando duro.",
     "wow_thank_you_so_much": "Uau! Muito obrigado!",
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "split_tunnel": "Túnel dividido",
+    "note": "Nota",
+    "split_tunneling_allows_you_to_choose_which_apps_use_the_vpn_and_which_apps_do_not_you_need_to_reconnect_vpn_to_see_changes": "Split tunneling allows you to choose which apps use the VPN and which apps do not. You need to reconnect VPN to see changes."
 
   }

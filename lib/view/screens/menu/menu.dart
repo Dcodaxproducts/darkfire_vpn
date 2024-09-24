@@ -17,6 +17,7 @@ import '../../../utils/style.dart';
 import '../../base/appVersion_widget.dart';
 import '../../base/updateNotAvailableDialog.dart';
 import '../speed_test/speed_test.dart';
+import '../split_tunnel/split_tunnel.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -44,12 +45,18 @@ class _MenuScreenState extends State<MenuScreen> {
             theme: true,
             onTap: ThemeController.find.toggleTheme,
           ),
-          if (Platform.isAndroid)
+          if (Platform.isAndroid) ...[
             MenuTile(
               text: 'speed_test',
               icon: Iconsax.speedometer,
               onTap: () => launchScreen(const SpeedTestScreen()),
             ),
+            MenuTile(
+              text: 'split_tunnel',
+              icon: Iconsax.setting_4,
+              onTap: () => launchScreen(const SplitTunnelScreen()),
+            ),
+          ],
           MenuTile(
             text: 'languages',
             icon: Iconsax.language_circle,

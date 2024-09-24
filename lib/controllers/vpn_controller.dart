@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/servers_controller.dart';
 import 'package:darkfire_vpn/controllers/time_controller.dart';
+import 'package:darkfire_vpn/controllers/tunnel_controller.dart';
 import 'package:darkfire_vpn/utils/app_constants.dart';
 import 'package:get/get.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
@@ -76,7 +75,6 @@ class VpnController extends GetxController implements GetxService {
 
   ///VPN stage changed
   void onVpnStageChanged(VPNStage stage, String rawStage) {
-    log("VPN Stage: $stage");
     vpnStage = rawStage;
     if (stage == VPNStage.error) {
       Future.delayed(const Duration(seconds: 3)).then((value) {
@@ -118,6 +116,7 @@ class VpnController extends GetxController implements GetxService {
       certIsRequired: AppConstants.certificateVerify,
       username: vpnConfig!.username ?? AppConstants.vpnUsername,
       password: vpnConfig!.password ?? AppConstants.vpnPassword,
+      bypassPackages: SplitTunnelController.find.excludedApps,
     );
   }
 

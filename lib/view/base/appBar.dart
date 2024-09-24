@@ -1,7 +1,6 @@
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconsax/iconsax.dart';
 import '../../utils/app_constants.dart';
 import '../screens/menu/menu.dart';
 // import '../screens/subscription/subscription.dart';
@@ -37,7 +36,7 @@ class CustomAppBar extends StatelessWidget {
                   pop();
                 }
               },
-              icon: Icon(home ? Iconsax.category_2 : Icons.arrow_back),
+              icon: Icon(home ? Icons.menu : Icons.arrow_back),
             ),
             SizedBox(width: 10.sp),
             Expanded(

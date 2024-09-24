@@ -88,5 +88,8 @@
     "please_rate_our_application": "请给我们的应用程序评分",
     "thank_you_i_will_continue_to_work_hard": "谢谢！我会继续努力。",
     "wow_thank_you_so_much": "哇！非常感谢！",
-    "submit": "提交"
+    "submit": "提交",
+    "split_tunnel": "分割隧道",
+    "note": "注意",
+    "split_tunneling_allows_you_to_choose_which_apps_use_the_vpn_and_which_apps_do_not_you_need_to_reconnect_vpn_to_see_changes": "Split tunneling allows you to choose which apps use the VPN and which apps do not. You need to reconnect VPN to see changes."
   }
