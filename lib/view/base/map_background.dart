@@ -13,7 +13,7 @@ class MapBackground extends StatelessWidget {
       height: Get.height,
       width: Get.width,
       connectDots: true,
-      numberOfParticles: 100,
+      numberOfParticles: 50,
       particleColor: particleColor,
       lineColor: particleColor,
       speedOfParticles: 0.3,

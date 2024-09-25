@@ -28,7 +28,12 @@ class SplitTunnelController extends GetxController implements GetxService {
     getExcludedApps();
     List<AppInfo> installedApps =
         await InstalledApps.getInstalledApps(true, true);
-    _apps.addAll(installedApps);
+    for (AppInfo app in installedApps) {
+      String packageName = app.packageName;
+      if (!_apps.any((e) => e.packageName == packageName)) {
+        _apps.add(app);
+      }
+    }
     loading = false;
   }
 
@@ -38,6 +43,7 @@ class SplitTunnelController extends GetxController implements GetxService {
     } else {
       _excludedApps.add(packageName);
     }
+    saveExcludedApps();
     update();
   }
 

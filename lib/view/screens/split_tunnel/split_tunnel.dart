@@ -71,14 +71,12 @@ class _SplitTunnelScreenState extends State<SplitTunnelScreen> {
                                   con.toggleApp(con.apps[index].packageName);
                                 },
                                 side: BorderSide(
-                                    color: Theme.of(context).shadowColor),
+                                    color: Theme.of(context).dividerColor),
                                 checkboxShape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5.sp),
                                 ),
                                 fillColor: WidgetStateProperty.all(
-                                  selected
-                                      ? primaryColor
-                                      : Theme.of(context).shadowColor,
+                                  selected ? primaryColor : Colors.transparent,
                                 ),
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 16.sp),
