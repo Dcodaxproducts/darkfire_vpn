@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 
 const Color primaryColor = Color(0xFF469E96);
 const Color primaryDark = Color(0xFFCB6B73);
-const Color backgroundColorDark = Color(0xFF1C1F24); // Color(0xFF19181F);
+const Color backgroundColorDark = Color(0xFF2E2E3D); // Color(0xFF1C1F24);
 const Color backgroundColorLight = Color(0xFFFFFFFF);
-const Color cardColorDark = Color(0xFF333942);
-const Color cardColorLight = Color(0xFFF7F8FA);
+const Color cardColorDark = Color(0xFF3A3F4B);
+const Color cardColorLight = Color(0xFFF1F3F6);
 const Color textColordark = Color(0XFFDADADA);
-const Color shadowColorDark = Color(0xFF0A1220);
-const Color shadowColorLight = Color(0xFFE8E8E8);
+const Color shadowColorDark = Color(0xFF1A1A28);
+const Color shadowColorLight = Color(0xFFD1D1D1);
 MaterialColor primaryMaterialColor = MaterialColor(primaryColor.value, const {
   50: Color(0xFFE0F2F1),
   100: Color(0xFFB2DFDB),
@@ -22,6 +22,13 @@ MaterialColor primaryMaterialColor = MaterialColor(primaryColor.value, const {
   800: Color(0xFF00695C),
   900: Color(0xFF004D40),
 });
+
+// primary gradient
+LinearGradient primaryGradient = LinearGradient(
+  colors: [primaryMaterialColor.shade300, primaryMaterialColor.shade400],
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+);
 
 List<BoxShadow> get boxShadow => [
       BoxShadow(

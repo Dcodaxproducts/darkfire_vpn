@@ -8,7 +8,6 @@ import 'package:darkfire_vpn/helper/vpn_helper.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:darkfire_vpn/utils/style.dart';
 import 'package:darkfire_vpn/view/base/action_sheet.dart';
-import 'package:darkfire_vpn/view/base/divider.dart';
 import 'package:darkfire_vpn/view/base/signal_widget.dart';
 import 'package:darkfire_vpn/view/screens/subscription/subscription.dart';
 import 'package:dart_ping/dart_ping.dart';
@@ -31,8 +30,7 @@ class ServersView extends StatelessWidget {
         ? ListView.separated(
             padding: pagePadding,
             itemCount: servers.length,
-            separatorBuilder: (context, index) =>
-                CustomDivider(padding: defaultSpacing),
+            separatorBuilder: (context, index) => const SizedBox(height: 24),
             itemBuilder: (context, index) {
               var server = servers[index];
               return InkWell(
@@ -67,7 +65,10 @@ class ServersView extends StatelessWidget {
                 // dont show any affect of inkwell
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
-                child: ServerItem(server: server),
+                child: GetBuilder<VpnController>(builder: (vpnController) {
+                  bool selected = vpnController.vpnConfig?.name == server.name;
+                  return ServerItem(server: server, selected: selected);
+                }),
               );
             },
           )
@@ -105,7 +106,8 @@ class ServersView extends StatelessWidget {
 
 class ServerItem extends StatefulWidget {
   final VpnConfig? server;
-  const ServerItem({required this.server, super.key});
+  final bool selected;
+  const ServerItem({required this.server, required this.selected, super.key});
 
   @override
   State<ServerItem> createState() => _ServerItemState();
@@ -119,74 +121,87 @@ class _ServerItemState extends State<ServerItem>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return Row(
-      children: [
-        if (widget.server != null)
-          // Country Flag
-          CircleAvatar(
-            radius: 18.sp,
-            backgroundColor: primaryColor,
-            backgroundImage: widget.server!.flag.contains("http")
-                ? CachedNetworkImageProvider(widget.server!.flag)
-                : null,
-            child: widget.server!.flag.contains("http")
-                ? null
-                : ClipRRect(
-                    borderRadius: BorderRadius.circular(32.sp),
-                    child: Image.asset(
-                      "icons/flags/png/${widget.server!.flag}.png",
-                      package: "country_icons",
-                      width: 18.sp,
-                      height: 18.sp,
-                    ),
-                  ),
-          ),
-        SizedBox(width: 16.sp),
-        // Country Name and Location
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.server?.name ?? 'select_server'.tr,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 3.sp),
-              FutureBuilder(
-                future: Future.microtask(() =>
-                    Ping(widget.server?.serverIp ?? '', count: 1).stream.first),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState != ConnectionState.waiting) {
-                    var pingData = snapshot.data;
-                    ms = pingData?.response?.time?.inMilliseconds ?? 999;
-                  }
-                  return Row(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        '$ms ms  ●  ',
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                      SignalBar(signalStrength: ms),
-                    ],
-                  );
-                },
-              ),
-            ],
-          ),
+    return Container(
+      padding: EdgeInsets.all(10.sp),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32.sp),
+        border: Border.all(
+          color:
+              widget.selected ? primaryColor : Theme.of(context).dividerColor,
+          width: 0.75,
         ),
-        const Spacer(),
+      ),
+      child: Row(
+        children: [
+          if (widget.server != null)
+            // Country Flag
+            CircleAvatar(
+              radius: 18.sp,
+              backgroundColor: primaryColor,
+              backgroundImage: widget.server!.flag.contains("http")
+                  ? CachedNetworkImageProvider(widget.server!.flag)
+                  : null,
+              child: widget.server!.flag.contains("http")
+                  ? null
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(32.sp),
+                      child: Image.asset(
+                        "icons/flags/png/${widget.server!.flag}.png",
+                        package: "country_icons",
+                        width: 18.sp,
+                        height: 18.sp,
+                      ),
+                    ),
+            ),
+          SizedBox(width: 16.sp),
+          // Country Name and Location
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.server?.name ?? 'select_server'.tr,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 3.sp),
+                FutureBuilder(
+                  future: Future.microtask(() =>
+                      Ping(widget.server?.serverIp ?? '', count: 1)
+                          .stream
+                          .first),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState != ConnectionState.waiting) {
+                      var pingData = snapshot.data;
+                      ms = pingData?.response?.time?.inMilliseconds ?? 999;
+                    }
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '$ms ms  ●  ',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                        SignalBar(signalStrength: ms),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+          const Spacer(),
 
-        GetBuilder<LocalizationController>(builder: (con) {
-          IconData ltrIcon = Iconsax.arrow_right_3;
-          IconData rtlIcon = Iconsax.arrow_left_2;
-          return Icon(con.isLtr ? ltrIcon : rtlIcon, size: 18.sp);
-        }),
-      ],
+          GetBuilder<LocalizationController>(builder: (con) {
+            IconData ltrIcon = Iconsax.arrow_right_3;
+            IconData rtlIcon = Iconsax.arrow_left_2;
+            return Icon(con.isLtr ? ltrIcon : rtlIcon, size: 18.sp);
+          }),
+        ],
+      ),
     );
   }
 

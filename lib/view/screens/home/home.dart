@@ -7,6 +7,7 @@ import 'package:darkfire_vpn/view/base/appBar.dart';
 import 'package:darkfire_vpn/view/screens/home/widgets/connected_view.dart';
 import 'package:darkfire_vpn/view/screens/split_tunnel/split_tunnel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           description: 'exit_app_message',
           noText: 'no'.tr,
           yesText: 'yes'.tr,
-          onYes: () => exit(0),
+          onYes: () => SystemNavigator.pop(animated: true),
         );
       },
       child: Scaffold(

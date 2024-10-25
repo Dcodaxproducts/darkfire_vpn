@@ -8,7 +8,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../../../../utils/colors.dart';
-import '../../../base/animated_widget.dart';
+import '../../../../utils/style.dart';
 import 'package:darkfire_vpn/helper/vpn_helper.dart';
 
 class ConnectionButton extends StatefulWidget {
@@ -19,13 +19,6 @@ class ConnectionButton extends StatefulWidget {
 }
 
 class _ConnectionButtonState extends State<ConnectionButton> {
-  String convertVpnStageToString(String stage) {
-    return stage
-        .split('_')
-        .map((e) => e[0].toUpperCase() + e.substring(1))
-        .join(' ');
-  }
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<VpnController>(builder: (vpnController) {
@@ -34,7 +27,6 @@ class _ConnectionButtonState extends State<ConnectionButton> {
           ? 'you_are_not_protected'.tr
           : 'you_are_now_protected'.tr;
       final color = status != 'connected' ? Colors.grey : primaryColor;
-      // bool clickEnabled = status == "connected" || status == "disconnected";
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -67,62 +59,10 @@ class _ConnectionButtonState extends State<ConnectionButton> {
               ],
             ),
           ),
-          SizedBox(
-            width: 190.sp,
-            height: 190.sp,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Center(child: ButtonOutlineWidget(status: status)),
-                Center(
-                  child: GestureDetector(
-                    onTap: _connectButtonClick,
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
-                      width: 150.sp,
-                      height: 150.sp,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: getConnectionButtonGradient(status),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.4),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Stack(
-                        children: [
-                          if (connectingStatus.contains(status))
-                            Center(
-                              child: SizedBox(
-                                width: 110.sp,
-                                height: 110.sp,
-                                child: const CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                      Colors.white),
-                                  strokeWidth: 2,
-                                ),
-                              ),
-                            ),
-                          Center(
-                            child: CustomAnimatedWidget(
-                              child: Icon(
-                                Icons.power_settings_new,
-                                size: 50.sp,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          ConnectionButtonWidget(
+            onTap: _connectButtonClick,
+            status: status,
+            disconnected: status == 'disconnected',
           ),
           SizedBox(height: 16.sp),
           Text(
@@ -166,37 +106,125 @@ class _ConnectionButtonState extends State<ConnectionButton> {
   }
 }
 
-class ButtonOutlineWidget extends StatelessWidget {
+class ConnectionButtonWidget extends StatelessWidget {
+  final Function() onTap;
   final String status;
-  const ButtonOutlineWidget({required this.status, super.key});
+  final bool disconnected;
+
+  const ConnectionButtonWidget({
+    required this.onTap,
+    required this.status,
+    required this.disconnected,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final BorderSide borderSide =
-        BorderSide(color: getConnetionColor(status), width: 0.5);
-    return CustomAnimatedWidget(
-      begin: 0.62,
-      end: 0.35,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        child: Container(
-          padding: EdgeInsets.all(10.sp),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border:
-                Border(top: borderSide, right: borderSide, left: borderSide),
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(100),
+      child: Container(
+        padding: EdgeInsets.all(8.sp),
+        height: 260,
+        width: 130,
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(100),
+          // boxShadow: boxShadow,
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).cardColor,
+              Theme.of(context).cardColor.withOpacity(0.5),
+            ],
           ),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            child: Container(
-              padding: EdgeInsets.all(10.sp),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border(
-                    bottom: borderSide, left: borderSide, right: borderSide),
+        ),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Positioned(
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Icon(
+                Icons.keyboard_double_arrow_down_rounded,
+                size: 40.sp,
+                color: Colors.grey,
               ),
             ),
-          ),
+            Positioned(
+              top: 10,
+              left: 0,
+              right: 0,
+              child: Icon(
+                Icons.keyboard_double_arrow_up_rounded,
+                size: 40.sp,
+                color: Colors.grey,
+              ),
+            ),
+            AnimatedAlign(
+              duration: const Duration(milliseconds: 300),
+              alignment:
+                  disconnected ? Alignment.topCenter : Alignment.bottomCenter,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                padding: EdgeInsets.all(5.sp),
+                decoration: BoxDecoration(
+                  color: getConnetionColor(status).withOpacity(0.05),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Container(
+                  padding: pagePadding,
+                  height: 160,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 20.sp,
+                        height: 5.sp,
+                        decoration: BoxDecoration(
+                            color: getConnetionColor(status),
+                            borderRadius: BorderRadius.circular(100),
+                            boxShadow: [
+                              BoxShadow(
+                                color:
+                                    getConnetionColor(status).withOpacity(0.5),
+                                blurRadius: 10.sp,
+                                spreadRadius: 1.sp,
+                              )
+                            ]),
+                      ),
+                      Text(
+                        !disconnected ? 'STOP'.tr : 'START'.tr,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        padding: EdgeInsets.all(10.sp),
+                        decoration: BoxDecoration(
+                          color: primaryColor,
+                          shape: BoxShape.circle,
+                          gradient: getConnectionButtonGradient(status),
+                        ),
+                        child: Icon(
+                          Icons.power_settings_new_rounded,
+                          size: 32.sp,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

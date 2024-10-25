@@ -21,7 +21,7 @@ class SpeedTestController extends GetxController implements GetxService {
   double get calculatingSpeed => _calculatingSpeed;
   bool get isTesting => _isTesting;
   bool get isDownloading => _isDownloading;
-  double get speedGuageSize => 230.sp;
+  double get speedGuageSize => 300.sp;
 
   set downloadSpeed(double value) {
     _downloadSpeed = value;

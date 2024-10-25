@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:darkfire_vpn/common/primary_button.dart';
 import 'package:darkfire_vpn/utils/colors.dart';
 import 'package:darkfire_vpn/utils/style.dart';
@@ -32,6 +34,7 @@ class _SpeedTestScreenState extends State<SpeedTestScreen> {
         children: [
           const MapBackground(),
           GetBuilder<SpeedTestController>(builder: (con) {
+            double meterSize = con.speedGuageSize - 70;
             return Column(
               children: [
                 CustomAppBar(text: 'speed_test'.tr),
@@ -75,51 +78,48 @@ class _SpeedTestScreenState extends State<SpeedTestScreen> {
                             width: con.speedGuageSize,
                             height: con.speedGuageSize,
                             child: Stack(
-                              fit: StackFit.expand,
                               alignment: Alignment.center,
                               children: [
                                 CustomPaint(
-                                  size: Size(
-                                      con.speedGuageSize, con.speedGuageSize),
+                                  size: Size(meterSize, meterSize),
                                   painter: SpeedometerPainter(
                                     progress: (value / 100).clamp(0, 1),
-                                    gaugeSize: con.speedGuageSize,
-                                    strokeWidth: 18,
+                                    gaugeSize: meterSize,
+                                    strokeWidth: 8,
                                   ),
                                 ),
+                                // Speed display in the middle
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      con.isDownloading
-                                          ? "download".tr
-                                          : 'upload'.tr,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium
-                                          ?.copyWith(
-                                            color: Theme.of(context).hintColor,
-                                          ),
+                                    const Text(
+                                      'Download',
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                    SizedBox(height: 16.sp),
                                     Text(
-                                      value.toStringAsFixed(1),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayLarge
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 46.sp,
-                                          ),
+                                      value.toStringAsFixed(2),
+                                      style: const TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 48,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                    SizedBox(height: 5.sp),
-                                    Text(
-                                      ' mbps',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineMedium,
+                                    const Text(
+                                      'Mb/s',
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 16,
+                                      ),
                                     ),
                                   ],
+                                ),
+                                // Speed labels around the arc
+                                ..._buildSpeedLabels(
+                                  con.speedGuageSize / 2.1,
+                                  con.speedGuageSize / 2,
                                 ),
                               ],
                             ),
@@ -160,5 +160,49 @@ class _SpeedTestScreenState extends State<SpeedTestScreen> {
         ],
       ),
     );
+  }
+
+  List<Widget> _buildSpeedLabels(double radius, double center) {
+    List<Widget> labels = [];
+
+    // Define the labels and their corresponding angles (in degrees)
+    Map<String, double> labelAngles = {
+      '0': 136.36,
+      '10': 162.36,
+      '20': 188.36,
+      '30': 214.36,
+      '40': 240.36,
+      '50': 266.36, // Midpoint of the arc
+      '60': 292.36,
+      '70': 318.36,
+      '80': 344.36,
+      '90': 10.36, // Near the end of the arc
+      '100': 36.36, // End at the far right of the arc
+    };
+
+    labelAngles.forEach((label, angle) {
+      // check if index is after half of list
+      double radian = (pi / 180) * (angle + 3.8); // Convert degrees to radians
+      double x = center + radius * cos(radian); // Calculate X position
+      double y = center + radius * sin(radian); // Calculate Y position
+
+      // Adjust offset based on the angle
+      double xOffset = -8;
+      double yOffset = -8;
+
+      labels.add(Positioned(
+        left: x + xOffset,
+        top: y + yOffset,
+        child: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.grey,
+            fontSize: 14,
+          ),
+        ),
+      ));
+    });
+
+    return labels;
   }
 }
