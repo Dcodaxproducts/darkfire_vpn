@@ -123,108 +123,119 @@ class ConnectionButtonWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(100),
-      child: Container(
-        padding: EdgeInsets.all(8.sp),
-        height: 260,
-        width: 130,
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(100),
-          // boxShadow: boxShadow,
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).cardColor,
-              Theme.of(context).cardColor.withOpacity(0.5),
-            ],
+      child: GestureDetector(
+        onVerticalDragUpdate: (details) {
+          if (details.delta.dy > 0) {
+            onTap();
+          } else {
+            if (!disconnected) {
+              onTap();
+            }
+          }
+        },
+        child: Container(
+          padding: EdgeInsets.all(8.sp),
+          height: 260,
+          width: 130,
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(100),
+            // boxShadow: boxShadow,
+            gradient: LinearGradient(
+              colors: [
+                Theme.of(context).cardColor,
+                Theme.of(context).cardColor.withOpacity(0.5),
+              ],
+            ),
           ),
-        ),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Positioned(
-              bottom: 10,
-              left: 0,
-              right: 0,
-              child: Icon(
-                Icons.keyboard_double_arrow_down_rounded,
-                size: 40.sp,
-                color: Colors.grey,
-              ),
-            ),
-            Positioned(
-              top: 10,
-              left: 0,
-              right: 0,
-              child: Icon(
-                Icons.keyboard_double_arrow_up_rounded,
-                size: 40.sp,
-                color: Colors.grey,
-              ),
-            ),
-            AnimatedAlign(
-              duration: const Duration(milliseconds: 300),
-              alignment:
-                  disconnected ? Alignment.topCenter : Alignment.bottomCenter,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                padding: EdgeInsets.all(5.sp),
-                decoration: BoxDecoration(
-                  color: getConnetionColor(status).withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(100),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Positioned(
+                bottom: 10,
+                left: 0,
+                right: 0,
+                child: Icon(
+                  Icons.keyboard_double_arrow_down_rounded,
+                  size: 40.sp,
+                  color: Colors.grey,
                 ),
-                child: Container(
-                  padding: pagePadding,
-                  height: 160,
-                  width: double.infinity,
+              ),
+              Positioned(
+                top: 10,
+                left: 0,
+                right: 0,
+                child: Icon(
+                  Icons.keyboard_double_arrow_up_rounded,
+                  size: 40.sp,
+                  color: Colors.grey,
+                ),
+              ),
+              AnimatedAlign(
+                duration: const Duration(milliseconds: 300),
+                alignment:
+                    disconnected ? Alignment.topCenter : Alignment.bottomCenter,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  padding: EdgeInsets.all(5.sp),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
+                    color: getConnetionColor(status).withOpacity(0.05),
                     borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 20.sp,
-                        height: 5.sp,
-                        decoration: BoxDecoration(
-                            color: getConnetionColor(status),
-                            borderRadius: BorderRadius.circular(100),
-                            boxShadow: [
-                              BoxShadow(
-                                color:
-                                    getConnetionColor(status).withOpacity(0.5),
-                                blurRadius: 10.sp,
-                                spreadRadius: 1.sp,
-                              )
-                            ]),
-                      ),
-                      Text(
-                        !disconnected ? 'STOP'.tr : 'START'.tr,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        padding: EdgeInsets.all(10.sp),
-                        decoration: BoxDecoration(
-                          color: primaryColor,
-                          shape: BoxShape.circle,
-                          gradient: getConnectionButtonGradient(status),
+                  child: Container(
+                    padding: pagePadding,
+                    height: 160,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 20.sp,
+                          height: 5.sp,
+                          decoration: BoxDecoration(
+                              color: getConnetionColor(status),
+                              borderRadius: BorderRadius.circular(100),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: getConnetionColor(status)
+                                      .withOpacity(0.5),
+                                  blurRadius: 10.sp,
+                                  spreadRadius: 1.sp,
+                                )
+                              ]),
                         ),
-                        child: Icon(
-                          Icons.power_settings_new_rounded,
-                          size: 32.sp,
-                          color: Colors.white,
+                        Text(
+                          !disconnected ? 'STOP'.tr : 'START'.tr,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
                         ),
-                      ),
-                    ],
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          padding: EdgeInsets.all(10.sp),
+                          decoration: BoxDecoration(
+                            color: primaryColor,
+                            shape: BoxShape.circle,
+                            gradient: getConnectionButtonGradient(status),
+                          ),
+                          child: Icon(
+                            Icons.power_settings_new_rounded,
+                            size: 32.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
