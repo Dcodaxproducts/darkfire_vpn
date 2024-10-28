@@ -1,8 +1,8 @@
 import 'package:darkfire_vpn/common/navigation.dart';
+import 'package:darkfire_vpn/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../utils/app_constants.dart';
-import '../screens/menu/menu.dart';
 // import '../screens/subscription/subscription.dart';
 // import 'package:get/get.dart';
 // import 'package:lottie/lottie.dart';
@@ -31,12 +31,19 @@ class CustomAppBar extends StatelessWidget {
             IconButton(
               onPressed: () {
                 if (home) {
-                  launchScreen(const MenuScreen());
+                  Scaffold.of(context).openDrawer();
                 } else {
                   pop();
                 }
               },
-              icon: Icon(home ? Icons.menu : Icons.arrow_back),
+              icon: home
+                  ? Image.asset(
+                      Images.menu,
+                      width: 20.sp,
+                      height: 20.sp,
+                      color: Theme.of(context).iconTheme.color,
+                    )
+                  : const Icon(Icons.arrow_back),
             ),
             SizedBox(width: 10.sp),
             Expanded(

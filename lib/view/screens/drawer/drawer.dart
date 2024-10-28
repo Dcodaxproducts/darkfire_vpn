@@ -13,32 +13,39 @@ import 'package:url_launcher/url_launcher_string.dart';
 import '../../../controllers/localization_controller.dart';
 import '../../../helper/vpn_helper.dart';
 import '../../../utils/app_constants.dart';
+import '../../../utils/images.dart';
 import '../../../utils/style.dart';
 import '../../base/appVersion_widget.dart';
 import '../../base/updateNotAvailableDialog.dart';
 import '../speed_test/speed_test.dart';
 import '../split_tunnel/split_tunnel.dart';
 
-class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
+class DrawerScreen extends StatefulWidget {
+  const DrawerScreen({super.key});
 
   @override
-  State<MenuScreen> createState() => _MenuScreenState();
+  State<DrawerScreen> createState() => _DrawerScreenState();
 }
 
-class _MenuScreenState extends State<MenuScreen> {
+class _DrawerScreenState extends State<DrawerScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: Get.back,
-        ),
-        title: Text('menu'.tr),
-      ),
-      body: Column(
+    return Drawer(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+      child: Column(
         children: [
+          SafeArea(child: SizedBox(height: 16.sp)),
+          Image.asset(Images.logo, width: 75.sp),
+          SizedBox(height: 16.sp),
+          Text(
+            AppConstants.APP_NAME,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 32.sp),
           MenuTile(
             text: 'dark_theme',
             icon: Iconsax.moon,

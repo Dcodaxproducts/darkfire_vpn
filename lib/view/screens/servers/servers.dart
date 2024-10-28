@@ -97,7 +97,6 @@ class ServerTabBar extends StatelessWidget {
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(32.sp),
         border: Border.all(color: Theme.of(context).dividerColor),
-        boxShadow: boxShadow,
       ),
       child: TabBar(
         controller: _tabController,

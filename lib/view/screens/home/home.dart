@@ -4,6 +4,7 @@ import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/view/base/action_sheet.dart';
 import 'package:darkfire_vpn/view/base/appBar.dart';
+import 'package:darkfire_vpn/view/screens/drawer/drawer.dart';
 import 'package:darkfire_vpn/view/screens/home/widgets/connected_view.dart';
 import 'package:darkfire_vpn/view/screens/split_tunnel/split_tunnel.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
       child: Scaffold(
+        drawer: const DrawerScreen(),
         body: Stack(
           children: [
             const MapBackground(),

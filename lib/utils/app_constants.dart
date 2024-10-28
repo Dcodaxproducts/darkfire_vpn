@@ -20,18 +20,19 @@ class AppConstants {
   static AdRequest get adRequest => const AdRequest(httpTimeoutMillis: 6000);
 
   // package name
-  static const String androidPackageName = "speed.vpn.unblock.proxy.master.pro";
-  static const String iOSPackageName = "speed.vpn.unblock.proxy.master.pro";
+  static const String androidPackageName =
+      "speed.secure.vpn.proxy.master.vynox";
+  static const String iOSPackageName = "speed.secure.vpn.proxy.master.vynox";
 
 // iOS setup
   static const String providerBundleIdentifier =
       "$iOSPackageName.VPNExtension"; //Before it was VpnExtensionIdentifier
   static const String groupIdentifier = "group.$iOSPackageName";
   static const String iosAppID = "1234567890";
-  static const String localizationDescription = "Speed VPN - Proxy VPN Master";
+  static const String localizationDescription = "Vynox VPN - Proxy VPN Master";
 
   /* App name and version */
-  static const String APP_NAME = 'Speed VPN';
+  static const String APP_NAME = 'Vynox VPN';
   static const String APP_VERSION = '1.0';
 
   /* Non Customizable */
@@ -51,7 +52,7 @@ class AppConstants {
   static const String LOCALIZATION_KEY = 'X-localization';
   static const String ON_BOARDING_SKIP = 'on_boarding_skip';
   static String VPN_DISCONNECT_TASK = Platform.isIOS
-      ? "speed.vpn.unblock.proxy.master.pro.vpn_disconnection_task"
+      ? "speed.secure.vpn.proxy.master.vynox.vpn_disconnection_task"
       : 'vpn_disconnection_task';
   static const String REVIEWED = 'reviewed';
 

@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:darkfire_vpn/common/navigation.dart';
-import 'package:darkfire_vpn/controllers/localization_controller.dart';
 import 'package:darkfire_vpn/controllers/subscription_controller.dart';
 import 'package:darkfire_vpn/controllers/vpn_controller.dart';
 import 'package:darkfire_vpn/data/model/body/vpn_config.dart';
@@ -15,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:openvpn_flutter/openvpn_flutter.dart';
 import '../../../../controllers/ads_controller.dart';
 
@@ -34,34 +32,7 @@ class ServersView extends StatelessWidget {
             itemBuilder: (context, index) {
               var server = servers[index];
               return InkWell(
-                onTap: () {
-                  bool isProSever = server.status == 1;
-                  if (isProSever && !isPro) {
-                    launchScreen(const SubscriptionScreen());
-                    return;
-                  }
-                  if (VpnController.find.isConnected) {
-                    Get.bottomSheet(ActionSheet(
-                      title: 'change_server',
-                      description: 'change_server_message',
-                      noText: 'no',
-                      yesText: "change",
-                      onYes: () {
-                        pop();
-                        VpnController.find.disconnect((status, config) {
-                          Future.delayed(const Duration(milliseconds: 500), () {
-                            VpnController.find.selectServer(
-                              server,
-                              callback: _connectButtonClick,
-                            );
-                          });
-                        });
-                      },
-                    ));
-                  } else {
-                    VpnController.find.selectServer(server);
-                  }
-                },
+                onTap: () => selectServer(server),
                 // dont show any affect of inkwell
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
@@ -75,7 +46,7 @@ class ServersView extends StatelessWidget {
         : Center(child: Text('no_servers_available'.tr));
   }
 
-  void _connectButtonClick() {
+  static _connectButtonClick() {
     var vpnProvider = VpnController.find;
     if (vpnProvider.vpnStage?.toLowerCase() !=
         VPNStage.disconnected.name.toLowerCase()) {
@@ -89,7 +60,7 @@ class ServersView extends StatelessWidget {
     }
   }
 
-  Future<void> _showInterstitialAd() async {
+  static Future<void> _showInterstitialAd() async {
     final AdsController adsController = AdsController.find;
     final String interstitialAdId = adsController.interstitialAdId;
     bool isAdAvailable = adsController.isAdIdActive(interstitialAdId);
@@ -100,6 +71,35 @@ class ServersView extends StatelessWidget {
         await adsController.loadInterstitial(interstitialAdId);
     if (interstitialAd != null) {
       await interstitialAd.showIfNotPro();
+    }
+  }
+
+  static selectServer(VpnConfig server) {
+    bool isProSever = server.status == 1;
+    if (isProSever && !isPro) {
+      launchScreen(const SubscriptionScreen());
+      return;
+    }
+    if (VpnController.find.isConnected) {
+      Get.bottomSheet(ActionSheet(
+        title: 'change_server',
+        description: 'change_server_message',
+        noText: 'no',
+        yesText: "change",
+        onYes: () {
+          pop();
+          VpnController.find.disconnect((status, config) {
+            Future.delayed(const Duration(milliseconds: 500), () {
+              VpnController.find.selectServer(
+                server,
+                callback: _connectButtonClick,
+              );
+            });
+          });
+        },
+      ));
+    } else {
+      VpnController.find.selectServer(server);
     }
   }
 }
@@ -195,11 +195,7 @@ class _ServerItemState extends State<ServerItem>
           ),
           const Spacer(),
 
-          GetBuilder<LocalizationController>(builder: (con) {
-            IconData ltrIcon = Iconsax.arrow_right_3;
-            IconData rtlIcon = Iconsax.arrow_left_2;
-            return Icon(con.isLtr ? ltrIcon : rtlIcon, size: 18.sp);
-          }),
+          CustomRadioWidget(selected: widget.selected),
         ],
       ),
     );
@@ -207,4 +203,34 @@ class _ServerItemState extends State<ServerItem>
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class CustomRadioWidget extends StatelessWidget {
+  final bool selected;
+  const CustomRadioWidget({required this.selected, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Container(
+        padding: EdgeInsets.all(2.5.sp),
+        width: 20.sp,
+        height: 20.sp,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: selected ? primaryColor : Theme.of(context).dividerColor,
+            width: 1.5,
+          ),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: selected ? primaryColor : Colors.transparent,
+          ),
+        ),
+      ),
+    );
+  }
 }
