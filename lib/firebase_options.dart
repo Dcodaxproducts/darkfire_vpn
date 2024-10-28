@@ -47,23 +47,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCSrHABq5diJg44XTFXpat_ToFHRamrgPU',
-    appId: '1:587019374349:android:e72757367aae2c4c92aa44',
-    messagingSenderId: '587019374349',
-    projectId: 'dcodaxfood',
-    storageBucket: 'dcodaxfood.appspot.com',
+    apiKey: 'AIzaSyCRQub-QHY0_FQqjwUldAg04LjBuW6KVWQ',
+    appId: '1:1070422698428:android:bb8e6129145c2a85df63b9',
+    messagingSenderId: '1070422698428',
+    projectId: 'vynoxvpn',
+    storageBucket: 'vynoxvpn.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCCzPXWaZ-sGqs8dvp3-_kVjm0B7Qh4F6U',
-    appId: '1:587019374349:ios:52c3c1ac8923024d92aa44',
-    messagingSenderId: '587019374349',
-    projectId: 'dcodaxfood',
-    storageBucket: 'dcodaxfood.appspot.com',
-    androidClientId:
-        '587019374349-adilp5v6g6apv67ikg1chji1jptrs0vi.apps.googleusercontent.com',
-    iosClientId:
-        '587019374349-2rv4ln2d2h1o5vbeqnfsagc9f7l6ur7u.apps.googleusercontent.com',
-    iosBundleId: 'com.dcodax.vpn.demo',
+    apiKey: 'AIzaSyCehqIcVGJLfJIzDmXahdz23txQQxSV9ec',
+    appId: '1:1070422698428:ios:d08bfe21a85222fcdf63b9',
+    messagingSenderId: '1070422698428',
+    projectId: 'vynoxvpn',
+    storageBucket: 'vynoxvpn.appspot.com',
+    iosBundleId: 'speed.secure.vpn.proxy.master.vynox',
   );
+
 }

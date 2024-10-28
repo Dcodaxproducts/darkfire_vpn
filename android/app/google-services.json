@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "976643076587",
-    "project_id": "speed-vpn-b478a",
-    "storage_bucket": "speed-vpn-b478a.appspot.com"
+    "project_number": "1070422698428",
+    "project_id": "vynoxvpn",
+    "storage_bucket": "vynoxvpn.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:976643076587:android:51bb9041721c1d4bac69ae",
+        "mobilesdk_app_id": "1:1070422698428:android:bb8e6129145c2a85df63b9",
         "android_client_info": {
-          "package_name": "speed.vpn.unblock.proxy.master.pro"
+          "package_name": "speed.secure.vpn.proxy.master.vynox"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA9W1eOUAiuiBh06ZBrTZT3rLvDSmlOP-g"
+          "current_key": "AIzaSyCRQub-QHY0_FQqjwUldAg04LjBuW6KVWQ"
         }
       ],
       "services": {

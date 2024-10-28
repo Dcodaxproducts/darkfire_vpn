@@ -53,13 +53,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 CustomAppBar(
                   home: true,
                   actions: [
-                    IconButton(
-                        onPressed: () =>
-                            launchScreen(const SplitTunnelScreen()),
-                        icon: Icon(
-                          Iconsax.setting_4,
-                          size: 20.sp,
-                        )),
+                    if (Platform.isAndroid)
+                      IconButton(
+                          onPressed: () =>
+                              launchScreen(const SplitTunnelScreen()),
+                          icon: Icon(
+                            Iconsax.setting_4,
+                            size: 20.sp,
+                          )),
                   ],
                 ),
                 const SelectedServerWidget(),

@@ -1,4 +1,4 @@
-package speed.vpn.unblock.proxy.master.pro;
+package speed.secure.vpn.proxy.master.vynox;
 
 import android.content.Context;
 

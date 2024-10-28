@@ -16,7 +16,7 @@ import workmanager
             GeneratedPluginRegistrant.register(with: registry)
         }
 
-      WorkmanagerPlugin.registerTask(withIdentifier:"speed.vpn.unblock.proxy.master.pro.vpn_disconnection_task")
+      WorkmanagerPlugin.registerTask(withIdentifier:"speed.secure.vpn.proxy.master.vynox.vpn_disconnection_task")
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

@@ -47,7 +47,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "speed.vpn.unblock.proxy.master.pro"  
+        applicationId "speed.secure.vpn.proxy.master.vynox"  
         minSdkVersion 24
         targetSdkVersion 34
         multiDexEnabled true
