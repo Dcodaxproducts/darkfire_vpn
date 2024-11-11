@@ -48,19 +48,19 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCRQub-QHY0_FQqjwUldAg04LjBuW6KVWQ',
-    appId: '1:1070422698428:android:bb8e6129145c2a85df63b9',
+    appId: '1:1070422698428:android:393ea3d10928febadf63b9',
     messagingSenderId: '1070422698428',
     projectId: 'vynoxvpn',
-    storageBucket: 'vynoxvpn.appspot.com',
+    storageBucket: 'vynoxvpn.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCehqIcVGJLfJIzDmXahdz23txQQxSV9ec',
-    appId: '1:1070422698428:ios:d08bfe21a85222fcdf63b9',
+    appId: '1:1070422698428:ios:13e3c50ce4fbad1adf63b9',
     messagingSenderId: '1070422698428',
     projectId: 'vynoxvpn',
-    storageBucket: 'vynoxvpn.appspot.com',
-    iosBundleId: 'speed.secure.vpn.proxy.master.vynox',
+    storageBucket: 'vynoxvpn.firebasestorage.app',
+    iosBundleId: 'secure.vpn.proxy.master.vynox',
   );
 
 }

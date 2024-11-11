@@ -19,9 +19,8 @@ class AppConstants {
   static AdRequest get adRequest => const AdRequest(httpTimeoutMillis: 6000);
 
   // package name
-  static const String androidPackageName =
-      "speed.secure.vpn.proxy.master.vynox";
-  static const String iOSPackageName = "speed.secure.vpn.proxy.master.vynox";
+  static const String androidPackageName = "secure.vpn.proxy.master.vynox";
+  static const String iOSPackageName = "secure.vpn.proxy.master.vynox";
 
 // iOS setup
   static const String providerBundleIdentifier =
@@ -50,7 +49,7 @@ class AppConstants {
   static const String LOCALIZATION_KEY = 'X-localization';
   static const String ON_BOARDING_SKIP = 'on_boarding_skip';
   static String VPN_DISCONNECT_TASK = Platform.isIOS
-      ? "speed.secure.vpn.proxy.master.vynox.vpn_disconnection_task"
+      ? "secure.vpn.proxy.master.vynox.vpn_disconnection_task"
       : 'vpn_disconnection_task';
   static const String REVIEWED = 'reviewed';
 

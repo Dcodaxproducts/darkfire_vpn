@@ -2,9 +2,28 @@
   "project_info": {
     "project_number": "1070422698428",
     "project_id": "vynoxvpn",
-    "storage_bucket": "vynoxvpn.appspot.com"
+    "storage_bucket": "vynoxvpn.firebasestorage.app"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070422698428:android:393ea3d10928febadf63b9",
+        "android_client_info": {
+          "package_name": "secure.vpn.proxy.master.vynox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRQub-QHY0_FQqjwUldAg04LjBuW6KVWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:1070422698428:android:bb8e6129145c2a85df63b9",

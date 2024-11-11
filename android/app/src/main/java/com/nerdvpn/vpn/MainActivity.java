@@ -1,4 +1,4 @@
-package speed.secure.vpn.proxy.master.vynox;
+package secure.vpn.proxy.master.vynox;
 
 import android.content.Intent;
 
