@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:darkfire_vpn/common/navigation.dart';
 import 'package:darkfire_vpn/controllers/servers_controller.dart';
 import 'package:darkfire_vpn/controllers/time_controller.dart';
@@ -68,11 +66,7 @@ class VpnController extends GetxController implements GetxService {
   ///VPN status changed
   void onVpnStatusChanged(VpnStatus? status) {
     vpnStatus = status;
-    List<bool> conditions = [status != null];
-    if (Platform.isAndroid) {
-      conditions.add(status!.duration != "0:00:00");
-    }
-    if (conditions.every((value) => value)) {
+    if (status != null && status.duration != "00:00:00") {
       int time = TimeController.find.updateRemainingTime(status);
       _remainingTime = getFormatedTime(time);
     }
